@@ -1,25 +1,34 @@
 import sys
+import os
 
 def main():
-    f = sys.argv[1]
+    if len(sys.argv) < 3:
+        print("Erro: Nenhum arquivo foi fornecido como argumento.")
+        sys.exit(1)
     
+    f = sys.argv[1]
+    file_result = sys.argv[2]
+
+    if not os.path.isfile(f):
+        print(f"Erro: O arquivo '{f}' não foi encontrado.")
+        sys.exit(1)
+
     with open(f, "r", encoding="utf-8") as file:
         linhas = file.readlines()
-        print("Linhas lidas:", linhas)
-    
-    texto = list(linhas) 
-    print("Texto:", texto)
+        print(f"Linhas lidas: {len(linhas)}")
 
     visto = set()
-    
-    with open("resultado.txt", "w", encoding="utf-8") as output_file:
-        for linha in texto:
-            print(linha)
-            if linha not in visto:
-                print("entra ", linha , visto)
-                output_file.write(linha)
-                visto.add(linha)  # Marcar a linha como já 
-                print(f"Escrevendo: {linha.strip()}")  # Para mostrar no terminal
+
+    # Abre o arquivo de saída para escrever as linhas únicas
+    with open(file_result, "w", encoding="utf-8") as output_file:
+        for linha in linhas:
+            # Remove espaços extras e quebras de linha
+            linha_limpa = linha.strip()  
+            if linha_limpa not in visto:
+                output_file.write(linha) 
+                # Marca a linha limpa como já escrita
+                visto.add(linha_limpa)  
+                print(f"Escrevendo: {linha.strip()}") 
 
     print("\nLinhas únicas foram salvas em 'resultado.txt'")
 
