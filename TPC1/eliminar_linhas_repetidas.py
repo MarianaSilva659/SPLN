@@ -15,7 +15,6 @@ def main():
 
     with open(f, "r", encoding="utf-8") as file:
         linhas = file.readlines()
-        print(f"Linhas lidas: {len(linhas)}")
 
     visto = set()
 
@@ -28,9 +27,8 @@ def main():
                 output_file.write(linha) 
                 # Marca a linha limpa como já escrita
                 visto.add(linha_limpa)  
-                print(f"Escrevendo: {linha.strip()}") 
 
-    print("\nLinhas únicas foram salvas em 'resultado.txt'")
+    print("\nLinhas únicas foram salvas em ", file_result)
 
 if __name__ == "__main__":
     main()
