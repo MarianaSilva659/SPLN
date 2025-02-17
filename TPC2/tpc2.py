@@ -12,7 +12,7 @@ def remove_linhas_repetidas(cl):
         # Remove espaços extras e quebras de linha
         else:
             ln = linha.strip()            
-        
+        # (-p)  Comentar as linhas repetidas
         if "-p" in cl.opt and ln in linhas_vistas:
             linha_comentada = "# " + ln
             linhas_vistas.append(linha_comentada)
@@ -25,7 +25,6 @@ def remove_linhas_repetidas(cl):
                # print(linha)
                 linhas_vistas.append(ln)
                 
-
     for l in linhas_vistas:
         print(l)
 
