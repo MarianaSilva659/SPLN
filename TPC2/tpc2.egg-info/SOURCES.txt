@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+tpc2.py
+tpc2.egg-info/PKG-INFO
+tpc2.egg-info/SOURCES.txt
+tpc2.egg-info/dependency_links.txt
+tpc2.egg-info/entry_points.txt
+tpc2.egg-info/requires.txt
+tpc2.egg-info/top_level.txt

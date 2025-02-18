@@ -1,0 +1,10 @@
+[project]
+name = "tpc2"
+version = "0.1.0"
+
+authors = [{ name = "Mariana", email = "mariana@gmail.com" }]
+description = ""  
+dependencies = ["jjcli"]
+
+[project.scripts]
+rl = "tpc2:main"
