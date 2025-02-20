@@ -10,7 +10,14 @@ def counter(tokens):
 
 def frequencias_relativas(c):
     total_count = sum(c.values())
-    return {token: count / total_count for token, count in c.items()}
+    
+    frequencias_relativas = {}
+    
+    for token, count in c.items():
+        frequencia_relativa = count / total_count
+        frequencias_relativas[token] = frequencia_relativa
+    
+        return frequencias_relativas
 
 def modificar_frequencias(c, modificacao):
     # Adiciona ou subtrai frequências no counter
@@ -24,7 +31,7 @@ def main():
 
     for txt in cl.text():
         t = lexer(txt)
-        print(t)
+        print("lexer ", t)
         tokens.extend(t)  
 
     c = counter(tokens)
@@ -33,7 +40,7 @@ def main():
     frequencias_rel = frequencias_relativas(c)
     print("Frequências relativas:", frequencias_rel)
 
-    modificacao = {'exemplo-token': 2, 'outro-token': -1}  
+    modificacao = {'token': "ola"}  
     c_modificado = modificar_frequencias(c, modificacao)
     print("Frequências modificadas:", c_modificado)
 
