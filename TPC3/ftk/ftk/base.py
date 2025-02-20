@@ -10,14 +10,13 @@ def counter(tokens):
 
 def frequencias_relativas(c):
     total_count = sum(c.values())
-    
     frequencias_relativas = {}
     
     for token, count in c.items():
         frequencia_relativa = count / total_count
         frequencias_relativas[token] = frequencia_relativa
     
-        return frequencias_relativas
+    return frequencias_relativas
 
 def modificar_frequencias(c, modificacao):
     # Adiciona ou subtrai frequências no counter
@@ -40,7 +39,7 @@ def main():
     frequencias_rel = frequencias_relativas(c)
     print("Frequências relativas:", frequencias_rel)
 
-    modificacao = {'token': "ola"}  
+    modificacao = {'ola': 2, "aa":10}  
     c_modificado = modificar_frequencias(c, modificacao)
     print("Frequências modificadas:", c_modificado)
 
