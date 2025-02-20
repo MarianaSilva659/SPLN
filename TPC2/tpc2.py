@@ -20,7 +20,7 @@ def remove_linhas_repetidas(cl):
         if "-s" in cl.opt:
             print("-s")
             ln = linha
-        # Remove espaços extras e quebras de linha
+        # Remove espaços extras da à direita da linha
         else:
             ln = linha.strip()            
         # (-p)  Comentar as linhas repetidas

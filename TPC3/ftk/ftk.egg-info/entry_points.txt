@@ -1,0 +1,2 @@
+[console_scripts]
+ftk-occ = ftk.base:main

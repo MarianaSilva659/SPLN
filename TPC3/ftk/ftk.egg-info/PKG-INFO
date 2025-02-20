@@ -1,0 +1,6 @@
+Metadata-Version: 2.2
+Name: ftk
+Version: 0.1.0
+Author-email: Mariana <mariana@gmail.com>
+License: MIT
+Requires-Dist: jjcli
