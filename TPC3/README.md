@@ -7,5 +7,9 @@ flit build
 ```
 
 ```
+pip wheel .
+```
+
+```
 pip install . --break-system-packeges     
 ```
