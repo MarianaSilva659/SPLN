@@ -3,16 +3,16 @@ import lzma
 from enum import Enum
 from typing import Dict
 
-from ftk.probability import AbsoluteProbability
+from probability import AbsoluteProbability
 
 
-class languages(Enum):
+class Languages(Enum):
     Pt = "pt"
 
-#__file__ é o corpus.py
-def get_dictionary(lang: languages) -> Dict[str, AbsoluteProbability]:
+
+def get_dictionary(lang: Languages) -> Dict[str, AbsoluteProbability]:
     cur_dir = os.path.dirname(__file__)
-    path = os.path.join(cur_dir, 'corpus', f'{lang}.xz')
+    path = os.path.join(cur_dir, 'corpus', f'{lang.value}.xz')
 
     result = {}
     total = 0

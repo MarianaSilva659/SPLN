@@ -2,7 +2,7 @@ import jjcli
 import json
 from base import Pipeline, Convert2ProbabilityStage
 from probability import RelativeProbabilityPerMillion
-from corpus import get_dictionary, language
+
 
 def pretty_print(freqs, opts):
     freqs = dict(sorted(freqs.items(), key=lambda item: item[1].value, reverse=True))
@@ -22,9 +22,6 @@ def pretty_print(freqs, opts):
         print(total)
         for key, val in freqs.items():
             print(f'{val}\t{key}')
-    
-    
-    
 
 
 def main():

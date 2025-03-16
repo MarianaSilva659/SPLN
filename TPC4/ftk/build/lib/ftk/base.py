@@ -5,7 +5,7 @@ from typing import Iterable, Any
 from collections import Counter
 from enum import Enum
 
-from ftk.probability import AbsoluteProbability
+from probability import AbsoluteProbability
 
 
 class TokenKind(Enum):
@@ -87,5 +87,4 @@ class Convert2ProbabilityStage(AbstractReductionStage):
     def apply(self, items: Iterable[Any]) -> Any:
         c = Counter(map(lambda i: i.src, items))
         total = c.total()
-        print(total)
         return {item: AbsoluteProbability(count, total) for item, count in c.items()}

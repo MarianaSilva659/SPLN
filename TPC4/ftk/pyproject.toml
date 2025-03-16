@@ -8,4 +8,5 @@ license={text="MIT"}
 dependencies = ["jjcli"]
 
 [project.scripts]
-ftk-occ = "ftk.base:main"
+ftk-occ = "ftk.mains:main"
+ftk-surpresa = "ftk.mains:main_surpresa"

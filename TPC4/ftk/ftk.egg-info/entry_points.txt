@@ -1,0 +1,3 @@
+[console_scripts]
+ftk-occ = ftk.mains:main
+ftk-surpresa = ftk.mains:main_surpresa
