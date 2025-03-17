@@ -48,6 +48,8 @@ class Transformer(Transformer):
         
     def lambda_statement(self, items):
         regex, transformer = items
+        print("regex ", items[0])
+        print("tranformer ", transformer)
         lambda_return =  f"t = re.sub(r'\\b{regex}\\b', {transformer}, t)"
         return lambda_return
 
