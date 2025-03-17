@@ -39,7 +39,7 @@ class Transformer(Transformer):
 
     def statement(self, items):
         statement, _ = items
-        return statement
+        return items[0]
 
     def transforme_statement(self, items):
         old_word, new_word = items
