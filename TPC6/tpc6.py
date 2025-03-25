@@ -15,7 +15,24 @@ def myget(url):
         d[url] = txt
     return d[url] 
 
-def buscar_info_artigo(url):
+    
+def obter_urls_ficheiros(url):
+    response = requests.get(url)
+    response.raise_for_status()
+
+    soup = bs(response.text, "html.parser")
+
+    links = soup.find_all("a")
+
+    urls_ficheiros = [url + link.get("href") for link in links if link.get("href") and not link.get("href").startswith("?") and not link.get("href").startswith("/")]
+
+    return urls_ficheiros
+
+url_base = "https://natura.di.uminho.pt/~jj/bs4/folha8-2023/"
+urls = obter_urls_ficheiros(url_base)
+
+
+for url in urls:
     response = myget(url)
     soup = bs(response, "html.parser")
 
@@ -44,24 +61,6 @@ def buscar_info_artigo(url):
         f.write("Conteúdo do artigo:\n")
         f.write(conteudo_artigo)
 
-def obter_urls_ficheiros(url):
-    response = requests.get(url)
-    response.raise_for_status()
-
-    soup = bs(response.text, "html.parser")
-
-    links = soup.find_all("a")
-
-    urls_ficheiros = [url + link.get("href") for link in links if link.get("href") and not link.get("href").startswith("?") and not link.get("href").startswith("/")]
-
-    return urls_ficheiros
-
-url_base = "https://natura.di.uminho.pt/~jj/bs4/folha8-2023/"
-urls = obter_urls_ficheiros(url_base)
-
-
-for url in urls:
-    buscar_info_artigo(url)
     
 
 d.close()
