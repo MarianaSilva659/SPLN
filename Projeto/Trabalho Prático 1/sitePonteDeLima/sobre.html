@@ -1,0 +1,158 @@
+
+    <!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sobre o Projeto</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .search-container {
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
+            
+            #termSearch {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+            
+            #termSearch:focus {
+                outline: none;
+                border-color: var(--accent-color);
+                box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            }
+        </style>
+        <script>
+            function toggleChildren(element) {
+                const childrenList = element.parentElement.querySelector('ul');
+                if (childrenList) {
+                    childrenList.classList.toggle('hidden');
+                    const toggleIcon = element;
+                    if (toggleIcon) {
+                        toggleIcon.textContent = childrenList.classList.contains('hidden') ? '▶' : '▼';
+                    }
+                }
+            }
+            
+            function toggleMobileSidebar() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.toggle('mobile-open');
+                }
+            }
+            
+            function changeBackgroundColor() {
+                const colors = [
+                    'var(--bg-color-1)',
+                    'var(--bg-color-2)',
+                    'var(--bg-color-3)'
+                ];
+                let currentIndex = 0;
+                
+                setInterval(() => {
+                    document.body.style.backgroundColor = colors[currentIndex];
+                    currentIndex = (currentIndex + 1) % colors.length;
+                }, 10000); // Change every 10 seconds
+            }
+
+            function searchByTerm() {
+                const searchTerm = document.getElementById('termSearch').value.toLowerCase();
+                const allNodes = document.querySelectorAll('.node');
+                
+                if (searchTerm === '') {
+                    allNodes.forEach(node => {
+                        node.style.display = '';
+                        const childList = node.querySelector('ul');
+                        if (childList) {
+                            childList.classList.remove('hidden');
+                        }
+                    });
+                    return;
+                }
+                
+                // First hide all nodes
+                allNodes.forEach(node => {
+                    node.style.display = 'none';
+                });
+                
+                const matchingNodes = document.querySelectorAll(`[data-terms*="${searchTerm}"]`);
+                matchingNodes.forEach(node => {
+                    node.style.display = '';
+                    
+                    // Show all parent nodes
+                    let parent = node.parentElement;
+                    while (parent && !parent.classList.contains('tree')) {
+                        if (parent.classList.contains('node')) {
+                            parent.style.display = '';
+                        }
+                        if (parent.tagName === 'UL') {
+                            parent.classList.remove('hidden');
+                        }
+                        parent = parent.parentElement;
+                    }
+                });
+            }
+            
+            window.onload = function() {
+                changeBackgroundColor();
+            };
+        </script>
+    </head>
+    <body>
+        <div class="page-container">
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Filtros</h2>
+                    <button class="mobile-close-btn" onclick="toggleMobileSidebar()">×</button>
+                </div>
+                <div class="sidebar-content">
+                    <div class="search-container">
+                        <h3>Pesquisar por Termo</h3>
+                        <input type="text" id="termSearch" placeholder="Digite um termo..." onkeyup="searchByTerm()">
+                    </div>
+                    
+                    <h3>Navegação</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="">Página Inicial</a></li>
+                        <li><a href="bibliografias.html" class="">Bibliografias</a></li> <!-- Novo botão -->
+                        <li><a href="sobre.html" class="active">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div id="main-content">
+                <header>
+                    <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">≡</button>
+                    <h1>Sobre o Projeto</h1>
+                </header>
+                <main>
+                    
+    <div class="about-content">
+        <h2>Sobre este Projeto</h2>
+        <p>Este projeto foi desenvolvido para facilitar a navegação e visualização de fundos e documentos em uma estrutura hierárquica.</p>
+        
+        <h2>Como Usar</h2>
+        <p>Utilize a barra lateral para filtrar o conteúdo ou navegue entre as diferentes páginas do site.</p>
+        
+        <h2>Funcionalidades</h2>
+        <ul>
+            <li>Visualização hierárquica de fundos e documentos</li>
+            <li>Filtros por tipo de arquivo</li>
+            <li>Bibliografias</li>
+        </ul>
+    </div>
+    
+                </main>
+                <footer>
+                    <p>© 2025 Árvore de Fundos e Documentos</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+    </html>
+    

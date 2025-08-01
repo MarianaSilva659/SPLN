@@ -1,0 +1,1016 @@
+
+    <!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bibliografias</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .search-container {
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
+            
+            #termSearch {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+            
+            #termSearch:focus {
+                outline: none;
+                border-color: var(--accent-color);
+                box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            }
+        </style>
+        <script>
+            function toggleChildren(element) {
+                const childrenList = element.parentElement.querySelector('ul');
+                if (childrenList) {
+                    childrenList.classList.toggle('hidden');
+                    const toggleIcon = element;
+                    if (toggleIcon) {
+                        toggleIcon.textContent = childrenList.classList.contains('hidden') ? '▶' : '▼';
+                    }
+                }
+            }
+            
+            function toggleMobileSidebar() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.toggle('mobile-open');
+                }
+            }
+            
+            function changeBackgroundColor() {
+                const colors = [
+                    'var(--bg-color-1)',
+                    'var(--bg-color-2)',
+                    'var(--bg-color-3)'
+                ];
+                let currentIndex = 0;
+                
+                setInterval(() => {
+                    document.body.style.backgroundColor = colors[currentIndex];
+                    currentIndex = (currentIndex + 1) % colors.length;
+                }, 10000); // Change every 10 seconds
+            }
+
+            function searchByTerm() {
+                const searchTerm = document.getElementById('termSearch').value.toLowerCase();
+                const allNodes = document.querySelectorAll('.node');
+                
+                if (searchTerm === '') {
+                    allNodes.forEach(node => {
+                        node.style.display = '';
+                        const childList = node.querySelector('ul');
+                        if (childList) {
+                            childList.classList.remove('hidden');
+                        }
+                    });
+                    return;
+                }
+                
+                // First hide all nodes
+                allNodes.forEach(node => {
+                    node.style.display = 'none';
+                });
+                
+                const matchingNodes = document.querySelectorAll(`[data-terms*="${searchTerm}"]`);
+                matchingNodes.forEach(node => {
+                    node.style.display = '';
+                    
+                    // Show all parent nodes
+                    let parent = node.parentElement;
+                    while (parent && !parent.classList.contains('tree')) {
+                        if (parent.classList.contains('node')) {
+                            parent.style.display = '';
+                        }
+                        if (parent.tagName === 'UL') {
+                            parent.classList.remove('hidden');
+                        }
+                        parent = parent.parentElement;
+                    }
+                });
+            }
+            
+            window.onload = function() {
+                changeBackgroundColor();
+            };
+        </script>
+    </head>
+    <body>
+        <div class="page-container">
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Filtros</h2>
+                    <button class="mobile-close-btn" onclick="toggleMobileSidebar()">×</button>
+                </div>
+                <div class="sidebar-content">
+                    <div class="search-container">
+                        <h3>Pesquisar por Termo</h3>
+                        <input type="text" id="termSearch" placeholder="Digite um termo..." onkeyup="searchByTerm()">
+                    </div>
+                    
+                    <h3>Navegação</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="">Página Inicial</a></li>
+                        <li><a href="bibliografias.html" class="active">Bibliografias</a></li> <!-- Novo botão -->
+                        <li><a href="sobre.html" class="">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div id="main-content">
+                <header>
+                    <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">≡</button>
+                    <h1>Bibliografias</h1>
+                </header>
+                <main>
+                    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+    <table>
+        <tr><th>Entidade</th><th>Bibliografia</th></tr>
+    <tr><td>A Casa de Sá</td><td>A Casa de Sá foi erguida, em 1714, por Dona Violante Pereira Pinto e seu marido, Dr. Tristão Pereira Pinto de Araújo de Azevedo, senhor do Morgado de Choças nos Arcos de Valdevez.
+    Foi originalmente de Pereiras Pintos, aqui estabelecidos talvez desde o séc. XVI.
+    Nos primeiros anos do séc. XVIII, por casamento da herdeira D. Violante Pereira Pinto com seu primo Dr. Tristão Pereira Pinto de Araújo e Azevedo, entra na varonia destes Araújos, que haviam vindo fugidos da Galiza para Ponte da Barca nos anos de quinhentos por suspeita de intervenção na morte dum tal Lopo Soares, mordomo do bispo de Ourense.
+    Em 1754 aqui nasceu, vindo a suceder na posse, António de Araújo de Azevedo (†1817), agraciado com o título de Conde da Barca por D. João VI.</td></tr>
+<tr><td>Adelaide Amélia Lima de Espregueira</td><td>Adelaide Amélia Lima de Espregueira, filha de João Afonso de Espregueira, do Conselho de Sua Majestade, Bacharel formado em Direito, Governador Civil de Vila Real, Aveiro e Santarém, e de Amélia da Silva Lima, nasceu a 27 de outubro de 1865. 
+    Casou a 19 de novembro de 1885 com José Malheiro Reymão de quem teve dois filhos: Ventura Malheiro Reymão e Maria Filomena Malheiro Reymão.</td></tr>
+<tr><td>Adolfo Ribeiro Lima Costa Azevedo e Isilda da Conceição Ferreira Rego de Azevedo</td><td>Isilda da Conceição Ferreira Rego de Azevedo, da Quinta da Vista Alegre, na freguesia de Palmeira, em Braga.</td></tr>
+<tr><td>Agostinho José Taveira</td><td>Os estudantes, caixeiros e outros jovens do Vale do Lima, que se dirigiam ao Brasil oitocentista,traçavam percursos migratórios imaginários de ida e volta. Destes cenários emerge o mito do retorno do 'brasileiro' endinheirado. Após décadas, afastados da casa, da família e dos amigos, ávidos da reintegração social, colaboram em acções de beneficência, na criação e dinamização de espaços de sociabilidade e na fundação de instituições de solidariedade.
+    As acções de filantropia, pela via de doações para escolas, hospitais, igrejas, misericórdias e asilos, eram o garante de uma jubilação bem integrada na terra de origem e, acima de tudo, consistiam num meio de perpetuar memórias, proporcionando um respeitável fim do ciclo de vida.
+    É neste quadro que se insere a acção de benemerência de Agostinho José Taveira, um dos grandes benfeitores da Ribeira-Lima.
+    Filho de Manuel José Taveira e de Antónia Cerqueira de Sousa, nasceu a 22 de Junho de 1808, na freguesia de Crasto, concelho de Ponte da Barca. Ainda menino, aprendeu a "ler, escrever e contar", habilitações imprescindíveis para garantir êxitos em terras deVera Cruz, para onde embarcou cedo.
+    Deste jovem, filho de proprietários a quem os pais proporcionaram o embarque para o Brasil, desconhecemos a data da travessia do Atlântico, tendo, provavelmente, requerido licença no período anterior à criação dos governos civis.
+    O refluxo ocorreu antes dos quarenta anos de idade. Regressado a Portugal, radicou-se em Ponte de Lima, concelho a que se dedicou fervorosamente e onde investiu boa parte dos seus proventos.
+    A capacidade de integração na sociedade de acolhimento levou Agostinho José Taveira a associar-se efusivamente a várias manifestações de convívio. Preocupado com os problemas sociais, participou na vida autárquica, onde foi um actor cívico, dinâmico e de primeira linha. Dedicou-se à vida política e, na qualidade de Vereador da edilidade, teve um papel de distinção nos arranjos urbanísticos, embelezamento e iluminação pública de Ponte de Lima.
+    Do biografado, realçam-se alguns traços filantrópicos gravados na remodelada estrutura urbanística, na toponímia e na memória dos limianos. Entre as preocupações e gestos de humanidade, destaca-se a sensibilidade para com os mais idosos, os desenraizados da família, os mais necessitados, os pobres e as viúvas, mulheres sem recursos económicos, com quem partilhou os bens.
+    Mas, o testamento lavrado pelo punho do próprio, aos 75 anos de idade, é a fonte que melhor ilustra os gestos de benemerência deste 'brasileiro'.
+    Agostinho José Taveira, Cavaleiro da Ordem de Nossa Senhora da Conceição de Vila Viçosa, foi um símbolo de respeito, de humildade e de grande sensibilidade humanística, tudo brilhantemente sintetizado na peça autógrafa, onde faz a despedida da vida terrena.
+    O legado da maior parte da sua fortuna foi "para a fundação e dotação de uma Casa de Caridade nesta villa para recolher e sustentar os pobres velhos desvalidos" maiores de sessenta anos, que "toda a sua vida trabalharam em artes e oficios ou na agricultura" naturais do concelho de Ponte de Lima, a quem doou a casa nova do Pomar, onde haveria vinho, "hortaliças e legumes em abundância" para sustento dos idosos. Também beneficiou os fregueses de São Martinho de Crasto, paróquia onde nasceu.
+    O desprezo por títulos de reconhecimento oficial e público e o carácter de sobriedade estão patenteados nos gestos de Agostinho José Taveira, através dos quais se revela o desprendimento dos bens materiais e um sentido de altruísmo ímpar, a favor dos 'sem eira nem beira' e, especialmente, dos 'velhos'. Assim, instituiu a Casa da Caridade de Nossa Senhora da Conceição, obra deixada para a posteridade.
+    A generosidade não tinha dimensão.
+    Distribuiu por todos, pelos pobres e pelos presos "nas cadeias desta villa" 5, porque se orientou por "princípios de humanidade (... ) a repartir por aqueles que têm fome (... ) e a socorrer os desvalidos da fortuna", sempre os mais necessitados. Mas, também protegeu um candidato ao sacerdócio e instituiu um prémio para estudantes, a quem deixou uma bolsa para estímulo das aprendizagens.
+    A obra de partilha está bem patenteada e vincada no coração da Ribeira Lima, fazendo de Agostinho José Taveira um símbolo da solidariedade, simplicidade, humildade, generosidade e humanidade que engrandecem este concelho.
+    Aqui, em Ponte de Lima, faleceu a 11 de Setembro de 1888.
+    
+    Henrique Rodrigues</td></tr>
+<tr><td>Alberto Feio da Rocha Páris</td><td>Alberto Feio da Rocha Paris, filho de Maria José de Araújo e Vasconcelos Feio, Senhora da Quinta de Luou em Santa Cruz do Lima, e de António Alberto da Rocha Paris, nasceu a 5 de janeiro de 1863. 
+    Foi do Conselho de Sua Majestade, o 2º Visconde da Torre, Fidalgo Cavaleiro da Casa Real, Grã Cruz da Ordem da Conceição, Comendador das Ordens de Isabel a Católica e de Carlos III, de Espanha, Par do Reino (sem posse), Deputado da Nação, Diretor Geral dos Negócios Eclesiásticos no Ministério da Justiça, Governador Civil de Braga, Senhor das Casas da Torre e de S. Bento como herdeiro de seu tio João Feio de Magalhães Coutinho (1º Visconde da Torre). 
+    Casou a 23 de maio de 1885 com Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá, sem geração. 
+    Faleceu a 26 de junho de 1912.</td></tr>
+<tr><td>Alberto Feio da Rocha Páris e Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá</td><td>Alberto Feio da Rocha Páris, 2.º Visconde da Torre, filho de António Alberto da Rocha Páris e de Maria José de Araújo Azevedo Vasconcelos Feio.
+    Casou a 23 de maio de 1885 com Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá, sem geração.</td></tr>
+<tr><td>Alexandre Pereira de Sá Sotomaior</td><td>Nasceu em 04 de Fevereiro de 1885 e faleceu em 18 de Outubro de 1967.
+    Filho de José António Pereira de Sá Sotomaior e de Emília Ribeiro da Costa Salgado e neto de António Joaquim Pereira de Sá Sotomaior, Visconde de Milhundos, comendador da Ordem da Torre e Espada, senhor do morgado e Quinta de Vila Boa, juiz de Direito, Presidente da Câmara e Governador dos Arcos, e de Maria Rita de Brito Lira.
+    Licenciado em Direito pela Universidade de Coimbra.
+    Presidente (1918) e vogal da Comissão Administrativa Municipal de Ponte de Lima (1919).
+    Administrador interino do concelho de Ponte de Lima (1918). 
+    Vogal do Conselho Municipal de Ponte de Lima (1941-?).
+    Provedor da Santa Casa da Misericórdia de Ponte de Lima (1915).
+    Faleceu a 18 de outubro de 1967, na freguesia de Calheiros, solteiro e sem filhos, com 83 anos de idade. Os seus restos mortais seguiram para o cemitério municipal dos Arcos de Valdevez, onde ficou depositado em jazigo de família.</td></tr>
+<tr><td>Alexandre de Albuquerque de Moura Pegado</td><td>Filho dos primeiros Barões do Mogadouro e irmão de João de Vilhena de Albuquerque Guedes de Moura Pegado, nasceu a 26 de janeiro de 1860 e foi Bacharel formado em Direito e Delegado do Procurador Régio em Ovar e em Lisboa. Casou a 9 de maio de 1889 com Maria Inácia Malheiro Pereira de Castro de quem teve três filhas: Mariana Isabel Pereira de Castro de Vilhena, Clara Maria Pereira de Castro de Vilhena e Maria Inácia Pereira de Castro Vilhena.
+    Faleceu a 30 de julho de 1922.</td></tr>
+<tr><td>Alfredo Mâncio</td><td>Alfredo Mâncio foi o criador de O Monoculo, periódico que rapidamente abandona para se dedicar a O Bohemio nesse mesmo ano de 1896.
+    O Monoculo saiu apenas no seu primeiro número em 21 de Junho de 1896 com 8 páginas e editado por J. A. Coelho. Impresso na «Typographia do Líma», teve como colaboradores Alfredo de Pratt, Luiz Trigueiros, Just de Lencastre e Júlio de Lemos.
+    O Monoculo, publicação mensal na forma de «uma folha de caricaturas em substituição do Phantasma que Deus haja! E que o titulo dado seria o de … de de … Monoculo, se bem me lembro» (De Vianna. In O Monoculo, n.1, p. 2).
+    Alfredo Augusto Mâncio (1868-1905), como jornalista e como caricaturista sobretudo, teria bebido a sua inspiração na obra de Rafael Bordalo Pinheiro (ainda que através do seu amigo Sebastião Sanhudo). Exemplo disso é o próprio título do periódico, inspirado num dos trabalhos de Rafael Bordalo Pinheiro: O Binoculo, um semanário de caricaturas sobre espectáculos e literatura da década de 70 do século XIX.
+    Do mesmo autor são também os periódicos O Bohemio, Piparotes e O Phantasma. Foi também dirigido por Alfredo Mâncio o periódico O Commercio editado por Duarte B. da Costa entre 1904-1906.</td></tr>
+<tr><td>Ana Florentina Maciel da Costa</td><td>Filha de Rosa da Costa Maciel (1813- ) e de Manuel António Martins. 
+    Irmã de Manuel (1847- ), António Joaquim (1848- ), Maria Josefa (1852- ), Maria Joaquina (1853-1916), Delfina Rosa (1855) e de Boaventura José (1858).
+    Casou com o seu tio, Ventura José da Costa (1818-1897). Compram uma propriedade em Santa Marta de Portuzelo, à qual designaram por Quinta da Bela Vista.</td></tr>
+<tr><td>Ana Francisca</td><td>Ana Francisca, mãe do Cónego Diogo Correia.
+    Consta este subsistema de um documento acerca das partilhas feitas por falecimento de João Enes e de sua mulher Isabel Francisca, pais de Ana Francisca, Maria Francisca casada com Francisco Alves e de Isabel Francisca casada com Manuel Gonçalves.</td></tr>
+<tr><td>Ana Zeferina da Costa Vasconcelos e Brito</td><td>Ana Zeferina da Costa Vasconcelos e Brito, filha de Manuel da Costa Vasconcelos e de Maria Antónia de Macedo Portugal. 
+    Casou com António José de Araújo de Azevedo e Melo, Capitão-Mor de Vila Chã e Larim, de quem teve um filho: José de Araújo Azevedo e Vasconcelos.</td></tr>
+<tr><td>André José Vieira</td><td>André José Vieira, casado com Maria do Carmo, filha de José Alves de Matos e de Maria Luísa Antunes.
+    Tem pelo menos um irmão, o Abade Manuel José Vieira.</td></tr>
+<tr><td>Antónia Ribeiro Lima</td><td>Antónia Ribeiro da Silva casou com José Ribeiro Lima Costa Azevedo (1851-1925), 1º Visconde da Barrosa e Senhor da casa de Vila Meã em S. Martinho de Frescaínha, no concelho de Barcelos, Solar da Família Costa Azevedo.
+    
+    Sucedeu na Casa da Lage a Maria do Carmo Pinto de Almeida e Meneses que, não tendo herdeiros, pensou deixar como única herdeira dos seus bens à sua afilhada Antónia Ribeiro da Silva.</td></tr>
+<tr><td>Antónia Ribeiro Lima e José Ribeiro Lima Costa Azevedo</td><td>Antónia Ribeiro da Silva casou com José Ribeiro Lima Costa Azevedo (1851-1925), 1º Visconde da Barrosa e Senhor da casa de Vila Meã em S. Martinho de Frescaínha, no concelho de Barcelos, Solar da Família Costa Azevedo.
+    
+    Sucedeu na Casa da Lage a Maria do Carmo Pinto de Almeida e Meneses que, não tendo herdeiros, pensou deixar como única herdeira dos seus bens à sua afilhada Antónia Ribeiro da Silva.</td></tr>
+<tr><td>António Alberto da Rocha Páris</td><td>António Alberto da Rocha Páris, filho perfilhado de Félix da Rocha Páris de Araújo e de Mariana Guilhermina Pacheco Pereira, nasceu a 9 de dezembro de 1838. Foi do Conselho de Sua Majestade, Bacharel formado em Direito, Deputado da Nação, Governador Civil dos distritos de Braga e de Viana do Castelo e Comendador da Conceição. 
+    Casou a 18 de abril de 1861 com Maria José de Araújo e Vasconcelos Feio de quem teve um filho: Alberto Feio da Rocha Páris.
+    Faleceu a 3 de outubro de 1903.</td></tr>
+<tr><td>António Alberto da Rocha Páris e Maria José de Araújo Azevedo Vasconcelos Feio</td><td>António Alberto da Rocha Páris, filho perfilhado de Félix da Rocha Páris de Araújo e de Mariana Guilhermina Pacheco Pereira, nasceu a 9 de dezembro de 1838. Foi do Conselho de Sua Majestade, Bacharel formado em Direito, Deputado da Nação, Governador Civil dos distritos de Braga e de Viana do Castelo e Comendador da Conceição.
+    Casou a 18 de abril de 1861 com Maria José de Araújo e Vasconcelos Feio, filha de Maria Guilhermina Feio de Magalhães Coutinho e de José de Araújo de Azevedo Melo e Vasconcelos, nascida a 3 de julho de 1840. Foi Senhora da Quinta de Luou, em Santa Cruz do Lima (Ponte de Lima) que lhe deixou sua tia paterna, D. Maria Augusta.
+    Do casamento houve um filho: Alberto Feio da Rocha Páris.</td></tr>
+<tr><td>António Coutinho de Abreu Pereira e Sá</td><td>António Coutinho de Abreu Pereira e Sá, filho legitimo de Francisco de Abreu Coutinho e de Sebastiana Rosa de Sá Barreto da vila de Viana do Minho, neto paterno de Manuel Coutinho de Abreu e Luísa Antónia Pereira de Castro e materno de João de Sá Sotomaior e Maria Joana da Gama e Castro.
+    Foi Fidalgo Cavaleiro da Casa de Sua Majestade, Abade da Paroquial Igreja de Santa Cristina de Tendais no Bispado de Lamego e Abade da Paroquial Igreja de S. Miguel de Soutelo.</td></tr>
+<tr><td>António Diogo de Sousa Machado e Isabel Teresa da Rocha Araújo Sotomaior</td><td>António Diogo de Sousa Machado (1723-1791) foi administrador do morgado da Casa da Lage, Fidalgo da Casa Real e Padroeiro da Igreja de S. Pedro de Arcos. Reedificou a Capela da casa mudando a invocação, que inicialmente era de Nossa Senhora da Apresentação, para Nossa Senhora da Conceição.
+    Casou com D. Isabel Teresa da Rocha Araújo Sotomaior (1725-1801), Senhora da Casa de Cerdal, em Valença, Prazo do Casal de Gontilho, em Prozelo (Arcos de Valdevez), do Prazo do Assento e Casal da Gandra (Arcos de Valdevez) e do Prazo do Casal de Monte Redondo, em Serdedelo.</td></tr>
+<tr><td>António Emílio da Costa</td><td>António Emílio da Costa nasceu em 27 de janeiro de 1873 e foi batizado em 2 de fevereiro do mesmo ano na freguesia da Correlhã. Era filho de Manuel António da Costa e de Maria Rodrigues de Matos, neto paterno de Joaquim José da Costa e de Maria Joaquina de Sousa, da freguesia de Covas de Aborim [Barcelos] e materno de A. Alves Matos, da freguesia da Correlhã.
+    Foi tabelião do 5º ofício do Cartório Notarial de Ponte de Lima na última década de 90 do século XIX, juntamente com Domingos Tarrozo.
+    Casou com Filomena de Jesus Basto de quem teve um filho: Severino Costa, nascido em Ponte de Lima, em 23 de outubro de 1899.
+    Severino Costa, um dos mais distintos jornalistas de Ponte de Lima, casou com Maria do Carmo Costa. Deste enlace nasceu Carlos Eurico da Costa, em 1928, em Viana do Castelo.</td></tr>
+<tr><td>António Inácio Pereira de Freitas</td><td>António Inácio Pereira de Freitas foi Cirurgião-Médico pela Escola do Porto. 
+    Nasceu nas Caldas de Vizela, concelho de Guimarães, no dia 1 de Fevereiro de 1842, sendo filho de José de Freitas e Oliveira e de D. Cecília Rosa da Silva Pereira.
+    Estabeleceu-se em Ponte de Lima onde exerceu medicina durante 38 anos.</td></tr>
+<tr><td>António José Martins de Carvalho Júnior</td><td>António José Martins de Carvalho Júnior, filho de António José Martins de Carvalho e de Ana Maria de Araújo e Costa. 
+    Casou com Maria Joaquina Costa de Araújo dos Reis a 15 de julho de 1822, de quem teve a filha Joaquina Rosa dos Reis.
+    Faleceu sem testamento no dia 29 de março de 1853, tendo sido sepultado na Igreja de São João Baptista da Queijada. Teve um ofício de cento e vinte padres.</td></tr>
+<tr><td>António José de Matos Prego</td><td>Filho de António de Matos Prego e de Maria Madalena Gonçalves. 
+    Casou-se com Maria Joaquina de Sousa, irmã de Maria Rosa de Sousa e Silva casada com o seu irmão Francisco José de Matos Prego. Assim, dois irmãos casaram-se com duas irmãs.</td></tr>
+<tr><td>António José dos Reis</td><td>António José dos Reis, filho de Ursula Maria dos Reis e de Pedro Rodrigues Lima.
+    Foi Reitor de Fornelos.</td></tr>
+<tr><td>António Luís da Costa Azevedo</td><td>Filho de António Luís da Costa Azevedo e Joana Rodrigues Ribeiro Lima, senhores de Vila Meã, e irmão de José Ribeiro Lima da Costa Azevedo, 1º Visconde da Barrosa.</td></tr>
+<tr><td>António Machado de Brito</td><td>António Machado de Brito, filho de António Machado de Brito e de Leoneza de Carvalho.
+    Herdou a casa de seu pai e casou em Ponte de Lima com Maria Soares, filha de Fernão Pereira e D. Isabel Barbosa, de quem não teve filhos.</td></tr>
+<tr><td>António Machado de Brito e Leoneza de Carvalho</td><td>António Machado de Brito, Fidalgo da Casa Real, que acompanhou o rei D. Sebastião na jornada de África.
+    Casou com Leoneza de Carvalho, filha de D. Pedro Anes, Dom Abade do Mosteiro de S. João de Agra a quem a Casa da Lage era foreira.
+    Nomearam a filha Guiomar Machado, com dote de casamento, uma terça parte do Prazo Velho da Lage e a seu filho António, dois terços do referido Prazo.</td></tr>
+<tr><td>António Maciel da Costa e Isabel Barbosa</td><td>António Maciel casou a 20 de agosto de 1635 com Isabel Barbosa, na freguesia de Vila Franca. Eram moradores na rua de S. Sebastião na vila de Viana.</td></tr>
+<tr><td>António Malheiro Pereira de Castro</td><td>Filho de Clara Carolina das Dores Malheiro Teles de Meneses e de José Maria Pereira de Castro, nasceu a 9 de setembro de 1868 e foi batizado a 12 de outubro desse ano na Igreja Paroquial de Nossa Senhora de Monserrate da cidade de Viana do Castelo, onde foi padrinho o desembargador António Lopes de Calheiros e Meneses e madrinha a Isabel Júlia de Calheiros e Meneses. 
+    Faleceu solteiro em 1902.</td></tr>
+<tr><td>António Martins Correia</td><td>Abade António Martins Correia, filho de Belchior Martins e de Maria Francisca, natural da freguesia de Santa Maria de Nine, termo de Barcelos. Neto paterno de Belchior Martins e de Catarina Afonso, moradores que foram no lugar de Campesinhos na freguesia de Santa Maria de Viatodos do couto de Fralães, e neto materno de Manuel Gonçalves, já defunto, e de Isabel Francisca da freguesia de Nine.
+    Foi herdeiro do Cónego Diogo Correia. Foi o grande fundador da Casa do Baganheiro pelas compras de terras que fez nos lugares de Cima de Vila e do Baganheiro.
+    Foi abade da Paroquial Igreja de São João Baptista da Queijada e de sua anexa de Santo Estêvão da Boalhosa.
+    Instituiu como universais herdeiros a sua irmã Isabel Correia, e o casal João Francisco Martins e sua mulher Luísa Correia. No caso de estes falecerem sem filhos, seriam substituídos por António Martins Correia e sua mulher Maria Francisca.
+    Como testamenteiro nomeou o seu sobrinho o Reverendo António Martins, abade da freguesia de São João Baptista da Queijada.
+    Faleceu a 9 de março de 1722.</td></tr>
+<tr><td>António Martins de Carvalho</td><td>António Martins de Carvalho, filho de Maria Francisca Correia e de António Martins de Carvalho. Casou com Maria Luísa dos Reis de quem teve onze filhos.
+    Foi administrador da capela instituída pelo Padre Gonçalo da Costa.
+    Faleceu a 23 de junho de 1790.</td></tr>
+<tr><td>António Martins de Carvalho e Maria Luísa dos Reis</td><td>De acordo com o formal de partilhas, António Martins de Carvalho, da freguesia da Queijada, faleceu em 23 de junho de 1790 .
+    Foi administrador de uma capela instituída pelo Padre Gonçalo da Costa.</td></tr>
+<tr><td>António Pereira de Sá Sotomaior</td><td>Filho de António Pereira de Sá Sotomaior e de Maria Rita de Brito e Lira.</td></tr>
+<tr><td>António Pereira de Sá Sotomaior e Maria Manuela de Abreu de Lima e Lancastre</td><td>Filho de António Pereira de Sá Sotomaior, 1.º visconde de Milhundos e Maria Rita de Brito Lira.
+    Casou com Maria Manuela de Abreu de Lima e Lancastre, filha de João Gomes de Abreu de Lima de Magalhães e Menezes e Maria Luísa Martins de Queirós Montenegro.
+    3.º Visconde de Milhundos.</td></tr>
+<tr><td>António Pereira de Sá Sotomaior e Maria Rita de Brito e Lira</td><td>Fidalgo cavaleiro da Casa Real, comendador da Ordem do Nossa Senhora da Conceição, cavaleiro da Torre e Espada, senhor do morgado e quinta de Vila Boa, na freguesia de Cendufe; bacharel formado em Leis pela Universidade de Coimbra; juiz na comarca de Arcos de Valdevez; tenente-coronel do extinto batalhão de voluntários nacionais da referida vila; governador militar em 1834 da mesma vila, onde desarmou as antigas milícias, a com esse armamento organizou o batalhão de voluntários por ordem do general Caiola, e à frente deste batalhão fez aclamar os direitos da rainha D. Maria II nos concelhos de Lindoso e Soajo, depondo as autoridades e nomeando outras, indo em seguida aniquilar a guerrilha do Pita Bezerra nas montanhas do Alto Minho.
+    Nasceu a 28 de maio de 1799 e faleceu a 10 de setembro de 1877. Era filho de José Pereira do Sá Sotomaior Leone e de D. Joaquina do Sousa Araújo. 
+    Foi presidente da câmara municipal, procurador à junta geral do distrito de Viana do Castelo, e presidente da mesma junta; administrador do concelho de Arcos de Valdevez desde 1851 a 1867. Em todos estes lugares mereceu dos governos portarias e ofícios de louvor. 
+    O título de 1.º Visconde de Milhundos foi-lhe concedido por Decreto de D. Luís I de Portugal de 26 de Janeiro de 1871.
+    Casou a 9 de maio de 1825 com D. Maria Rita de Brito Lira, filha do capitão João do Brito Lobo Lira e de D. Francisca Rita de Barbosa Brandão. 
+    Maria Rita de Brito Lira Sá Sotomaior faleceu em 7 de agosto de 1885, sem testamento.</td></tr>
+<tr><td>António Pinto da Costa</td><td>António Pinto da Costa foi Sargento-mor de Ponte de Lima e casado com Maria Madriz Seixas.
+    
+    Filhos:
+    - Manuel Ribeiro Seixas c.c. Maria Teresa Vilaça Pinto
+    - Pascoal Pinto de Alexandria</td></tr>
+<tr><td>António Ramos</td><td>António Ramos foi eleito, por D. Filipe, capitão nas partes das Índias de Castela, na cidade de Cusco, província do Perú e na cidade e costa de Cartagena «servindo nas guerras com muita gemte debaixo de minha bandeira que governava e mandava pelo que gozava de todolos previllegos e liberdades que gozão os capitães e fidalguos nas ditas partes das Imdias». E, ainda, foi general do mar do Sul e governador de Praças. 
+    António Ramos terá passado das Índias Portuguesas para as Índias de Espanha, integrando o grupo de mercenários recrutados por Francisco Pizarro para a conquista do Perú.
+    Acerca de António Ramos e da confusão que se terá gerado pelo facto de este ter um neto igualmente apelidado de António Ramos [de Abreu] há o seguinte registo: 
+    «Parece que havia dois Antonios Ramos no mesmo tempo e de Vitorinho foy famozo nas primeiras guerras das Indias de Hespanha para donde passou da India Portugueza e se não alcansa como depois foy capitam em Viana sendo velho. Dos serviços da India consta que por hua justificação aquy avensa em se dis fora senhor de vassalos no Perú».
+    
+    Casou em primeiras núpcias com Ana Lima, na ilha de Santo Domingo, de quem teve a sua primeira e única filha Francisca de Lima, tendo morrido no parto.
+    Em segundas núpcias casou com Catarina Capa Yupange, natural da cidade de Cusco, na província do Perú, nascida cerca de 1500. Casaram na cidade de Cusco onde viveram alguns anos até à chegada de Álvaro de Abreu, genro de António Ramos, para casar com a filha deste, Francisca de Lima.</td></tr>
+<tr><td>António Ramos de Abreu ( - 1627)</td><td>Casou com Leonor de Araújo. Esteve ausente na Capitania de Pernambuco (Brasil).
+    Foi nomeado por D. Sebastião em 1571 Capitão-mor da Gente da Guerra da vila de Viana, nesse mesmo tempo é eleito Capitão de uma Companhia da mesma vila e em 1596 é eleito pela Câmara Sargento Mor da Gente da Guerra.
+    Fez testamento em Março de 1627, pelo que só terá morrido entre abril/maio de 1627.</td></tr>
+<tr><td>António Ribeiro da Silva</td><td>Sucedeu na Casa da Lage a Maria do Carmo Pinto de Almeida e Meneses que, não tendo herdeiros, pensou deixar como única herdeira dos seus bens à sua afilhada Antónia Ribeiro Lima, filha de António Ribeiro da Silva.
+    No entanto, António Ribeiro da Silva convenceu Maria do Carmo Pinto de Almeida e Meneses a institui-lo herdeiro a ele, com a condição de deixar a cota disponível à dita filha, não deixando assim os restantes filhos em situação desigual relativamente à irmã.
+    Com a morte de Maria do Carmo Pinto de Almeida e Meneses ficou extinto o ramo primogénito da família Sousa Machado em que andava a Casa da Lage.</td></tr>
+<tr><td>António Taveira Pimentel de Carvalho</td><td>Filho de Manuel Teixeira Pimentel de Carvalho e de Maria Rosa Ermelinda de Lira e Meneses, nasceu em Lamego a 16 de setembro de 1784. Frequentou o Colégio dos Nobres em Lisboa e alistou-se como soldado no regimento de Amarante. Entrou na Soberana Ordem de Malta onde após a inquirição se provou ser o ramo da mais nobre família da província. Em 1807 entrou na Ordem no antigo Mosteiro de Leça do Balio e tornou-se comendador da Ordem de Malta. A 1857 iniciou uma das duas viagens pelos lugares santos tendo a primeira sido publicada no jornal «Aurora do Lima» e a segunda ficou representada no seu livro Diário de viagem à Terra Santa, oferecido ao seu afilhado Ventura Malheiro Reymão Marinho Lobato Teles de Meneses. 
+    Faleceu em Viana do Castelo no ano de 1864, tendo sido sepultado no cemitério da Ordem Terceira de São Francisco em Santo António dos Capuchos, sendo o epitáfio o seguinte: "Aqui jaz o ex-definidor e bem-feitor, o comendador de Malta António Taveira Pimentel de Carvalho, n. a 16 de setembro de 1784 e m. a 6 de março de 1864". 
+    Foi sua herdeira a Viscondessa de Várzea, hoje de Guiães, filha do 1º Visconde de Guiães José Tavares Pimentel de Carvalho, irmão mais velho do Comendador de Malta.</td></tr>
+<tr><td>António da Silva Gouveia Vieira Lisboa</td><td>António da Silva Gouveia Vieira Lisboa nasceu em Luanda, a 20 de julho de 1907, filho do conselheiro António augusto Vieira Lisboa e de sua primeira mulher D. Beatriz da Silva Gouveia. Casou com Maria Libânia Manjua, natural de Faro. Regressado a Portugal, residiu na Casa da Garrida, em Ponte de Lima. Licenciou-se em Direito, em 1929. Faleceu na sua Casa da Garrida, em Ponte de Lima, a 13 de junho de 1968.
+    Enquanto poeta publicou várias obras poéticas, cujas temáticas dominantes são o lirismo amoroso e o lirismo celebrativo do encanto das paisagens limianas, sobretudo do rio Lima.</td></tr>
+<tr><td>António de Araújo de Azevedo e Melo</td><td>António de Araújo de Azevedo e Melo ou António José de Araújo, filho de Domingos José de Araújo e de Maria Josefa de Sá Sotomaior, foi Capitão-Mor de Vila Chã e Larim e Senhor da Casa da Loureira.
+    Casou em Braga com Ana de Vasconcelos Costa de quem teve um filho: José de Araújo de Azevedo e Vasconcelos.</td></tr>
+<tr><td>António de Araújo de Azevedo e Melo e Ana Zeferina da Costa Vasconcelos e Brito</td><td>António de Araújo de Azevedo, filho de Domingos José de Araújo e de Maria Josefa de Sá Sotomaior, foi Capitão-Mor de Vila Chã e Larim e Melo. 
+    Casou com Ana Zeferina da Costa Vasconcelos e Brito filha de Manuel da Costa Vasconcelos e de Maria Antónia de Macedo Portugal, de quem teve um filho, José de Araújo Azevedo e Vasconcelos, Senhor do Morgado de Fundão na freguesia de Loureira e da Quinta de S. Cruz.</td></tr>
+<tr><td>António de Matos Prego</td><td>António de Matos Prego, filho de Francisco de Matos Prego e de Isabel de Araújo, nasceu a 21 de dezembro de 1744. Foi morador no lugar da Arrifana na freguesia de Moreira e casou-se a 6 de setembro de 1812 com Maria Madalena Gonçalves, sendo que Maria Madalena fora antes casada com João Gonçalves. Deste casamento nasceu Francisco José de Matos Prego e António José de Matos Prego, este último casado com Maria Joaquina de Sousa.
+    Constituiu seu universal herdeiro e testamenteiro o seu filho Francisco José de Matos Prego, casado e morador no lugar do Bárrio.
+    Faleceu a 18 de dezembro de 1828.</td></tr>
+<tr><td>António de Matos Prego e Maria Madalena Gonçalves</td><td>António de Matos Prego era filho de Francisco de Matos Prego e de Isabel de Araújo, do lugar da Arrifana da freguesia de Moreira, nasceu a 21 de dezembro de 1744 e faleceu a 18 de dezembro de 1828. Casou-se com Maria Madalena Gonçalves a 6 de setembro de 1812, de quem teve dois filhos: Francisco José de Matos Prego e António José de Matos Prego.</td></tr>
+<tr><td>António de Matos Prego e Sousa</td><td>António de Matos Prego e Sousa, filho de Francisco José de Matos Prego e de Maria Rosa de Sousa e Silva, nasceu na Casa do Bárrio em 1810.
+    Foi herdeiro do seu tio Manuel José da Silva, abade de Estorãos.
+    Faleceu estado de solteiro na Casa do Bárrio a 18 de janeiro de 1891.</td></tr>
+<tr><td>António de Sousa Bento</td><td>António de Sousa Bento foi casado com Benta Pereira de Lima, de quem teve os filhos: António de Sousa Pinto, Pedro Luís Pinto (Padre), Maria Teresa, José António de Sousa Pereira Pinto, João de Sousa Pinto. 
+    Foram moradores no lugar da Barrosa na freguesia de Moreira.</td></tr>
+<tr><td>António de Sousa Meneses</td><td>António de Sousa Meneses é filho natural de Damião de Sousa Meneses, da Casa de Pentieiros, na freguesia de S. Pedro de Arcos. 
+    Foi nomeado por seu pai, Damião de Sousa, no prazo de Estorãos, foreiro ao Mosteiro de S. Romão do Neiva. Serviu nas armadas do reino e esteve nomeado Capitão-Mor de uma armada, mas não chegou a sê-lo por ser partidário de D. António Prior do Crato.
+    António de Sousa Meneses casou em primeiras núpcias com Maria Barbosa e ambos moravam em Rubiães, Paredes de Coura. Em segundas núpcias casou com D. Guiomar Machado, Senhora da Casa da Lage por herança de seu irmão António.</td></tr>
+<tr><td>António de Sousa Meneses e Maria Barbosa</td><td>António de Sousa Meneses casou em primeiras núpcias com Maria Barbosa e ambos moravam em Rubiães, Paredes de Coura. Foi nomeado por seu pai, Damião de Sousa, no prazo de Estorãos, foreiro ao Mosteiro de S. Romão do Neiva. Serviu nas armadas do reino e esteve nomeado Capitão-Mor de uma armada, mas não chegou a sê-lo por ser partidário de D. António Prior do Crato.
+    Casou em segundas núpcias com Guiomar Machado.</td></tr>
+<tr><td>Arnaldo Mendes Ribeiro e Maria Luísa de Castro e Almeida</td><td>Arnaldo Mendes Ribeiro, filho de Emília da Conceição de Matos Prego e Sousa e de Tomás Mendes Norton, nasceu a 11 de fevereiro de 1863. Foi formado em Direito, tendo acabado o seu curso na Universidade de Coimbra em 1886, e exerceu o lugar de subdelegado do Ministério Público na comarca de Viana do Castelo de março de 1887 a janeiro de 1889. Fez a sua carreira de magistrado em Tete (Moçambique) e daí seguiu para a Índia onde desempenhou a função de Procurador da Coroa e Fazenda junto da Relação de Goa. Foi aí o seu grande campo de ação.
+    Terminada a sua carreira de magistrado no Ultramar, transitou para a Relação de Lisboa de onde passou, anos depois, para o Supremo Tribunal de Justiça.
+    Casou com Maria Luísa de Castro e Almeida, nascida a 27 de julho de 1863, de quem teve seis filhos: Emília da Conceição de Castro e Almeida Norton de Matos, Arnaldo de Castro e Almeida Norton de Matos, Ermelinda de Castro e Almeida Norton de Matos, Tomás de Castro e Almeida Norton de Matos, Luís de Castro e Almeida Norton de Matos, Mariana de Castro e Almeida Norton de Matos.
+    
+    Arnaldo faleceu em Lisboa aos 60 anos de idade, a 17 de dezembro de 1923, e Maria Luísa de Castro e Almeida a 13 de setembro de 1934, na mesma cidade.</td></tr>
+<tr><td>Baltazar Malheiro Reymão</td><td>Filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão, nasceu aos 30 dias do mês de março de 1710 e foi batizado em casa aos 8 dias do mês de abril. 
+    Dom Prior da Colegiada de Barcelos, e Abade reservatório de Fonte Boa, cuja Abadia renunciou no seu irmão Gonçalo e havia obtido em benefício, em 1740, de seu primo Dr. Manuel Malheiro Marinho.
+    Foi o responsável por coligir, em 1760, as propriedades no "Tombo dos bens e propriedades vinculadas pelo Muito Reverendo Baltazar Malheiro Reymão Fidalgo Capelão da Casa de Sua Magestade que Deus Guarde prior da insigne Collegiada de Santa Maria Mayor da vila de Barcelos feito no anno acima dito [de 1760]" 
+    Faleceu em 29 de Junho de 1771.</td></tr>
+<tr><td>Baltazar Malheiro de Neiva</td><td>Filho de Gaspar Malheiro Reymão e de Susana Neiva Marinho ou Susana Neiva Lobato. 
+    Nascido em Viana, Cavaleiro na Ordem de Cristo, Fidalgo Cavaleiro da Casa de Sua Majestade, por mercê de 5 de Abril de 1687, no ano de 1707 gozava a patente de Mestre de Campo de Auxiliares na Província do Minho.
+    Casou em 1675, com sua parenta D. Francisca Maciel Teixeira, irmã do Dr. João Barbosa Teixeira Maciel, e ambos filhos de Manuel Barbosa Teixeira e de sua mulher Maria Ventura da Rocha, todos naturais de Viana.
+    António Maciel Teixeira, tio de D. Francisca e residente na cidade da Baía, instituiu, em 11 de Novembro de 1716, um vínculo em favor desta sobrinha e, na falta de sucessão, passaria para a descendência de Gaspar Malheiro Reymão, anexando-o ao da Capela de Nª. Sr.ª das Dores, da quinta de Pomarchão, instituído pelo Ver. Padre Manuel Gonçalves Reymão.
+    Este vínculo de Baltazar Malheiro e de António Maciel foi lavrado na Nota de Tabelião de Viana, Estêvão Gomes Coelho.
+    Baltazar Malheiro quando viúvo seguiu a Ordem 3ª da Penitência em 1719, professando em 1720 na Ordem dos Carmelitas Descalços, vivendo alguns anos no Convento do Buçaco como narra a Crónica da Conceição, no tomo 2º, página 747, nº 1319.
+    Voltou a Viana, falecendo aqui em 1736.
+    Não teve geração legítima, mas houve fora do matrimónio.</td></tr>
+<tr><td>Belchior Barbosa de Almeida</td><td>Belchior Barbosa de Almeida é filho de Natália da Costa Maciel e de Belchior Barbosa de Almeida.
+    Casou-se com Maria Luísa da Rocha, filha de Rafael Álvares de Passos  e de Grácia da Rocha, no ano de 1710.
+    É pai de Simão Barbosa de Almeida, filho legitimado que teve com Ângela Ribeiro.</td></tr>
+<tr><td>Bernardina Pereira</td><td>Bernardina Pereira, filha de Maria Pereira Soares e de Manuel Pacheco Pinto, de Ponte de Lima.
+    Casou três vezes e de nenhuma teve geração.
+    Casou a primeira vez com o Dr. António de Abreu Lima, Fidalgo da Casa Real, Sr. de Anquião, s.g.
+    Casou a segunda vez em Viana com Bento do Rego Barros, Fidalgo da Casa Real, Comendador de Vila Franca, filho de Roque de Barros Rego, Governador de Cabo Verde e instituidor do Morgado de Santo Estêvão na Quinta de Afonso Caminha, e de sua mulher D. Isabel Macedo. S.g.
+    Casou a terceira vez em Ponte de Lima com João Lobato de Abreu, Cavaleiro da Ordem de Cristo, filho de Pedro Lobato.</td></tr>
+<tr><td>Bernardino José de Carvalho</td><td>Bernardino José de Carvalho, filho de António Martins de Carvalho e de Maria Luísa dos Reis, nasceu no ano de 1766.
+    Foi abade e faleceu a 16 de abril de 1826.</td></tr>
+<tr><td>Bernardo Pinto Ribeiro Seixas</td><td>Filho de Manuel Ribeiro Seixas e Maria Teresa Vilaça Pinto.
+    Bispo de Bragança e Miranda entre 1773 e 1792.</td></tr>
+<tr><td>Bernardo Pinto da Costa</td><td>Bernardo Pinto da Costa, Abade de Orbacém e de Meixedo</td></tr>
+<tr><td>Casa da Lage</td><td>Embora a Casa da Lage estivesse na posse dos seus antepassados, pelo menos desde o século XV, o primeiro Senhor que se lhe conhece foi Vasco Anes de Brito. 
+    Em 1877 com a morte de D. Maria do Carmo Pinto de Almeida e Meneses, filha de D. Guiomar Luísa de Sousa Machado e Belchior Pinto Barbosa de Almeida e Alexandria (7ª geração), extinguiu-se o ramo primogénito da Família Sousa Machado. 
+    D. Maria do Carmo Pinto de Almeida e Meneses sucedera aos seus irmãos na Casa da Lage e pensava deixar como única herdeira de todos os bens, sua afilhada D. Antónia Ribeiro Lima, que veio a casar com José Ribeiro Lima da Costa Azevedo, mas por imposição do pai desta, António Ribeiro da Silva, feitor da Casa, é ele próprio instituído herdeiro, com a condição de deixar a cota disponível à dita filha.
+    Assim, por falta de geração legítima deste ramo da Família Sousa Machado, passaram estas casas, e respetivos bens, para a Família do Visconde da Barrosa, José Ribeiro Lima da Costa Azevedo (1851 - 1925), Senhor da Casa de Vila Meã em S. Martinho de Vila Frescainha, do concelho de Barcelos, solar da Família Costa Azevedo, onde nasceu a 08/07/1851.</td></tr>
+<tr><td>Casa do Baganheiro</td><td>A Quinta de Cima de Vila ou Casa do Baganheiro, como atualmente é designada, principiou a fundar-se no século XVII, mais precisamente no ano de 1656 com a aquisição por parte de José Correia e de sua esposa Maria ou Marinha Borges, moradores em Além da Ponte, de bens que se compunham de um casal, rossios, vinha, campo lavradio circundado sobre si e um pedaço de devesa. Também o Cónego Diogo Correia, Cavaleiro da Ordem de Malta, é referido como um dos fundadores da mesma Casa pois esta foi construída em terras que já desde a Idade Média pertenciam à Ordem.
+    A propriedade passou posteriormente para o Reverendo Abade António Martins Correia, tendo este aumentado através de compras, arrendamentos ou trocas e com singular tenacidade, entre 1648 a 1722, a propriedade com meios seus e provavelmente com dinheiro proveniente da herança do seu tio Cónego Diogo Correia.
+    Os herdeiros do Abade (sua irmã Isabel Correia e seu sobrinho João Francisco Martins casado com Luísa Correia), continuaram a comprar terras quer individualmente, quer ligados a parentes de modo que a fortuna rural se reúna sem que de modo algum se disperse. 
+    No período que vai de 1721 a 1771 a família, já numerosa, concorre toda para a formação da casa. Segue na Casa a geração de António Martins de Carvalho casado com Maria Luísa dos Reis, pais de onze filhos, que aumentam consideravelmente o poder da Casa do Baganheiro, sobretudo pelas importantes compras de terras que fez em Fornelos (Quinta do Crasto e outros bens).
+    
+    Só nos finais do Séc. XVIII é que surgiu a designação de Casa do Baganheiro, talvez pelo facto de na propriedade se cultivar muito linho, cuja semente tinha a designação regional de "Baganho". Em meados do século passado terá atingido o máximo da sua área agrícola, quando a sua única proprietária, D. Joaquina Correia Martins de
+    Carvalho casou com o Dr. Manuel de Matos Prego e Sousa, Senhor da Casa do Bárrio, em Moreira do Lima, por sua vez abastado proprietário. Juntaram-se assim duas
+    casas agrícolas e deste casamento houve apenas uma única herdeira, D. Emília Correia de Matos Prego e Sousa, que veio a casar com outro grande proprietário, Tomás Mendes Norton, Fidalgo Cavaleiro da Casa Real. Deste casal surgiram 11 filhos e dessa forma, as suas propriedades foram muito divididas.
+    
+    Ficou a Casa do Baganheiro para o filho primogénito, o Dr. Arnaldo Mendes Norton de Matos Prego. Do seu casamento com D. Maria Luiza de Castro Freire de Vasconcelos e Almeida, surgiram 6 filhos tendo a casa ficado em co-propriedade vários anos, administrada pelo primogénito o Dr. Arnaldo de Castro e Almeida Mendes Norton de Matos. Por consenso entre os proprietários e com a ideia de evitar a divisão, a casa, que não as propriedades agrícolas, ficou para o único irmão sem descendência, o Dr. Luís de Castro e Almeida Norton de Matos, diplomata e escritor, que tomou o compromisso de fazer testamento, a favor do neto mais velho Varão, do seu irmão primogénito, o acima referido (Dr. Arnaldo C. e A. M. Norton de Matos), disposição que foi rigorosamente cumprida e consumada, na pessoa de Luís da Costa Cabral Norton de Matos, tendo seu pai como usufrutuário.</td></tr>
+<tr><td>Casa do Rego</td><td>António Pereira de Sá Sotomaior, 1º Visconde de Milhundos c.c. Maria Rita de Brito e Lira 
+    José Pereira de Sá Sotomaior, 2º Visconde de Milhundos c.c. Emília Salgado Sotomaior
+    António Pereira de Sá Sotomaior, 3º Visconde de Milhundos c.c. Maria Manuela de Abreu de Lima e Lancastre
+    Maria Emília Abreu Lima Sotomaior, 4ª Viscondessa de Milhundos c.c. Francisco Azevedo Ataíde Sousa Meneses</td></tr>
+<tr><td>Casa dos Calistos também denominada "Casa Pacheco"</td><td>Documentos que estiveram na posse da da DEC (Divisão de Educação e Cultura) com a Arqueóloga Sandra Rodrigues, que iniciou a sua actividade neste município através do GTL, tendo depois transitado para a DEC na qualidade de assessora. Estes documentos estiveram na sua posse numa paste denominada “Propostas de Classificação - classificações 2» com a cota antiga DEC/ASS J-3/3-9. Contudo por questões de conteúdo e assunto foi aberta uma execpção ao arranjo orgânico destes documentos que passam agora a fazer parte da DEP.</td></tr>
+<tr><td>Clara Carolina Malheiro Lobato Teles de Meneses</td><td>Filha de Teresa Vitória de Calheiros e Meneses e de Ventura Malheiro Reymão Marinho Lobato, nasceu a 12 de setembro de 1799 em Arcozelo. Casou em 1814 com o seu tio materno José Lopes de Calheiros e Meneses de quem teve cinco filhos. 
+    Faleceu às duas da manhã do dia 23 de abril de 1883 na sua casa da Rua 8 de Maio da freguesia de Santa Maria Maior, em Viana do Castelo, tendo sido sepultada no cemitério da Ordem Terceira.</td></tr>
+<tr><td>Clara Carolina Malheiro Lobato Teles de Meneses e José Lopes Calheiros de Meneses</td><td>Filha de Teresa Vitória de Calheiros e Meneses e de Ventura Malheiro Reymão Marinho Lobato, nasceu a 12 de setembro de 1799 em Arcozelo, tendo sido batizada a 20 de setembro do mesmo ano. Foi padrinho Ventura Reymão Marinho, bisavô paterno da batizada e madrinha Nossa Senhora, tendo tocado na coroa Clara Josefa Lobo Sotomaior, avó paterna.
+    Casou em 19 de Janeiro de 1814, na Capela de Nossa Senhora do Desterro, na Quinta de Pomarchão com o seu tio materno José Lopes de Calheiros e Meneses, nascido a 13 de Junho de 1781, Fidalgo da Casa Real, Capitão de Cavalaria, que faleceu no Porto em 25 de Setembro de 1859, sendo trasladado para a Capela de Sabadão.
+    Sucedeu na Casa e Morgados de Sabadão, Pomarchão, Pedreira, S. Crispim, Quintal em Geraz do Lima, e casa do Eirado ou Praça em Viana, a seu bisavô Ventura Malheiro Reymão, que faleceu em 1813.
+    Foi administradora dos os bens do vínculo e era detentora de ações em diversas instituições: na Companhia do Gás, na Companhia de Vinhos do Alto Douro, na Companhia Fomentadora Vianense, no Banco do Douro, no Banco Aliança, no Banco de Coimbra.
+    Faleceu às duas da manhã do dia 23 de abril de 1883 na sua casa da Rua 8 de Maio da freguesia de Santa Maria Maior, em Viana do Castelo, tendo sido sepultada no cemitério da Ordem Terceira.</td></tr>
+<tr><td>Clara Carolina Malheiro Lobato Teles de Meneses e José Lopes de Calheiros e Meneses</td><td>José Lopes de Calheiros e Meneses, filho de Francisco Lopes Calheiros de Meneses, Senhor da Casa de Calheiros, e de Maria Malheiro, nasceu a 13 de junho de 1781.
+    Foi Fidalgo Cavaleiro da Casa Real com Alvará de 24 de junho de 1803 e Capitão de Cavalos. 
+    Casou em 1814 com a sua sobrinha Clara Carolina Malheiro Lobato Teles de Meneses, filha da sua irmã Teresa Vitória Calheiros de Meneses, de quem teve cinco filhos: Teresa (faleceu em criança), Maria da Natividade Malheiro e Meneses, Ventura Malheiro Reymão Marinho Lobato Teles de Meneses, Clara Carolina das Dores Malheiro Teles de Meneses e Teresa Malheiro Teles de Meneses.
+    Faleceu a 25 de setembro de 1859 com 78 anos de idade.</td></tr>
+<tr><td>Clara Carolina Malheiro Pereira de Castro</td><td>Filha de Clara Carolina das Dores Malheiro Teles de Meneses e de José Maria Pereira de Castro, nasceu a 18 de abril de 1863 e foi batizada a 10 de junho do mesmo ano na Igreja Paroquial de Monserrate, da cidade de Viana do Castelo, onde foi padrinho António Taveira Pimentel de Carvalho, Comendador da Ordem de Malta, e madrinha a sua avó materna Clara Carolina Malheiro Lobato Teles de Meneses, viúva e proprietária. 
+    Casou-se com o seu primo Gaspar Pereira de Castro de quem teve sete filhos.
+    Faleceu a 30 de dezembro de 1945.</td></tr>
+<tr><td>Clara Carolina das Dores Malheiro Teles de Meneses</td><td>Filha de José Lopes de Calheiros e Meneses e de Clara Carolina Malheiro Lobato Teles de Meneses, nasceu a 6 de julho de 1825 e foi batizada a 20 de julho de 1825 na Igreja Matriz (Paróquia de Santa Maria Maior) onde foi padrinho o seu avô paterno Francisco Lopes de Calheiros e Meneses e madrinha Nossa Senhora do Desterro, tocando com a coroa a sua tia Mariana Emília de Calheiros e Meneses. Foi Senhora da Casa de Pomarchão e casou a 23 de junho de 1862 com José Maria Pereira de Castro de quem teve três filhos.
+    Faleceu a 9 de dezembro de 1906 na Quinta de São Filipe, em Lanheses.</td></tr>
+<tr><td>Clara Jacinta</td><td>Filha natural de Francisco José de Matos Prego. 
+    Foi moradora na Casa do Bárrio.
+    Fez doação dos seus bens a favor do irmão António de Matos Prego e Sousa.</td></tr>
+<tr><td>Clara Josefa Lobo Sotomaior</td><td>Filha herdeira de Maria Luísa de Sá Sotomaior e de Filipe Lobo de Mesquita, nasceu a 18 de outubro de 1753. Casou em Viana do Castelo com Gaspar Malheiro Reymão Lobato de quem teve três filhos.
+    Faleceu a 11 de janeiro de 1821 e foi sepultada no dia seguinte na Igreja do Carmo.</td></tr>
+<tr><td>Clara Maria Pereira de Castro de Vilhena</td><td>Filha de Alexandre de Albuquerque de Moura Pegado e de Maria Inácia Malheiro Pereira de Castro, nasceu a 4 de janeiro de 1896 e casou a 8 de abril de 1918 com Augusto Vieira de Araújo de quem teve uma filha.</td></tr>
+<tr><td>Classificação da Casa da Baldrufa</td><td>Documentos que estiveram na posse da da DEC (Divisão de Educação e Cultura) com a Arqueóloga Sandra Rodrigues, que iniciou a sua actividade neste município através do GTL, tendo depois transitado para a DEC na qualidade de assessora. Estes documentos estiveram na sua posse numa paste denominada “Propostas de Classificação - classificações 2» com a cota antiga DEC/ASS J-3/3-9. Contudo por questões de conteúdo e assunto foi aberta uma execpção ao arranjo orgânico destes documentos que passam agora a fazer parte da DEP.</td></tr>
+<tr><td>Classificação de: Alto das Valadas, Trás-de-Cidades e Castro de Cresto em Vitorino dos Piães</td><td>Documentos que estiveram na posse da da DEC (Divisão de Educação e Cultura) com a Arqueóloga Sandra Rodrigues, que iniciou a sua actividade neste município através do GTL, tendo depois transitado para a DEC na qualidade de assessora. Estes documentos estiveram na sua posse numa paste denominada “Propostas de Classificação - classificações 2» com a cota antiga DEC/ASS J-3/3-9. Contudo por questões de conteúdo e assunto foi aberta uma execpção ao arranjo orgânico destes documentos que passam agora a fazer parte da DEP.</td></tr>
+<tr><td>Classificação do Cine-Teatro Diogo Bernardes</td><td>Documentos que estiveram na posse da da DEC (Divisão de Educação e Cultura) com a Arqueóloga Sandra Rodrigues, que iniciou a sua actividade neste município através do GTL, tendo depois transitado para a DEC na qualidade de assessora. Estes documentos estiveram na sua posse numa paste denominada “Propostas de Classificação - classificações 2» com a cota antiga DEC/ASS J-3/3-9. Contudo por questões de conteúdo e assunto foi aberta uma execpção ao arranjo orgânico destes documentos que passam agora a fazer parte da DEP.</td></tr>
+<tr><td>Correspondência de Gaspar Malheiro Pereira Peixoto</td><td>Gaspar Malheiro Pereira Peixoto, filho de Caetano Malheiro Sotomaior e de Mecia Pereira Cunha.</td></tr>
+<tr><td>Correspondência enviada a Domingos Tarrozo</td><td>Domingos Tarrozo (Domingos José da Silva Tarrozo Júnior) nasceu na vila de Ponte de Lima, em  22 de Maio de 1860, e faleceu em Viana do Castelo, em 24 de Agosto de 1933.
+    Foi um Filósofo eminente; Membro da Sociedade de Geografia; Escrivão de Direito em Ponte de Lima e em Lisboa; Deputado; Secretário do Ministro da Fazenda; Presidente do antigo Instituto Histórico do Minho, em Viana do Castelo; Publicista.
+    Foi distinguido pela Câmara Municipal de Ponte de Lima com a atribuição do seu nome a uma rua de Ponte de Lima (Rua Domingos Tarroso).</td></tr>
+<tr><td>Cândida Amália da Rocha Coelho e Manuel António Alves Franco</td><td>Filha de Manuel da Rocha Coelho e de Maria Josefa Maia.
+    Casou com Manuel António Alves Franco (1833-1902), natural da freguesia de Serreleis e filho de António José Alves e de Josefa Alves Franco. Comprou a Quinta do Juncal a Benjamim Pereira de Castro e sua mulher Maria Rosa de Freitas, que a herdaram de sua prima Catarina Rita da Cunha de Lima, por escritura realizada em 22 de dezembro de 1886 pelo tabelião João Filipe de Castro. 
+    Não tiveram descendência. Deixou como seu universal herdeiro o sobrinho António Guilherme Alves Franco casado com Maria de Jesus Coelho.</td></tr>
+<tr><td>Damião de Sousa</td><td>Damião de Sousa, senhor da Casa de Pentieiros, na freguesia de S. Pedro de Arcos.
+    Filho de João de Sousa Magalhães e de Violante Álvares Fagundes, filha de João Álvares Fagundes, natural de Viana e capitão da Ilha do Bacalhau, e de Leonor Dias.
+    Irmão de Joana de Sousa que casou com Álvaro Soares de Deza, senhor da Fortaleza e Vale de Tebra, na Galiza.</td></tr>
+<tr><td>Damião de Sousa e Maria de Sousa Meneses</td><td>Damião de Sousa, senhor da Casa de Pentieiros, na freguesia de S. Pedro de Arcos.
+    Filho de João de Sousa Magalhães e de Violante Álvares Fagundes, filha de João Álvares Fagundes, natural de Viana e capitão da Ilha do Bacalhau, e de Leonor Dias.
+    Irmão de Joana de Sousa que casou com Álvaro Soares de Deza, senhor da Fortaleza e Vale de Tebra, na Galiza.</td></tr>
+<tr><td>Delfim de Brito Guimarães</td><td>Delfim de Brito Guimarães nasceu na freguesia de Santo Ildefonso (Rua do Bonjardim, 184), na cidade do Porto, a 4 de agosto de 1872. Era o terceiro dos seis filhos do limiano Delfim José Monteiro Guimarães Júnior, comerciante e jornalista, natural da vila de Ponte de Lima e de sua mulher D. Maria Júlia Moreira de Brito Barreiros, natural do Porto.
+    Casou em 24 de abril de 195, na Igreja de Paranhos, com Rosina Vieira da Cruz e teve 6 filhas.
+    Morre de miocardite crónica em 6 de julho de 1933, na Rua 5 de Outubro, nº 25, na Amadora. Foi sepultado no cemitério de Benfica, em Lisboa.
+     
+    O jornalista:
+    Após a conclusão dos estudos liceais no Porto, segue a carreira comercial com seu pai.
+    Já em Lisboa, em 1891, entra para O Século, na qualidade de guarda-livros onde, mais tarde, viria a assumir a função de administrador. 
+    Em 1897, combinou com o proprietário José Joaquim Silva Graça criar nesse jornal uma secção de publicações e, para o efeito, convidou Paulo Martins Cabral para tomar conta dessa secção.
+    Essa secção, cujos lucros seriam divididos por Silva Graça e Delfim Guimarães, independentemente dos lucros do Almanaque de O Século, confecionado  por Delfim Guimarães, está na origem das desavenças entre ambos ocorridas em abril  1899, dado que o primeiro se negou a pagar a quantia devida (aproximadamente 5 contos de réis), que durante um ano, em vão, tentou reaver.
+    Foi colaborador durante vários anos do luxuoso e esplêndido hebdomadário Mala da Europa, fundado por seu pai Delfim José Monteiro Guimarães, para os portugueses de além-mar. 
+    Em 1899, após o falecimento de seu pai administra e reorganiza a revista Mala da Europa, cujo primeiro número é publicado em 11 de agosto de 1898, onde terá nascido a sua futura atividade como consagrado editor. 
+    Como jornalista colaborou noutros periódicos – O Lima, Diário de Notícias, A Província, A Crónica, O Popular, Gabinete de Repórters, Branco e Negro, A Luta, A Desafronta, de S. Tomé, Diário da Noite e, ainda, na revista Limiana, no Almanaque de Ponte de Lima e no Almanaque Ilustrado de O Século. 
+    
+    São Tomé - Casa D. Aurora de Macedo:
+    Dados os consideráveis esforços e sacrifícios empreendidos por Delfim Guimarães para manter e tornar próspera a Casa Editora - não tendo ao longo de doze anos levantado nenhum dinheiro da sociedade - era necessário continuar a garantir o sustento da família numerosa.
+    Desta forma, em 1904 aceita o cargo de guarda-livros, ascendendo mais tarde a administrador, na firma comercial D. Aurora de Macedo, proprietária da Roça Pinheira, grande propriedade agrícola, na Ilha de S. Tomé, e nela permaneceu até 1928, ano em que saiu por motivos de saúde. 
+    Durante esse período Delfim Guimarães foi oito vezes a S. Tomé o que em muito terá contribuído para o agravamento do seu estado de saúde.
+    
+    Fundação da Casa Editora:
+     Após a saída de O Século, em março de 1899, Delfim Guimarães entra como sócio, juntamente com o seu amigo e companheiro Paulo Martins Cabral, na Empresa Literária Lisbonense de Libânio da Silva, que então lutava com dificuldades financeiras. Estava assim criada a sociedade “Guimarães, Libânio & Cª”. 
+    Situada na Rua de S. Roque, em Lisboa, foi aí que Delfim Guimarães principiou a dar largas à capacidade editorial, dignificando aquele ramo. 
+    Contudo, dada a falta de capital – que poderia ter ficado resolvido se Silva Graça tivesse pago o que devia a Delfim Guimarães – e depois de uma luta inglória para manter a casa, em 1903 a sociedade é dissolvida.
+    Porém, Delfim Guimarães não desiste de continuar com o negócio e constitui, juntamente com Paulo Martins Cabral, uma nova sociedade - “Livraria Editora Guimarães & C.ª”, que ainda hoje existe (Guimarães Editores). 
+     Como editor, tal como refere Henrique Marques, “Delfim Guimarães pode ser considerado sem favor como dos mais probos e dos mais inteligentes”. Foi graças à sua influência e vontade que foram divulgadas entre nós traduções de obras-primas de escritores franceses, tais como Alphonse de Lamartine, Emílio Zola, Vítor Hugo, Alexandre Dumas, Honoré de Balzac, entre outros, e, ainda, a literatura russa, com as versões de Tolstói, Gorki, entre outros.
+     
+    Exílio em Ponte de Lima:
+    Em junho de 1900 Delfim Guimarães regressa a Ponte de Lima e instala-se na casa da Rua do Souto, onde nasceram duas das suas filhas - Maria Delfina (1901) e Maria Silvina (1903). Aí permanecerá até 1903. 
+    Em Ponte de Lima é nomeado Administrador do Concelho, cargo que irá exercer entre 1902-1903.
+    Ainda nesse período, acumulava o cargo de administrador do concelho com as de redator da gazeta O Lima, do qual era proprietário Joaquim dos Reys Lemos.
+    Na tipografia da gazeta O Lima, sita na Lapa, juntavam-se a Delfim Guimarães e a Júlio de Lemos outros intelectuais limianos, tal como António Feijó.
+    De facto, foram anos de “quase” exílio mas, apesar de tudo, cheios de convívios e atividades literárias.
+    Apesar de nascido no Porto, sempre foi considerado filho de Ponte de Lima, à qual dedicou muito amor e devoção bem como grande parte das sua obra.
+    Interessou-se pela história e lendas de Ponte de Lima, conforme refere Júlio de Lemos “que muitos dos indígenas, estendendo a sua simpatia ás airosas tricanas e figuras típicas do meio, algumas das quais, como o Cachapuz e o Restantes fotografa com exata observação, e sempre externou sentimentos de acendrado entusiasmo ao encarecer e exaltar o mágico cenário que o estro de Feijó sublimara em acordos divinos”. Quanto ao Rio Lima, consagrou-lhe “embaladoras endechas, que eternizam o êxtase da sua alma panteísta”.
+     
+    O dramaturgo:
+    É precisamente durante a estadia em Ponte de Lima que Delfim Guimarães escreve diversas poesias, teatro e o livro de ficção O Rosquedo (escrito em 1900-1901 embora só tenha sido publicado em 1904). Nestas paragens teve a sua fase mais produtiva em relação ao teatro.
+    Em 1901 publica Aldeia na Corte, peça em três atos, escrita em parceria com D. João da Câmara, que viria a ser representada pelos melhores atores nacionais, em 5 de junho, no Teatro D. Amélia (actual São Luís).
+    Ainda em Novembro do mesmo ano é representada no Teatro Diogo Bernardes, por um grupo de amadores de Ponte de Lima, uma “farsa-opereta” - A República de Rebordões, musicada por J. Carlos do Valle e António do Valle, compositores de Viana do Castelo.
+    Durante a sua permanência em Ponte de Lima elabora outras peças – Mariquinhas tecedeira e Domingos de Páscoa.
+    Em 1902, escreve e publica na sua editora, Juramento sagrado, uma comédia num ato, em verso representada pela primeira vez no Teatro de D. Maria II, a 16 de Dezembro. No mesmo ano dá-se uma derradeira incursão no Teatro Diogo Bernardes: Mariquinhas Tecedeira, publicado em folhetim no jornal O Lima.
+    O poeta e prosador, o crítico literário e tradutor:
+    Tal como refere Lopes Vieira, Delfim Guimarães “trabalhava para viver, mas vivia para escrever”.
+    Para além de poeta, Delfim Guimarães notabilizou-se como investigador, quando em 1908, publicou os livros Bernardim Ribeiro, o poeta Crisfal e Teófilo Braga e a Lenda do Crisfal. 
+    Entre as traduções efectuadas destacamos a tradução livre da obra Flores do Mal, de Charles Bauldelaire, poeta erudito francês.
+    Em 1912 Delfim Guimarães dá início à publicação do Arquivo Literário - revista literária que conta com a colaboração de vários escritores e incluí a transcrição de livros de alguns autores notáveis.
+    O seu principal livro de versos Alma Portuguesa, que inclui alguns poemas publicados em opúsculos, é publicado durante a Grande Guerra. Nesse período escreve ainda O Livro do Bebé, bem como diversos poemas tais como Aos soldados sem nome, Asas de Portugal, No Regresso dos Aviadores. 
+    Publica livros de poesia de outra índole, mais românticos - A Paixão de Soror Mariana ou religiosos Evangelho e, ainda, dedica um dos seu poemas à sua saudosa e muito querida Ponte de Lima - Ponte do  Lima Minha Avozinha.
+    
+    Na Amadora, terra onde viveu e onde veio a falecer, dedicou-se, em plena época da consolidação da República, para além da sua obra literária, à defesa dos interesses comuns dos residentes. Integrou, nessa altura, a Comissão Administrativa da Escola Alexandre Herculano (criada por sua iniciativa), foi membro e dirigente da Liga dos Melhoramentos da Amadora.</td></tr>
+<tr><td>Diogo Correia</td><td>Diogo Correia, natural da freguesia de Santa Maria de Nine, termo da vila de Barcelos, foi batizado na pia da Igreja Paroquial de Nine no dia de Páscoa da Ressurreição na tarde do dia 24 de abril do ano de 1628 (segundo disse sua mãe que por culpa do Reverendo António de Sousa, Reitor que o batizou, se não fez no livro assento de seu batismo). Foram padrinhos João Martins do lugar do Landeiro donde era natural da dita freguesia de Nine e Marta de Sousa, donzela muito honrada e virtuosa da freguesia de Santa Marta de Bouro, irmã do Reitor que o batizou. 
+    
+    É filho natural. Seu chamava-se Diogo Correia Coutinho da Casa de Vila Meã que é procedida da de Farelães, tendo vivido o seu pai na Quinta da Torre que estava incorporada no morgado de Vila Meã. Os seus avós paternos chamavam-se Paulo da Fonseca Coutinho, natural de Braga e homem da mais esclarecida nobreza daquela cidade, e D. Helena da Cunha da Casa de Farelães, filha de Garcia da Cunha cavaleiro filho segundo da Casa de Farelães.
+    
+    A sua mãe chamava-se Ana Francisca, solteira, natural da aldeia do Landeiro da freguesia de Santa Maria de Nine, filha legítima de João Anes/Enes que nasceu no Landeiro, na terra da principal família do dito lugar, e de Isabel Francisca do lugar de Nine, dos melhores lavradores da freguesia.
+    Teve a sua mãe uma filha mais velha a que chamaram Ana Correia, morreu menina. Foi criado com a ajuda da sua tia Inês Francisca.
+    
+    Teve três filhos de Ana Cardoso, natural desta cidade de Lamego, filha legítima de Belchior Cardoso e de sua mulher Maria de Almeida, moradores que foram na Rua da Pereira e naturais da freguesia de Miomães do bispado de Lamego:
+    - Inês, nascida numa terça-feira da meia-noite para a uma hora do dia 21 de outubro de 1664 anos;
+    - Diogo, nascido a 19 de fevereiro de 1669. 
+    Ambos os teve por seus filhos e os tinha legitimados assim por autoridade apostólica como por sua alteza como Príncipe. 
+    
+    Teve ainda da mesma Ana Cardoso outro menino por nome António que nasceu em março de 1678, não sabendo ao certo se era seu filho, tendo porém criado em sua casa como seu filho.
+    
+    Foi vigário em S. Pedro de Escudeiros alguns anos e por algumas sem razões deixou a Igreja e foi a Roma, onde já havia estado. Foi Cónego da Sé de Lamego.
+    
+    Cónego Diogo Correia instituiu no seu testamento de 24 de julho de 1688 (redigido quando tinha 61 anos) como seu universal herdeiro o seu sobrinho António Martins Correia, Abade da Queijada.
+    
+    Terá falecido a 19 de dezembro de 1688, tendo em conta que essa é a data de abertura do referido testamento.</td></tr>
+<tr><td>Domingas Francisca e António Fernandes Vicente</td><td>Domingas Francisca, filha natural de João Francisco Martins, moradores no lugar e Quinta de Cima da Vila na freguesia e couto de São João da Queijada da Ordem de Malta, casada com António Fernandes Vicente, filho que ficou de António Fernandes e de sua mulher Maria Gonçalves do lugar da Eira da freguesia de Santa Maria de Rebordões.</td></tr>
+<tr><td>Domingos Francisco Leitão e Domingas da Rocha</td><td>Filho de Domingos Francisco Leitão e de Luísa Vaz Francisca.</td></tr>
+<tr><td>Domingos Francisco Leitão e Luzia Vaz Francisca</td><td>Filho de Francisco Álvares e Maria Dias, ambos naturais da freguesia de Arcozelo.
+    Foi procurador de Ponte de Lima por carta de D. João IV.</td></tr>
+<tr><td>Domingos Peixoto do Rego e Claudina Rosa Barbosa</td><td>Domingos Peixoto casou na freguesia de Palmeira a 26 de agosto de 1846 com Claudina Rosa Barbosa (n. 1822).</td></tr>
+<tr><td>Domingos Vaz Pinto</td><td>Domingos Vaz Pinto, casado com Catarina Borges de quem teve um filho: Manuel Pacheco Pinto que se casou com Maria Pereira Soares, filha de Maria de Neiva Barriga Lobato e Gaspar Ledo Pereira.</td></tr>
+<tr><td>Domingos Vaz Pinto e Catarina Borges</td><td>Casou com Catarina Borges, pais de Manuel Pacheco Pinto que se casou com Maria Pereira Soares, filha de Maria de Neiva Barriga Lobato e Gaspar Ledo Pereira.</td></tr>
+<tr><td>Emília da Conceição de Matos Prego e Sousa</td><td>Filha de Manuel José de Matos Prego e Sousa e de Joaquina Rosa dos Reis Martins de Carvalho Correia, Emília nasceu a 5 de dezembro de 1847 na Casa do Baganheiro. Casou a 12 de janeiro de 1862 na capela do Convento de Refóios do Lima com Tomás Mendes Norton de quem teve onze filhos: Arnaldo Mendes Norton de Matos, Zulmira Mendes Norton de Matos, Eusébio Mendes Norton de Matos, José Mendes Ribeiro Norton de Matos, Zulmira Mendes Norton de Matos, Joaquina Mendes Norton de Matos, Tomás Mendes Norton de Matos Prego, Rita Mendes Norton de Matos, Alfredo Mendes Norton de Matos, Maria Emília Mendes Norton de Matos e Mariana Mendes Norton de Matos.
+    Faleceu na Casa do Baganheiro em Queijada, concelho de Ponte de Lima, a 22 de janeiro de 1933.</td></tr>
+<tr><td>Emílio Pereira de Sá Sotomaior</td><td>Filho de D. Emília Salgado Sotomaior e de seu primeiro marido, Gregório Pereira de Sá Sotomaior. 
+    Meio irmão de António Pereira de Sá Sotomaior, filho do casamento de sua mãe em segundas núpcias com José Pereira de Sá Sotomaior.
+    Cursou em Coimbra onde concluiu a formatura em Direito.
+    Seguiu a carreira judicial, durante a qual se revelou um Juiz consciencioso e inteligente.
+    Em 1912 era Delegado do procurador Régio da Comarca de Ponte da Barca.
+    Faleceu em Braga, em 4 de abril de 1922. Está sepultado no cemitério de Arcos de Valdevez.</td></tr>
+<tr><td>Esta Sociedade de Recreio de Ponte de Lima</td><td>Esta Sociedade de Recreio de Ponte de Lima foi fundada no primeiro de Dezembro de 1868, com o propósito de proporcionar aos seus associados e famílias, agumas horas de agradável convívio, quer em tertúlias quotidianas, quer em festas e diversões. 
+    Dos 53 sócios primitivamente inscritos, figura em primeiro lugar o Dr. Abel Pereira do Vale, Delegado do Procurador Régio nesta comarca.
+    A Assembleia 1º de Dezembro ou Assembleia Limarense viria a ser extinta no ano de 1945.</td></tr>
+<tr><td>Folha humorística. Nos Anais Municipais de Ponte de Lima por Miguel Roque dos Reis Lemos</td><td>Folha humorística. Nos Anais Municipais de Ponte de Lima por Miguel Roque dos Reis Lemos é referido que o “1º número foi distribuído na tarde de quinta-feira, 23 de Setembro de 1886, formato pequeno.”
+    O Zé Maria faz alusão na sua primeira página ao jornal «Voz do Lima», periódico semanal, político, literário e noticioso também fundado em 1866.</td></tr>
+<tr><td>Francisca Anes Pinto Jácome</td><td>Francisca Anes Pinto Jácome era irmã do Dr. Cristóvão Anes Jácome e de Félix Anes Jácome, comissário assistente da Tesouraria Geral do Norte, e supõe-se que descendia de Miguel Jácome.
+    Herdou bens em Gondufe que foram de seu tio, o padre Félix Pinto da Costa, filho legítimo de Agostinho Pinto da Costa e de Francisca da Costa, da vila de Viana. Esses mesmo bens foram deixados, em 1818, por testamento à sua afilhada Maria Josefa Maia e seus irmãos. 
+    Faleceu em 1825 e foi sepultada na Igreja de S. Domingos em Viana do Castelo.</td></tr>
+<tr><td>Francisco Alves de Matos Prego</td><td>Filho de José Alves de Matos Prego e Maria Luísa Antunes Pereira, nasceu em outubro de 1770 e foi batizado na Igreja de Moreira. 
+    Foi para o Rio de Janeiro (Brasil), aos 29 ou 30 anos de idade.
+    Faleceu solteiro na vila de Campos de Goitacazes a 3 de setembro de 1812, pelas oito horas da noite, de um ataque de epilepsia (ou "perlesia", conforme consta numa carta). Padecia da moléstia “froxidão de nervos” e de tempos a tempos alguns "ameaços de estopor".
+    Foi enterrado na matriz de São Salvador, na dita vila.</td></tr>
+<tr><td>Francisco José de Matos Prego</td><td>Francisco José de Matos Prego e Maria Rosa de Sousa e Silva foram os primeiros proprietários da família Matos Prego a viverem na Casa do Bárrio.
+    Filho de António de Matos Prego e de Maria Madalena Gonçalves, Francisco José de Matos Prego nasceu a 1770 na Casa da Arrifana em Moreira do Lima, propriedade de seu Pai. 
+    Era comerciante matriculado na Real Junta de Comércio, exerceu as funções de Meirinho Ajudante em Viana. Desde cedo dedicou-se, como seu Pai, à atividade de contratador, ou seja aquele que assegurava antecipadamente aos beneficiários os rendimentos a que tinham direito, por um preço contratado, encarregando-se da cobrança junto dos rendeiros. As rendas parcelares eram muitas vezes satisfeitas em bens – cereais, criação, salmões e lampreias – que o contratador tratava de comercializar por sua conta tentando obter um valor superior à renda paga ao titular do benefício. Francisco José de Matos Prego tinha correspondentes em várias partes do território nacional e era sócio (quarta parte) de um hiate – Andorinha do Lima - que transportava produtos pela costa até Lisboa, além de outros carregamentos. José Maria Fernandes de Darque era sócio em alguns dos contratos.
+    Data de 1804 o primeiro negócio de que há registo de ter participado.
+    Ao longo da sua vida, arrematou individualmente ou de parceria com sócios diversos rendimento de titulares da nobreza ou eclesiásticos: Igrejas de Rendufe, Sá, Brandara; Colegiada da Correlhã; Comendas da Casa de Bragança; Casa do Conde de Oliveira; Vínculo do Pinheiro; Renda de Vilar de Mouros; Freiras (do Convento) dos Remédios (em Braga?); Igrejas de Fontão, Donas e Cabração (Rendimentos do Convento do Salvador, Braga).
+    Foi Alferes das Ordenanças de Ponte de Lima e em 1814, tendo sido nomeado Capitão da 5.ª Companhia.
+    Casou-se com Maria Rosa de Sousa e Silva de quem teve cinco filhos: Manuel José de Matos Prego e Sousa; Maria da Agonia de Matos Prego; António de Matos Prego e Sousa; Francisco de Matos Prego e Sousa e Josefa Cândida de Matos Prego.
+    Faleceu a 14 de dezembro de 1849, na Casa do Bárrio.</td></tr>
+<tr><td>Francisco José de Matos Prego e Maria Rosa de Sousa e Silva</td><td>Francisco José de Matos Prego e Maria Rosa de Sousa e Silva foram os primeiros proprietários da família Matos Prego a viverem na Casa do Bárrio.</td></tr>
+<tr><td>Francisco Justiniano Saraiva</td><td>Francisco Justiniano Saraiva nasceu na rua das Flores, na vila de Ponte de Lima, em 26 de Janeiro de 1766 e foi baptizado com o nome de Francisco Manuel a 9 de Fevereiro, filho do Tabelião do Público, Judicial e Notas naquela vila, Manuel José Saraiva e de sua mulher Leonor Maria Teodora Correia.
+    Entrou em 1780 para o Mosteiro Beneditino de Tibães e aí professou, em 29 de Janeiro de 1782, com o nome em religião de Frei Francisco de São Luís.</td></tr>
+<tr><td>Francisco Lobo de Mesquita e Clara Malheiro da Cunha</td><td>Francisco Lobo de Mesquita, filho de Filipe Lobo de Mesquita e de Maria Teresa Belo, casou em Viana com Clara Malheiro da Cunha, filha de Catarina Lobo da Cunha e de Tomás Malheiro Barreto, de quem teve cinco filhos: Filipe Lobo de Mesquita, Fr. Tomás (frade Bento), D. José Crúzio, Fr. Francisco Domínico e António Lobo Malheiro (Abade de Rio Covo).
+    Clara Malheiro da Cunha / Sotomaior faleceu na sua Quinta de Lanheses a 27 de novembro de 1734, tendo sido sepultada no Convento do Carmo em Viana do Castelo.</td></tr>
+<tr><td>Francisco de Abreu Pereira Coutinho ( -1844)</td><td>Abade de São Paio de Meixedo  Santa Eulália de Orbacém, comarca de Valença.</td></tr>
+<tr><td>Francisco de Abreu Pereira Maia</td><td>Francisco de Abreu Pereira Maia nasceu na Casa do Arrabalde de Além da Ponte, em Arcozelo (Ponte de Lima) em 31 de Julho de 1865, filho primogénito de José de Abreu Maia, ao tempo Vice-Presidente da Câmara Municipal de Ponte de Lima e de sua mulher D. Rosa Guilhermina Pereira da Rocha. 
+    Órfão de pai aos dez anos, foi interno no Colégio do Espírito Santo, em Braga, partindo daí para Coimbra, onde frequentou a Faculdade de Direito até concluir a sua licenciatura em 1889. 
+    Um ano antes de concluir o curso foi nomeado Sub- Delegado do Procurador Régio em Ponte de Lima e um ano depois da sua conclusão, Administrador do Concelho de Valença, onde se manteve apenas por dez meses, demitindo-se por ter sido substituído o Governo apartidário do General João Crisóstomo, por um outro, liderado pelo mesmo estadista, mas que já não era da sua confiança. Foi no decurso da sua curta permanência em Valença, que se verificou a tentativa revolucionária republicana de 31 de Janeiro, no Porto, que não teve, aliás, a dimensão real que depois se pretendeu atribuir-lhe, muito embora tenha justificado a mudança do Governo. 
+    Entre 1896 e 1898 foi Vogal efectivo da Junta das Matrizes, sendo então nomeado Presidente da Junta de Lançamento das Contribuições Gerais. Dez anos mais tarde, de 1908 a 1914, voltou a exercer funções naquela Junta de Matrizes, organismo que promoveu o registo público da descrição da propriedade e do seu valor para o lançamento das contribuições. 
+    Tendo fixado residência em Ponte de Lima, na sua Casa de Além da Ponte, o Dr. Francisco de Abreu Maia seria Vereador da Câmara em dois triénios sucessivos e em 1899 mais uma vez nomeado Sub-Delegado do Procurador Régio, cargo que exerceu durante quatro anos, até ser eleito Presidente da Câmara Municipal. Só muitos anos mais tarde, na tentativa revolucionária que ficou conhecida por "Monarquia do Norte': foi de novo chamado a exercer funções autárquicas, tendo sido nomeado Presidente da Câmara no breve período dos vinte e cinco dias em que vigorou o regime, de 19 de Janeiro a l3 de Fevereiro de 1919. Na sequência desta frustrada tentativa, o cessante Presidente e o Conde de Aurora, que fora com ele Administrador do Concelho, partiram para o exílio, aquele para a vizinha Galiza e este para a Argentina. 
+    Durante alguns anos viveu na Corufia e em Santiago de Compostela, com as dificuldades impostas pelo congelamento dos bens que integravam o património de sua casa. Conseguiu apenas alienar a antiga Quinta de Catezim, em Santa Maria de Rebordões, que lhe garantiu o sustento até ao seu regresso, já no advento do Estado Novo. 
+    Durante muitos anos, quer na Monarquia, quer na República, exerceu o lugar de primeiro substituto do Juiz de Direito da comarca de Ponte de Lima, estando em exercício por longos períodos de tempo. Foi ainda Provedor da Santa e Real Casa da Misericórdia de Ponte de Lima, em 1914 e Presidente da Direcção de vários estabelecimentos e corporações de piedade e beneficência, designadamente do Asilo de Inválidos Camões e da Ordem Terceira de S. Francisco. 
+    A mudança das instituições políticas em 1910 e, sobretudo, o golpe fatal vibrado com o fracasso da Monarquia do Norte, afastaram o Dr. Francisco de Abreu Maia da intervenção nos negócios públicos e motivaram o seu empenho crescente no mundo da cultura, sobretudo da História, das Artes e da Literatura. Em 1904 fora nomeado Vogal Cor- respondente do Conselho de Monumentos Nacionais, o que comprova a sua vastíssima cultura, atestada não apenas no que deixou escrito, mas sobretudo na rica e variada biblioteca que constituiu. 
+    Muito do seu saber, sobretudo o conhecimento profundo que tinha aa História da sua região, franqueava-o a quem o procurasse, ficando-lhe por isso o epíteto de "Enciclopédia de Ponte de Lima': Reconhecido como tal, foi em 1917 convidado para sócio efectivo do Instituto Histórico do Minho. É ele, também, um dos sete expoentes da cultura limiana que ficaram consagrados em 1922 como "Os Amigos do Rio Lima': embrião do escol que deu corpo aos Almanaques de Ponte de Lima e a muitas outras iniciativas culturais que projectaram esta região. 
+    Indolente por feitio, e não por defeito, nunca aceitou a direcção de um Almanaque de Ponte de Lima, mas colaborou activamente em quasi todos, por vezes até com participação anónima, com artigos de excepcional interesse, sobretudo de carácter biográfico, que só com as fontes documentais de que dispunha, um sentido apurado da investigação e uma natural facilidade da expressão escrita, seria possível levar a efeito. 
+    Lamentavelmente, nem todas as suas investigações foram profícuas, porque não chegaram a ser divulgadas e muitas outras constituíram os louros de quem delas se aproveitou, como aconteceu com uma grande parte da informação dos Anais de Ponte de Lima, apresentada como subsidiária dos trabalhos deixados por Miguel Roque dos Reys Lemos. O mesmo aconteceu com o seu magnífico espólio documental, que incluía o arquivo da sua Família e que acabou extraviado. 
+    De qualquer modo, merecem particular referência, pela informação coligida, os seguintes artigos: 
+    - Os primeiros estabelecimentos portugueses na China (Um limarense atrevido) 
+    - José da Costa Pimenta Jarro (Um benemérito limarense) 
+    - O Cardeal Saraiva
+    - Dois limarenses notáveis (Bento e António Tição)
+    - Os Argonautas
+    - Bibliografia Limiana (I e II)
+    - António Feijó
+    - Convento de Val-de-Pereiras 
+    (Ponte do Lima)
+    O Dr. Francisco de Abreu Maia faleceu solteiro na sua Casa do Arrabalde de Além da Ponte, em 17 de Junho de 1937. 
+    
+                                                  João Gomes d'Abreu</td></tr>
+<tr><td>Francisco de Abreu de Lima Pereira Coutinho (1850-1921)</td><td>Francisco de Abreu de Lima Pereira Coutinho, 1.º conde de Paço de Vitorino, nasceu a 24 Outubro 1850. Faleceu a 07 Fevereiro 1921. Filho de Francisco António de Abreu Pereira Coutinho, Senhor do Paço de Vitorino das Donas e 8º Senhor da Casa da Fonte da Bouça e Catarina Sá Pereira Pimenta de Sena Pereira Pimenta de Sá Furtado de Mendonça. 
+    Irmão de Maria José de Abreu e Lima Pereira Coutinho,9ª Senhora da Casa da Fonte da Bouça.</td></tr>
+<tr><td>Francisco de Assis Pereira Lopes</td><td>Francisco de Assis Pereira Lopes foi abade de Refóios.</td></tr>
+<tr><td>Francisco de Matos Prego</td><td>Filho de Francisco de Matos e de Ana Prego, nasceu a 23 de novembro de 1717. Casou-se a 27 de novembro de 1743 com Isabel de Araújo, filha de António de Araújo e de Maria Alves, de quem teve o filho António de Matos Prego. 
+    Tem os seguintes irmãos: Teresa Maria de Matos Prego, Ana Maria de Matos Prego e António de Matos Prego.</td></tr>
+<tr><td>Francisco de Matos Prego e Isabel Araújo</td><td>Francisco de Matos Prego, filho de Francisco de Matos e de Ana Prego, casou a 27 de novembro de 1743 com Isabel de Araújo, filha de António de Araújo e de Maria Alves, de quem teve o filho António de Matos Prego.</td></tr>
+<tr><td>Francisco de Matos Prego e Sousa</td><td>Filho de Francisco José de Matos Prego e Sousa e de Maria Rosa de Sousa e Silva, nasceu na Casa do Bárrio no ano de 1815. 
+    Sofria da doença de cistite aguda, tendo pedido certidão do médico para comprovar o seu estado de saúde perante o senado da Câmara.
+    Foi herdeiro e testamenteiro de Rosa Teresa de Jesus, da Casa da Caravana sita na freguesia de Moreira do Lima.
+    Faleceu solteiro a 18 de janeiro de 1895.</td></tr>
+<tr><td>Francisco de Sousa Machado e Meneses</td><td>Casou com Filipa de Melo filha de Filipe de Melo, senhor da Quinta de Sabadão, em Arcozelo, e do Paço de Pombeiro, em Felgueiras, e de sua mulher Mécia Pereira.</td></tr>
+<tr><td>Francisco Álvares</td><td>Francisco Álvares, mercador da vila de Viana, casou com Maria Dias ou Maria Gonçalves. 
+    Pedro Pinto Ribeiro de Alexandria foi administrador da sua Capela em Arcozelo.</td></tr>
+<tr><td>Francisco Álvares e Maria Dias ou Maria Gonçalves</td><td>Francisco Álvares, mercador da vila de Viana, casou com Maria Dias ou Maria Gonçalves. 
+    Pedro Pinto Ribeiro de Alexandria foi administrador da sua Capela em Arcozelo.</td></tr>
+<tr><td>Félix Barreto de Sá Sotomaior</td><td>Félix Barreto de Sá Sotomaior, filho de Maria Joana Barreto e de João de Sá Sotomaior, foi Fidalgo da Casa Real e Professo na Ordem de Cristo. Casou em Viana com a sua sobrinha Maria Joana Coutinho de quem teve seis filhos: João Pedro de Sá Sotomaior Barreto, Félix Barreto de Sá, Maria Justina, Sebastiana, José de Sá Sotomaior Barreto e Luís Vicente de Sá.</td></tr>
+<tr><td>Félix Barreto de Sá Sotomaior e Maria Joana Coutinho</td><td>Félix Barreto de Sá Sotomaior, filho de João de Sá Sotomaior e de Maria Joana Gama Castro ou Barreto, foi Fidalgo da Casa Real e Professo na Ordem de Cristo.
+    Casou em Viana com a sua sobrinha Maria Joana Coutinho, filha de Sebastiana Rosa de Sá Sotomaior e de Francisco de Abreu Coutinho, de quem teve seis filhos: João Pedro de Sá Sotomaior Barreto, Félix Barreto de Sá, Maria Justina, Sebastiana, José de Sá Sotomaior Barreto e Luís Vicente de Sá.</td></tr>
+<tr><td>Félix Pinto da Costa</td><td>Filho legítimo de Agostinho Pinto da Costa e de Francisca da Costa, da vila de Viana.
+    Deixou com herdeiros de todos os seus bens os sobrinhos Cristóvão Anes Jácome e Francisca Maria Pinto.</td></tr>
+<tr><td>Félix da Rocha Páris e Mariana Guilhermina Pacheco Pereira</td><td>Félix da Rocha Páris, filho de José da Rocha Páris e de Josefa Tomásia de Araújo. 
+    Foi casado Ana Cândida da Cunha e Sá Brak Lami e morador na Rua das Laranjeiras em Viana do Castelo. 
+    Perfilhou Luísa Amália da Rocha Páris e António Alberto da Rocha Páris, filho de Mariana Guilhermina Pacheco Pereira. 
+    Faleceu a 3 de julho de 1847.
+    Fez testamento onde instituiu como seu herdeiro o seu filho natural legitimado António Alberto da Rocha Páris.</td></tr>
+<tr><td>Gaspar Malheiro Barriga e Susana de Neiva Lobato</td><td>Gaspar Malheiro Barriga, filho de Diogo Malheiro Marinho e de Joana Coelho Rabelo da vila da Vidigueira, levou a Torre de Refoios em que sucedeu o seu tio Gaspar Malheiro. 
+    Casou com Susana de Neiva Lobato de quem teve três filhos: Lopo Malheiro, instituidor do Morgado da Quinta de Refoios, Maria de Neiva Barriga Lobato e Margarida Marinho Malheiro.</td></tr>
+<tr><td>Gaspar Malheiro Reymão</td><td>Filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão, foi batizado aos 13 dias de janeiro de 1689 e teve como padrinho Baltazar Malheiro Reymão e Susana com procuração da sua avó Mecia Pereira Ferraz. 
+    Foi Fidalgo da Casa Real e Cavaleiro da Ordem de Cristo, por carta de 23 de Agosto de 1690. Foi também mestre de campo no "Terço de Infantaria Auxiliar do distrito da Vila de Barcelos" (Regimento de Milícias de Barcelos), demitido a pedido em 5 de dezembro de 1752, seguindo-lhe o seu filho Ventura Malheiro Reymão Marinho Lobato a 6 de dezembro de 1758. 
+    Casou em Coimbra com Maria Teles de Meneses, filha de Pedro Lopes de Quadros e Sousa, Comendador de S. Pedro das Alhadas, na Ordem de Cristo, e senhor da Casa de Tavarede, no campo de Coimbra, Fidalgo da Casa de Sua Majestade, e de sua 2ª. Mulher, D. Madalena Maria Henriques de Menezes. Tiveram quatro filhos.
+    Mandou edificar a casa grande em Viana, no eirado da Praça da Erva e Couves, comprando várias casas desde 1752, e a Capela dedicada a S. Francisco de Paula em 1758.
+    Fez testamento na nota pública em 29 de Outubro de 1740.
+    Faleceu a 28 de fevereiro de 1761 na sua quinta em Sabadão, tendo sido sepultado na Igreja Matriz de Viana, conforme o seu testamento.</td></tr>
+<tr><td>Gaspar Malheiro Reymão Marinho</td><td>Gaspar Malheiro Reymão, filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão, foi batizado aos 13 dias de janeiro de 1689 e teve como padrinho Baltazar Malheiro Reymão e Susana com procuração da sua avó Mecia Pereira Ferraz.
+    Foi Fidalgo da Casa Real e Cavaleiro da Ordem de Cristo. Foi também mestre de campo no “Terço de Infantaria Auxiliar do distrito da Vila de Barcelos” (Regimento de Milícias de Barcelos), demitido a pedido em 5 de dezembro de 1752, seguindo-lhe o seu filho Ventura Malheiro Reymão Marinho Lobato a 6 de dezembro de 1758. Casou em Coimbra com Maria Teles de Meneses de quem teve quatro filhos: Ventura Malheiro Reymão, Pedro Lopes de Quadros Malheiro (faleceu com 20 anos), Páscoa Josefa Teles casada em 1753 com Luís Vicente de Sá Barreto Sotomaior, e Margarida / Madalena Bernarda Teles Malheiro.
+    Faleceu a 28 de fevereiro de 1761 na sua quinta em Sabadão, tendo sido sepultado na Igreja Matriz de Viana, conforme o seu testamento.</td></tr>
+<tr><td>Gaspar Malheiro Reymão Marinho Lobato e Clara Josefa Lobo Sotomaior</td><td>Fidalgo da Casa Real, casou em 1768, com D. Clara Josefa Lobo de Sottomayor, nascida em 18 de Outubro de 1753 e falecida em 1822, senhora do Morgado de Nossa Senhora da Embaixada, na Quinta da Pedreira, na freguesia de Santa Maria da Vinha da Areosa, junto a Viana, do vínculo de S. Crispim (na porta do Postigo, com Capela sobre a porta da Vila, no fundo da rua de D. Luís em Viana) e mais casas de seus Pais, filha de Filipe Lobo de Mesquita, senhor dos ditos Morgados e falecido em 1774, e de sua mulher D. Maria Luísa de Sá Sottomayor.
+    Faleceu Gaspar Malheiro Reymão em 15 de Julho de 1783 e, assim antes de seu Pai, por isso não foi senhor da casa, como o refere Bezerra de Lima, nos Estrangeiros no Lima, volume 2º página 129, nº 12.</td></tr>
+<tr><td>Gaspar Malheiro Reymão Marinho e Maria Teles de Meneses</td><td>Gaspar Malheiro Reymão, filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão, foi batizado aos 13 dias de janeiro de 1689 e teve como padrinho Baltazar Malheiro Reymão e Susana com procuração da sua avó Mecia Pereira Ferraz.
+    Foi Fidalgo da Casa Real e Cavaleiro da Ordem de Cristo. Foi também mestre de campo no “Terço de Infantaria Auxiliar do distrito da Vila de Barcelos” (Regimento de Milícias de Barcelos), demitido a pedido em 5 de dezembro de 1752, seguindo-lhe o seu filho Ventura Malheiro Reymão Marinho Lobato a 6 de dezembro de 1758. Casou em Coimbra com Maria Teles de Meneses de quem teve quatro filhos: Ventura Malheiro Reymão, Pedro Lopes de Quadros Malheiro (faleceu com 20 anos), Páscoa Josefa Teles casada em 1753 com Luís Vicente de Sá Barreto Sotomaior, e Margarida / Madalena Bernarda Teles Malheiro.
+    Faleceu a 28 de fevereiro de 1761 na sua quinta em Sabadão, tendo sido sepultado na Igreja Matriz de Viana, conforme o seu testamento.</td></tr>
+<tr><td>Gaspar Malheiro Reymão e Ana Maria de Meneses Pitta e Castro da Penha e Costa</td><td>Gaspar Malheiro Reymão, filho de Ventura Malheiro Reymão e de Maria Cordeiro Machado, nasceu a 19 de janeiro de 1917.
+    Foi engenheiro agrónomo.</td></tr>
+<tr><td>Gaspar Malheiro Reymão e Maria Teles de Meneses</td><td>Filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão.
+    Casou em Coimbra com Maria Teles de Meneses, filha de Pedro Lopes de Quadros e Sousa, Comendador de S. Pedro das Alhadas, na Ordem de Cristo, e senhor da Casa de Tavarede, no campo de Coimbra, Fidalgo da Casa de Sua Majestade, e de sua 2ª. Mulher, D. Madalena Maria Henriques de Menezes. Tiveram quatro filhos.
+    Mandou edificar a casa grande em Viana, no eirado da Praça da Herva e Couves, comprando várias casas desde 1752, e a Capela dedicada a S. Francisco de Paula em 1758.
+    Fez testamento na nota pública em 29 de Outubro de 1740.
+    Faleceu a 28 de fevereiro de 1761 na sua quinta em Sabadão, tendo sido sepultado na Igreja Matriz de Viana, conforme o seu testamento.</td></tr>
+<tr><td>Gaspar Pereira de Castro</td><td>Filho de Carlos Augusto Pereira de Castro e de Maria Clara Pais de Araújo Felgueira Gaio, nasceu a 11 de junho de 1865 e foi Coronel de Engenharia. Casou com a sua prima Clara Carolina das Dores Malheiro Teles de Meneses de quem teve sete filhos.
+    Faleceu a 30 de maio de 1925.</td></tr>
+<tr><td>Gonçalo Alves de Araújo (Padre)</td><td>Padre Gonçalo Alves de Araújo, filho de José Alves e de Maria Fernandes. Foi morador no lugar da Veiguinha na freguesia de Moreira.
+    É irmão de Manuel Alves de Araújo, este pai de José Alves de Matos Prego da Quinta da Caravana.
+    Deixa no seu testamento como universais herdeiros os sobrinhos Francisca, António, Gonçalo, José e Jerónima.</td></tr>
+<tr><td>Gonçalo Malheiro Marinho</td><td>Gonçalo Malheiro Marinho, filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão.
+    Nasceu a 10 de abril de 1700 e foi batizado pelo Reverendo Baltazar Pereira Lobato, Abade de Lanheses, no dia 25 do dito mês e ano, tendo sido padrinho Bernabé de Melo de Alvim Pinto. 
+    Foi Abade de Fonte Boa.
+    Faleceu a 25 de junho de 1774 e foi sepultado na Igreja de Nossa Senhora do Carmo da cidade de Viana do Castelo.</td></tr>
+<tr><td>Gonçalo Malheiro Reymão</td><td>Filho de Páscoa Pereira Ferraz e de Ventura Malheiro Reymão, nasceu a 10 de abril de 1700 e foi batizado pelo Reverendo Baltazar Pereira Lobato, Abade de Lanheses, no dia 25 do dito mês e ano, tendo sido padrinho Barnabé de Melo de Alvim Pinto. 
+    Foi Abade de Fonteboa, junto a Barcelos, certamente por renúncia de seu parente Dr. Manuel Malheiro Marinho, ou de seu irmão Baltazar. 
+    Faleceu a 25 de junho de 1774 e foi sepultado na Igreja de Nossa Senhora do Carmo da cidade de Viana do Castelo.</td></tr>
+<tr><td>Gregório Pereira de Sá Sotomaior ( - 1921)</td><td>Emília Ribeiro Salgado Sotomaior, natural dos Estados Unidos do Brasil, casou com Gregório de Sá Pereira Sotomaior, vindo fixar residência em Portugal  na terra e casa de seu marido nos Arcos de Valdevez.
+    Passou mais tarde a viver em Ponte de Lima, tornando-se senhora da Casa do Rego, em Calheiros, pelo casamento em segundas núpcias com seu cunhado José Pereira de Sá Sotomaior, da Casa de Milhundos.
+    Muito nova ainda, perdeu o segundo marido.  
+    Faleceu aos 14 de Dezembro de 1909 na Casa do  Rego.</td></tr>
+<tr><td>Guiomar Luísa de Sousa Machado e Belchior Pinto Barbosa de Almeida e Alexandria</td><td>Guiomar Luísa de Sousa Machado (? - 1835) foi administradora do morgado da Casa da Lage por morte de seu irmão Luís Bartolomeu.
+    Casou com Belchior Pinto Barbosa de Almeida e Alexandria (1733 - ?) a 20 de março de 1776, administrador do morgado de Santa Cruz (Orbacém) e Senhor da Casa da Barrosa, em Vila Franca, Viana do Castelo.
+    O filho de ambos, Rafael Pinto de Almeida e Meneses, consolidou os domínios às casas da Lage e da Barrosa, por carta de remissão de foro paga à Fazenda Nacional, ficando assim ligadas as duas casas.</td></tr>
+<tr><td>Guiomar Machado e António de Sousa Meneses</td><td>Guiomar Machado (?-1624) foi Senhora da Casa da Lage por herança de seu irmão António.
+    Casou com António de Sousa Meneses, filho natural de Damião de Sousa Meneses, da Casa de Pentieiros, na freguesia de S. Pedro de Arcos.  
+    Faleceu em 4 de março de 1624.
+    António de Sousa Meneses casou em primeiras núpcias com Maria Barbosa e ambos moravam em Rubiães, Paredes de Coura. Foi nomeado por seu pai, Damião de Sousa, no prazo de Estorãos, foreiro ao Mosteiro de S. Romão do Neiva. Serviu nas armadas do reino e esteve nomeado Capitão-Mor de uma armada, mas não chegou a sê-lo por ser partidário de D. António Prior do Crato.</td></tr>
+<tr><td>Guiomar Maria de Meneses de Sousa Machado</td><td>Guiomar Maria de Meneses de Sousa Machado c.c. Tristão de Araújo e Azevedo (segue nos Coelhos de Araújo)</td></tr>
+<tr><td>Inês de Belém</td><td>Filha do Cónego Diogo Correia e de Ana Cardoso, Inês de Belém nasceu a 21 de outubro de 1664.</td></tr>
+<tr><td>Irmandades da freguesia de Gaifar</td><td>No século XVIII existiam na freguesia de Gaifar as seguintes confrarias: Santo Nome de Deus.</td></tr>
+<tr><td>Isabel Lobato de Neiva</td><td>Isabel Lobato de Neiva, filha de Gaspar Malheiro Reymão e de Susana de Neiva Lobato.
+    Casou com o Dr. António da Costa Novais, de Lisboa. 
+    S.G.</td></tr>
+<tr><td>Isilda da Conceição Ferreira Rego de Azevedo</td><td>Isilda da Conceição Ferreira Rego de Azevedo, da Quinta da Vista Alegre, na freguesia de Palmeira, em Braga.</td></tr>
+<tr><td>Jerónimo de Sousa Machado</td><td>Jerónimo de Sousa Machado (? - 1685), filho de Guiomar Machado e de António de Sousa Meneses, foi Senhor da Casa da Lage, Fidalgo da Casa Real e Padroeiro in solidum da Igreja de S. Pedro de Arcos. Jaz numa sepultura na igreja dessa freguesia.
+    Edificou a Capela de Nossa Senhora da Apresentação (invocação que mudou para Nossa Senhora da Conceição), junto à Casa da Lage, tendo sido passada licença para missa em 25 de agosto de 1674.
+    Faleceu em 30 de setembro de 1685.
+    
+    Casou 3 vezes:
+    1as núpcias c.c. Maria de Melo Pereira (sem descendência)
+    2as núpcias c.c. Ana de Abreu de Lima (sem descendência)
+    3as núpcias c.c. Joana de Távora</td></tr>
+<tr><td>Jerónimo de Sousa Machado e Joana de Távora</td><td>Jerónimo de Sousa Machado (?-1685) foi Senhor da Casa da Lage, Fidalgo da casa Real e Padroeiro in solidum da Igreja de S. Pedro de Arcos. Jaz numa sepultura na igreja dessa freguesia.
+    Edificou a Capela de Nossa Senhora da Apresentação (invocação que mudou para Nossa Senhora da Conceição), junto à Casa da Lage, tendo sido passada licença para missa em 25 de agosto de 1674.
+    Faleceu em 30 de setembro de 1685.
+    Casou 3 vezes:
+    1as núpcias c.c. Maria de Melo Pereira (sem descendência)
+    2as núpcias c.c. Ana de Abreu de Lima (sem descendência)
+    3as núpcias c.c. Joana de Távora</td></tr>
+<tr><td>Joana Margarida de Sousa Machado e Meneses</td><td>Joana Margarida de Sousa Machado e Meneses renovou o Prazo da Lage, na altura foreiro à Casa do Infantado, em que tinha sido nomeada por seu irmão Luís Bartolomeu.</td></tr>
+<tr><td>Joana de Sousa</td><td>Joana de Sousa é filha de João de Sousa Magalhães e de Violante Álvares Fagundes, filha de João Álvares Fagundes, natural de Viana e capitão da Ilha do Bacalhau, e de Leonor Dias.
+    Casou com Álvaro Soares de Deza, senhor da fortaleza e do Vale de Tebra, filho de Diego Suarez de Deza e Catarina Rodriguez de Ambia.
+    Por não ter descendência, Álvaro Soares de Deza, em 1566, instituiu vínculo dos seus bens na Torre de Tebra no qual nomeou Gregório Soarez de Deza, seu sobrinho, filho maior de Leonor Soares de Meira, sua irmã, e Gregório Soares de Deza.</td></tr>
+<tr><td>Joaquina Mendes Norton de Matos</td><td>Pais:
+    - Emília da Conceição de Matos Prego e Sousa e de Tomás Mendes Norton
+    
+    Irmãos:
+    - Arnaldo Mendes Norton de Matos
+    - Zulmira Mendes Norton de Matos
+    - Eusébio Mendes Norton de Matos
+    - José Mendes Ribeiro Norton de Matos
+    - Zulmira Mendes Norton de Matos
+    - Joaquina Mendes Norton de Matos
+    - Tomás Mendes Norton de Matos
+    - Rita Mendes Norton de Matos
+    - Alfredo Mendes Norton de Matos</td></tr>
+<tr><td>Joaquina Rosa dos Reis Martins de Carvalho Correia</td><td>Joaquina Rosa dos Reis Martins de Carvalho Correia da Casa do Baganheiro, freguesia de Queijada, filha de António José Martins de Carvalho Júnior e de Maria Joaquina Costa de Araújo dos Reis.
+    Casou com Manuel José de Matos Prego e Sousa de quem teve uma única filha: Emília da Conceição de Matos Prego e Sousa.
+    Joaquina Rosa dos Reis faleceu no dia 20 de novembro de 1862 às onze horas da noite, foi lido e aberto o seu testamento diante de testemunhas e do regedor no dia 21 e foi sepultada no dia 22.</td></tr>
+<tr><td>Joaquina Werneck de Abreu Brandão de Vasconcelos (1821-1899)</td><td>Filha do holandês Gaspar Werneck Ribeiro de Aguilar, instituidor do vínculo com capela na Misericórdia de Viana, e de Maria Rita Lobo de Abreu Brandão de Vasconcelos.</td></tr>
+<tr><td>Joaquina da Rocha Coelho</td><td>Filha de Maria Antónia da Rocha Sá e de João António Coelho de Araújo.</td></tr>
+<tr><td>Josefa Pereira da Rocha Coelho</td><td>Filha de Ana Josefa, de Gondufe, e de Bento José Viana.</td></tr>
+<tr><td>Josefa de Matos Prego e Sousa</td><td>Filha de Francisco José de Matos Prego e de Maria Rosa de Sousa e Silva, Josefa de Matos Prego nasceu no ano de 1817.
+    Faleceu solteira na Casa do Bárrio a 9 de maio de 1896.</td></tr>
+<tr><td>José Adolfo da Costa Azevedo e Maria da Graça Maciel da Rocha Coelho Azevedo</td><td>José Adolfo da Costa Azevedo casou com Maria da Graça Maciel da Rocha Coelho Azevedo, filha de José Manuel da Rocha Sá Coelho de Araújo e Ana da Conceição Maciel da Costa.
+    Estão ambos sepultados na Capela da Casa da Lage.</td></tr>
+<tr><td>José Alves de Matos Prego</td><td>Filho de Manuel Alves e de Ana Maria de Matos Prego, ambos do lugar da Veiguinha da freguesia de Moreira do Lima, nasceu a 4 de junho de 1748.
+    Casou-se a 28 de janeiro de 1770 com Maria Luísa Antunes Pereira de quem teve três filhos: Rosa Teresa de Jesus, Francisco Alves de Matos Prego (emigrado no Brasil) e Maria do Carmo.
+    Foi depositário das sisas e do produto do papel selado da Câmara Municipal de Ponte de Lima, foi rendeiro da freguesia de Estorãos e também exerceu as funções de pessoeiro.
+    Faleceu em princípios de 1825.</td></tr>
+<tr><td>José António de Carvalho</td><td>José António de Carvalho, filho de António Martins de Carvalho e de Maria Luísa dos Reis, nasceu no ano de 1764.
+    Faleceu no estado de solteiro a 9 de janeiro de 1836.</td></tr>
+<tr><td>José Lopes de Calheiros e Meneses</td><td>José Lopes de Calheiros e Meneses, filho de Francisco Lopes Calheiros de Meneses, Senhor da Casa de Calheiros, e de Maria Malheiro, nasceu a 13 de junho de 1781.
+    Foi Fidalgo Cavaleiro da Casa Real com Alvará de 24 de junho de 1803 e Capitão de Cavalos. 
+    Casou em 1814 com a sua sobrinha Clara Carolina Malheiro Lobato Teles de Meneses, filha da sua irmã Teresa Vitória Calheiros de Meneses, de quem teve cinco filhos: Teresa (faleceu em criança), Maria da Natividade Malheiro e Meneses, Ventura Malheiro Reymão Marinho Lobato Teles de Meneses, Clara Carolina das Dores Malheiro Teles de Meneses e Teresa Malheiro Teles de Meneses.
+    Faleceu a 25 de setembro de 1859 com 78 anos de idade.</td></tr>
+<tr><td>José Malheiro Reymão</td><td>José Malheiro Reymão, filho de Ventura Malheiro Reymão Marinho Lobato Teles de Meneses e de Maria Cândida do Patrocínio de Sá Pinto de Mendonça, nasceu a 3 de julho de 1860. 
+    Foi sucessor, Par do Reino, Moço-Fidalgo da Casa Real, do Conselho de Sua Majestade Fidelíssima, Ministro das Obras Públicas em 1906, Comendador da Ordem da Conceição, Governador Civil de Viana do Castelo, Deputado da Nação, Bacharel formado em Direito e Conservador do Registo Predial em Viana. 
+    Casou a 19 de novembro de 1885 com Adelaide Amélia Lima de Espregueira de quem teve dois filhos: Ventura Malheiro Reymão e Maria Filomena Malheiro Reymão.
+    Faleceu em Viana do Castelo a 6 de janeiro de 1951.</td></tr>
+<tr><td>José Malheiro Reymão e Adelaide Amélia Lima de Espregueira</td><td>José Malheiro Reymão casou a 19 de novembro de 1885 com Adelaide Amélia Lima de Espregueira de quem teve dois filhos: Ventura Malheiro Reymão e Maria Filomena Malheiro Reymão.</td></tr>
+<tr><td>José Manuel da Rocha de Sá Coelho de Araújo e Ana da Conceição Maciel da Costa</td><td>José Manuel da Rocha de Sá Coelho de Araújo era filho único perfilhado de José Maria da Rocha de Sá Coelho de Araújo e de sua sobrinha Maria de Jesus Coelho.
+    Foi universal herdeiro de sua meia irmã, Rosa Cândida Alves Franco.
+    Casou com Ana da Conceição Maciel da Costa (1895-1935), filha de Ventura José da Costa e de Ana Florentina Maciel.
+    Em 1916 comprou a sua tia Cândida Amália da Rocha Coelho uma quinta denominada dos Prazeres, Brandara ou Reguengos, situada no lugar de Coveiras, freguesia de Serreleis. A quinta tinha sido herdada pela referida tia. Essa Quinta dos Prazeres, juntamente com a Quinta do Juncal, pertenceram à família Ribeiro Cyrne de Viana do Castelo.</td></tr>
+<tr><td>José Maria Pereira de Castro</td><td>Filho de Gaspar Pereira de Castro e de Inácia Antónia Coelho de Araújo Pereira Caldas, nasceu a 23 de junho de 1836, foi Fidalgo Cavaleiro da Casa Real e Major de Infantaria nº 20. Casou a 23 de junho de 1862 com Clara Carolina das Dores Malheiro Teles de Meneses de quem teve três filhos.
+    Faleceu a 29 de julho de 1886.</td></tr>
+<tr><td>José Maria da Rocha de Sá Coelho de Araújo</td><td>Filho de Manuel da Rocha Coelho e de Maria Josefa Maia.
+    Teve um único filho que perfilhou, de sua sobrinha Maria de Jesus Coelho - José Manuel da Rocha de Sá Coelho de Araújo, que segue.</td></tr>
+<tr><td>José Mendes Ribeiro Norton de Matos</td><td>José Mendes Ribeiro Norton de Matos nasceu a 23 de março de 1867 em Santa Maria dos Anjos, Ponte de Lima, local onde foi batizado a 23 de abril do mesmo ano. Descendente de Norton por parte do pai e de Matos Prego pelo lado materno, José Norton de Matos era filho de Tomás Mendes Norton, Comendador da Ordem Militar de Nossa Senhora da Conceição de Vila Viçosa e Fidalgo Cavaleiro da Casa Real, natural de Viana do Castelo, e de Emília da Conceição de Matos Prego e Sousa, natural da freguesia da Queijada em Ponte de Lima, ambos proprietários, recebidos na Igreja de Santa Maria de Refóios do Lima e moradores na Rua D. Pedro (atual Rua General Norton de Matos em Ponte de Lima).
+    Ingressou em 1884 na Universidade de Coimbra onde completou o 3.º ano do curso de Matemática e, posteriormente, assentou praça no Regimento de Infantaria 23. Entrou no ano de 1888 na Escola de Guerra em Lisboa na qual concluiu o curso de Estado-Maior.
+    A 22 de novembro de 1896 nasce a sua filha de nome Rita Norton de Matos, fruto da sua relação com Ester Newton Pereira, com quem casou por procuração a 12 de fevereiro de 1905.
+    Relativamente à sua vida profissional, o General Norton de Matos exerceu ao longo da sua vida cargos de natureza diversa mas sempre com elevada responsabilidade, que vão desde Professor a Governador-Geral e Escritor. Iniciou a sua atividade na Índia para onde partiu em 1898 para montar, organizar e dirigir os Serviços de Agrimensura, de Cadastro e da Carta Agrícola. Deste modo, foi diretor da Repartição de Agrimensura do Estado da Índia, trabalhou nos Serviços de Geodésia e Cadastro (parte da Repartição de Agrimensura), na execução da triangulação secundária do território e do cadastro predial, rural e urbano; exerceu funções como administrador das Matas, diretor das Obras Públicas, membro do Conselho do Governo, na delimitação de territórios; foi ainda encarregado de várias missões à Índia Inglesa com vários objetivos (ex. estudo da organização do cadastro, de instrução técnica e de outros serviços da administração inglesa). Em dezembro de 1907 foi nomeado Provedor da Santa Casa da Misericórdia em Goa. Regressa em outubro de 1908 a Portugal, após dez anos ausente da então metrópole.
+    Poucos meses após ter regressado, foi nomeado por decreto a 25 de fevereiro de 1909, secretário da Missão Diplomática em Macau presidida por Joaquim Machado, integrado na Comissão para a Delimitação de Macau e suas dependências. Embarcou para o desempenho das suas funções a 20 de maio de 1909 com destino a Hong Kong tendo regressado apenas em 17 de março de 1910 novamente para Portugal onde exerceu serviço no Corpo de Estado-Maior. A 30 de maio de 1910 foi eleito sócio efetivo da Associação dos Engenheiros Civis Portugueses e em novembro de 1911 ocupou o lugar anteriormente deixado por Ernesto Jardim Vilhena no cargo de Vice-Presidente da União Colonial Portuguesa. Nesse mesmo ano foi promovido a major e nomeado, após concurso, para professor do Instituto Superior Técnico onde lecionou as cadeiras de Geometria Analítica e Geodesia/Topografia. Durante esse período de tempo manifestou interesse em se integrar na vida política, expresso depois na sua filiação no Partido Republicano Português e assumido como um dos sócios fundadores do Centro Democrático Republicano. 
+    É em 1912 que se volta a ausentar da metrópole quando, a 18 de abril de 1912 viu ratificado a sua nomeação como Governador-Geral de Angola, cargo que veio a desempenhar até abril de 1915, após ter despoletado aquela que viria a ser a Primeira Guerra Mundial. Neste clima, parte de Angola para a metrópole para assumir por um curto período de tempo a pasta do Ministério das Colónias, entre junho e julho desse mesmo ano. Assumiu também, de forma interina, a pasta do Ministério dos Negócios Estrangeiros, nomeado para esse efeito a 26 de outubro de 1915 e novamente em junho de 1916, abrangendo dois governos distintos: o de José de Castro e o de António José de Almeida. Entre 19 de junho de 1915 e 22 de julho de 1915 foi Ministro os Negócios Estrangeiros de Portugal; e por fim a de Presidente do Ministério em momentos distintos de outubro e dezembro de 1917.
+    Foi, no entanto, que no desempenho de Ministro da Guerra assumiu um maior relevo com decisões históricas e que marcaram o país. Iniciou a sua atividade a 22 de julho de 1915 e continuamente se manteve até ao Golpe de Estado de Dezembro de 1917.
+    Nesse âmbito, devido ao período sidonista em que Portugal acabara de entrar, Norton de Matos seguiu exilado para Londres onde permaneceu até 1919. Nesse período de tempo envolvera-se em empresas privadas como agente da Empresa de Construções Navais Lda. (1918-1922) de José Branco e de outros associados, com sede em Lisboa e estaleiros em Viana do Castelo. Também se envolveu num projeto ligado à aviação que consistia na criação de um serviço comercial para Portugal e colónias, em associação com a firma Fernandes, Bragança e Pereira, Lda.
+    Finalmente, após dois anos, regressa novamente a Portugal e é prontamente nomeado Delegado Português na Conferência da Paz, a convite de Afonso Costa.
+    Em 1920 é nomeado Alto-Comissário da República em Angola, tendo assumido funções a 16 de abril de 1921 onde permaneceu até 1924.
+    De regresso de uma forma conturbada, foi em 1 de julho de 1924 nomeado Embaixador de Portugal em Londres, lugar que ocupou até 1926.
+    Maçónico desde 1912, data em que foi iniciado na Loja Pátria e Liberdade com o nome de Danton, foi progressivamente subindo nos degraus do Grande Oriente Lusitano, até atingir a 30 de abril de 1930 a posição de Grão-Mestre da Maçonaria, lugar em que se manteve até 1935, na véspera da publicação da chamada "Lei das Associações Secretas".
+    Após uma década afastado da vida política, voltou ao ativo com a apresentação da candidatura à Presidência da República em 1948, cujas eleições vieram a decorrer em 13 de fevereiro de 1949. O opositor Norton de Matos acabou por desistir dias antes da candidatura, dando assim o lugar de vitória ao Marechal Óscar Carmona.
+    Faleceu a 2 de janeiro de 1955 na sua casa de Ponte de Lima.</td></tr>
+<tr><td>José Nuno Maciel da Rocha Coelho</td><td>Filho de José Manuel da Rocha de Sá Coelho de Araújo e de Ana da Conceição Maciel da Costa, filha de Ventura José da Costa e de Ana Florentina Maciel.
+    Casou na freguesia de S. Jorge de Arroios, da cidade de Lisboa, com Sofia Manuela de Almeida Catarino, filha de Manuel Teixeira Catarino e de Olga Alcântara de Almeida, falecida no hospital de Viana do Castelo, em 8 de dezembro de 2009).</td></tr>
+<tr><td>José Pereira de Sá Sotomaior</td><td>Filho de José Pereira de Sá Sotomaior e de D. Emília Salgado Sotomaior.</td></tr>
+<tr><td>José Pereira de Sá Sotomaior e Emília Salgado Sotomaior</td><td>Filho de António Pereira de Sá Sotomaior, 1.º visconde de Milhundos e Maria Rita de Brito Lira.
+    2.º Visconde de Milhundos.
+    
+    Emília Ribeiro Salgado Sotomaior, natural dos Estados Unidos do Brasil, aí casou com Gregório de Sá Pereira Sotomaior, vindo fixar residência em Portugal na terra e casa de seu marido nos Arcos de Valdevez. Tiveram um filho, Emílio Pereira de Sá Sotomaior. 
+    Passou mais tarde a viver em Ponte de Lima, tornando-se senhora da Casa do Rego, em Calheiros, pelo casamento em segundas núpcias com seu cunhado José Pereira de Sá Sotomaior, da Casa de Milhundos.
+    Muito nova ainda, perdeu o segundo marido.  
+    Faleceu aos 14 de Dezembro de 1909, na Casa do  Rego.</td></tr>
+<tr><td>José Ribeiro Lima Costa Azevedo</td><td>José Ribeiro Lima Costa Azevedo (1851-1925), 1º Visconde da Barrosa e Senhor da casa de Vila Meã em S. Martinho de Frescaínha, no concelho de Barcelos, Solar da Família Costa Azevedo.</td></tr>
+<tr><td>José Ribeiro de Seixas</td><td>José Ribeiro de Seixas é filho de Manuel Ribeiro Seixas e de Maria Teresa Vilaça Pinto.</td></tr>
+<tr><td>João Antunes</td><td>João Antunes, Frade da Companhia de Jesus. 
+    Filho de António Antunes, irmão de Maria Luísa Antunes Pereira, esposa de José Alves de Matos Prego, estes pais de Francisco Alves de Matos Prego, de Maria do Carmo Alves de Matos Prego, casada com André Vieira, e de Rosa Teresa de Jesus Alves de Matos Prego, primos de Francisco José de Matos Prego, bisavô de Rita Norton de Matos.</td></tr>
+<tr><td>João António de Albuquerque Vilhena</td><td>Filho de João Vilhena de Albuquerque Guedes de Moura Pegado e de Maria Inácia Malheiro Pereira de Castro, nasceu a 17 de dezembro de 1881 e faleceu a 9 de agosto de 1903.</td></tr>
+<tr><td>João Feio de Magalhães Coutinho</td><td>João Feio de Magalhães Coutinho: Filho de José Custódio de Magalhães Feio de Azevedo e de Maria Justina de Sá Coutinho, nasceu a 28 de agosto de 1804. Foi o 1.º Barão e 1.º Visconde da Torre (Decs. de 13-08-1847 e de 03-08-1871), Senhor da Casa da Torre em Soutelo e do morgado de S. Bento na vila de Prado como filho primogénito. Foi Fidalgo Cavaleiro da Casa Real, Comendador de Cristo, Coronel de Milícias de Viana e depois do Batalhão Nacional de Barcelos e Deputado da Nação.
+    Casou a 4 de setembro de 1854 com Marquesa Clara de Araújo e Azevedo Sá Coutinho (S.G.)
+    Deixou a casa a Alberto Feio da Rocha Páris, 2.º Visconde da Torre, neto de sua irmã.
+    Faleceu a 11 de março de 1885.</td></tr>
+<tr><td>João Feio de Magalhães Coutinho e Marquesa Clara de Araújo e Azevedo Sá Coutinho</td><td>João Feio de Magalhães Coutinho casado com com Marquesa Clara de Araújo e Azevedo Sá Coutinho. 
+    Foi o 1.º Barão e 1.º Visconde da Torre (Decs. de 13-08-1847 e de 03-08-1871), Senhor da Casa da Torre em Soutelo e do morgado de S. Bento na vila de Prado como filho primogénito. Foi Fidalgo Cavaleiro da Casa Real, Comendador de Cristo, Coronel de Milícias de Viana e depois do Batalhão Nacional de Barcelos e Deputado da Nação.
+    Sem geração, deixou a casa a Alberto Feio da Rocha Páris, 2.º Visconde da Torre, neto de sua irmã.</td></tr>
+<tr><td>João Francisco Martins</td><td>João Francisco Martins é apontado no livro de Rita Norton de Matos (A Família Norton de Matos) como sendo filho de João Francisco Martins. No entanto, no assento de casamento com Luísa Correia, diz ser este filho legítimo de António Martins e de sua mulher Maria Francisca, já defunta em 1717. Já Luísa Correia, no mesmo dito assento, consta ser filha do Reverendo Abade António Martins e de Isabel Fernandes da freguesia de Gosende, Bispado de Lamego. 
+    No testamento do Cónego Diogo Correia é referido uma Luísa filha do mesmo Abade António Martins e de Isabel Fernandes, a viverem na casa do Cónego. 
+    
+    O casal instituiu como universal herdeiro e testamenteiro António Martins de Carvalho, sua esposa e filhos da freguesia de Santa Maria de Nine, termo de Barcelos.
+    João Francisco Martins, foi herdeiro e testamenteiro da sua criada Mariana, solteira natural da freguesia de Sta. Marinha de Anais .</td></tr>
+<tr><td>João Luís de Carvalho (Pe.)</td><td>Bernardino José de Carvalho, filho de António Martins de Carvalho e de Maria Luísa dos Reis, nasceu no ano de 1751.
+    Foi abade e faleceu a 18 de junho de 1827.</td></tr>
+<tr><td>João Luís de Sousa Sarmento e Meneses</td><td>Padre João Luís de Sousa Sarmento e Meneses comprou muitas propriedades que anexou ao Morgado da Lage, nomeadamente a Quinta Nova, contígua à Casa da Lage.
+    Abade de S. Pedro de Arcos (1805).</td></tr>
+<tr><td>João Malheiro Reymão Pereira</td><td>João Malheiro Reymão Pereira, filho de Ventura Malheiro Reymão e de Páscoa Pereira Ferraz, nasceu a 29 de agosto de 1698 e foi batizado a 8 de setembro do mesmo ano, tendo sido padrinhos o Tenente Mateus Velho da Fonseca e Brites Clara de Azevedo. 
+    Foi para o Brasil, onde foi Mestre de Campo de um terço, auxiliar da Praça do Rio de Janeiro.
+    Faleceu a 2 de setembro de 1764 com testamento e foi sepultado na Igreja de Santo António.</td></tr>
+<tr><td>João Peixoto do Rego</td><td>João Peixoto do Rego é filho de Domingos Peixoto do Rego e de Claudina Rosa Barbosa.
+    Foi batizado a 13 de dezembro de 1848 em Sta. Maria de Palmeira onde casou  a 10 de outubro de 1870 com a sua prima em 3º grau Rosa Peixoto.
+    Faleceu a 31 de julho de 1928.</td></tr>
+<tr><td>João Vilhena de Albuquerque Guedes de Moura Pegado</td><td>Filho primogénito dos primeiros Barões do Mogadouro, nasceu a 12 de junho de 1851 e era Bacharel formado em Direito e Delegado do Procurador Régio em Viana do Castelo. Casou a 26 de fevereiro de 1881 com Maria Inácia Malheiro Pereira de Castro de quem teve um filho: João António de Albuquerque Vilhena.
+    Faleceu a 12 de junho de 1881.</td></tr>
+<tr><td>João da Rocha Leitão</td><td>Fez doação e instituição de vínculo a seu sobrinho Lourenço da Cunha e Rocha, filho de seu irmão Domingos da Rocha Leitão, da sua fazenda no lugar de Crasto, na freguesia de S. João da Ribeira, em 18 de maio 1702.
+    Pedro Pinto Ribeiro de Alexandria, foi administrador da capela instituída por João da Rocha Leitão.</td></tr>
+<tr><td>João de Sousa</td><td>Padre João de Sousa, foi morador no lugar do Ribeiro da freguesia de Santa Marinha de Arcozelo. Irmão de António de Sousa Pinto.</td></tr>
+<tr><td>João de Sousa Pereira Pinto</td><td>Filho de Benta Pereira de Lima e de António de Sousa Pinto. Casou com Antónia Maria da Silva de quem teve quatro filhos: Francisco António da Silva, Manuel José da Silva, Maria Joaquina de Sousa e Maria Rosa de Sousa e Silva.</td></tr>
+<tr><td>João de Sá Sotomaior e Maria Joana da Gama e Castro</td><td>João de Sá Sotomaior, filho de João de Sá Sotomaior e de Inês de Amorim.
+    Foi desembargador na Baía e no Porto, Cavaleiro da Ordem de Cristo, Fidalgo da Casa Real.
+    Casou com Maria Joana Barreto ou Maria Joana da Gama e Castro, filha de Sebastiana de Lima e de Félix Barreto da Gama e Castro, de quem teve oito filhos: Luís Vicente de Sá, João Marco de Sá, Félix Barreto de Sá, Sebastiana Rosa de Sá, José de Sá Sotomaior, Gonçalo de Sá, Francisco e António.</td></tr>
+<tr><td>Lourenço da Cunha e Rocha Leitão e Ana Maria de Araújo de Azevedo Sotomaior</td><td>Filho de Domingos da Rocha Leitão e Ana da Rocha, moradores no Couto da Feitosa.
+    Herdou de seu tio João da Rocha Leitão a fazenda no lugar de Crasto, na freguesia de S. João da Ribeira, em 18 de maio 1702.</td></tr>
+<tr><td>Luís Bartolomeu de Sousa Machado e Meneses</td><td>Frei Luís Bartolomeu de Sousa Machado e Meneses, administrador do Morgado da Casa da Lage por morte de seu irmão Manuel.
+    Foi Geral da sua Ordem (Congregação de S. João Evangelista) e posteriormente Monsenhor da Patriarcal de Lisboa. Doutor em Teologia, da Universidade de Coimbra, Lente de Véspera de Teologia Dogmática e Reitor do Colégio dos Loios, em Coimbra. Fidalgo da casa Real.
+    No seu testamento, feito em 7 de junho de 1816 deixa que se digam missas pelos seus irmãos já falecidos Manuel, Saturnino, António e D. Josefa Teresa, institui universal herdeira sua irmã D. Joana Margarida, ficando sua irmã D. Quitéria usufrutuária dos Prazos de Monte Redondo e de Prozelo e deixa uma junta de bois a seu irmãos João Luís. O testamento foi aberto em 15 de março de 1821.</td></tr>
+<tr><td>Luís Manuel de Sousa Machado de Meneses</td><td>Luís Manuel de Sousa Machado de Meneses c.c. Ana Isabel Clara de Sousa (segue nos Costas e Almeida)
+    Filhos:
+    Margarida Máxima de Sousa Sarmento de Meneses c.c. José da Silva Carvalho</td></tr>
+<tr><td>Madalena Bernarda Malheiro Quadros</td><td>Filha de Gaspar Malheiro Reymão e de Maria Teles de Meneses.</td></tr>
+<tr><td>Manuel Joaquim Peixoto do Rego</td><td>Manuel Joaquim Peixoto do Rego é filho de Domingos Peixoto e de Claudina Rosa Barbosa. 
+    Foi batizado a 3 de junho de 1856 em Sta. Maria de Palmeira e casou-se a 12 de maio de 1884 com Maria da Conceição Ferreira (1864 - 1950).
+    Faleceu na sua Casa da Bela Vista a 10 de abril de 1928.</td></tr>
+<tr><td>Manuel José Vieira</td><td>Reverendo Manuel José Vieira, era irmão de André José Vieira.
+    Iniciou a compra das Casas da Fonte da Vila.</td></tr>
+<tr><td>Manuel José da Silva</td><td>Filho de João de Sousa Pereira Pinto e de Antónia Maria da Silva, foi Abade da freguesia de Estorãos.
+    Era irmão de Maria Rosa de Sousa e Silva casada com Francisco José de Matos Prego, de Maria Joaquina de Sousa e de Francisco António da Silva.
+    Foi seu herdeiro Francisco José de Matos Prego (ou seu filho).</td></tr>
+<tr><td>Manuel José de Matos Prego e Sousa</td><td>Manuel José de Matos Prego e Sousa, filho de Francisco José de Matos Prego e de Maria Rosa de Sousa e Silva, nasceu na Casa do Bárrio a 7 de abril de 1805.
+    Foi administrador do concelho de Ponte de Lima e nomeado 2.º juiz substituto de direito da Comarca de Ponte de Lima, por decreto de 6 de dezembro de 1848.
+    Casou com Joaquina Rosa dos Reis Martins de Carvalho Correia, da Casa do Baganheiro na freguesia de Queijada, de quem teve uma única filha: Emília da Conceição de Matos Prego e Sousa. 
+    Faleceu 16 de setembro de 1860 na sua casa de Ponte de Lima, sita na Rua General Norton de Matos.</td></tr>
+<tr><td>Manuel José de Matos Prego e Sousa cc. Joaquina Rosa dos Reis Martins de Carvalho Correia</td><td>Manuel José de Matos Prego e Sousa, nasceu na Casa do Bárrio a 7 de abril de 1805 e faleceu 16 de setembro de 1860 na sua casa de Ponte de Lima, sita na Rua General Norton de Matos.
+    Casou com Joaquina Rosa dos Reis Martins de Carvalho Correia (falecida a 20 de novembro de 1862), da Casa do Baganheiro, freguesia de Queijada de quem teve uma única filha: Emília da Conceição de Matos Prego e Sousa.</td></tr>
+<tr><td>Manuel José de Matos Prego e Sousa e Joaquina Rosa dos Reis Martins de Carvalho Correia</td><td>Manuel José de Matos Prego e Sousa, nasceu na Casa do Bárrio a 7 de abril de 1805 e faleceu 16 de setembro de 1860 na sua casa de Ponte de Lima, sita na Rua General Norton de Matos.
+    Casou com Joaquina Rosa dos Reis Martins de Carvalho Correia (falecida a 20 de novembro de 1862), da Casa do Baganheiro, freguesia de Queijada de quem teve uma única filha: Emília da Conceição de Matos Prego e Sousa.</td></tr>
+<tr><td>Manuel José de Sousa Sarmento e Meneses</td><td>Administrador do Morgado da Casa da Lage por morte de seu pai, comprou a seu tio Luís Manuel, em 13 de março de 1788, todos os bens que ele tinha herdado e comprado na freguesia de Arcos e Estorãos.
+    Capitão do Regimento de Infantaria de Linha nº 9, graduado em major, em 1808, tendo sido distinguido durante a 2ª Invasão Francesa. Fidalgo Cavaleiro da Casa Real (1824).</td></tr>
+<tr><td>Manuel Pacheco Pinto</td><td>Manuel Pacheco Pinto, filho de Domingos Vaz Pinto e Catarina Borges.
+    Casou com Maria Pereira Soares de quem teve uma filha: Bernardina Pereira</td></tr>
+<tr><td>Manuel Pacheco Pinto e Maria Pereira</td><td>Manuel Pacheco Pinto, filho de Domingos Vaz Pinto e de Catarina Borges, casou com Maria Pereira Soares, filha de Maria de Neiva Barriga Lobato e de Gaspar Ledo Pereira.
+    Tiveram uma filha: Bernardina Pereira</td></tr>
+<tr><td>Manuel Ramos de Abreu de Lima e Vitória Barbosa Tinoco Boto</td><td>Manuel de Abreu casou com Vitória Barbosa Tinoco Boto, filha de Heitor Tinoco, da cidade de Braga, e de Antónia Barbosa.
+    Fez testamento em 1629 instituindo a sua filha Antónia e a sua mulher como herdeiras do seu terço.
+    Em 1638, Vitória Barbosa Tinoco Boto, já viúva, fez escritura de dote para casar sua filha Francisca com Guilherme de Campanaer e, em 1649, faz escritura de doação à sua filha e genro de toda a metade da sua Quinta do Paço e outras propriedades, no lugar do Barco.
+    Em 1650, pelo seu próprio punho, faz testamento e institui um vínculo com bens de raiz situados nas freguesias de Vitorino das Donas, Afife e as casas da rua do cais, em Viana e deixa determina que a sucessão no mesmo deveria seguir sempre pela via feminina, conforme já foi anteriormente referenciado.</td></tr>
+<tr><td>Manuel Ribeiro Seixas</td><td>Manuel Ribeiro Seixas, filho de João Ribeiro e de Inês Martins Seixas, da vila de Viana.
+    Foi Doutorado em Coimbra e Cónego da Sé de Lamego.</td></tr>
+<tr><td>Manuel Ribeiro de Seixas</td><td>Manuel Ribeiro de Seixas é filho de António Pinto da Costa, da freguesia da Ribeira, e de Maria Madriz Seixas, de Viana. Casou com Maria Teresa Xavier Vilaça Pinto, filha de José Álvares de Carvalho e de Teresa Vilaça Pinto, de Braga.</td></tr>
+<tr><td>Manuel da Rocha Coelho</td><td>Filho de Maria Antónia da Rocha Sá e de João António Coelho de Araújo.</td></tr>
+<tr><td>Manuel da Rocha Coelho e Maria Josefa Maia</td><td>Filho de Maria Antónia da Rocha Sá e de João António Coelho de Araújo.
+    Casou com Maria Josefa Maia (?-1893), da freguesia de Santa Maria Maior, em Viana do Castelo, filha de José António Maia e de Maria Josefa, da freguesia de Serdedelo, em Ponte de Lima, empregada do padre Felix Pinto da Costa.
+    Maria Josefa Maia herdou juntamente com seus irmãos bens em Gondufe, de sua madrinha Francisca Anes Pinto Jácome, que por sua vez os havia herdado de seu tio, o padre Félix Pinto da Costa, por testamento de 12 de fevereiro de 1812, filho legítimo de Agostinho Pinto da Costa e Francisca da Costa, da vila de Viana.</td></tr>
+<tr><td>Manuel de Amorim de Araújo</td><td>Manuel de Amorim de Araújo, filho de Gaspar de Amorim de Araújo e de Isabel Maciel Viana.
+    Casou com Mariana / Margarida Marinho Malheiro de quem teve cinco filhos: Gaspar de Amorim, Diogo Malheiro Barriga, Susana de Neiva, Lopo Malheiro e Joana Lobato.</td></tr>
+<tr><td>Manuel de Sousa Machado e Francisca Manuela Sarmento Sotomaior e Figueiroa</td><td>Manuel de Sousa Machado (1671 - 1728) foi administrador do morgado da Casa da Lage, padroeiro de S. Pedro de Arcos, Fidalgo da Casa Real, Capitão de Infantaria no Alentejo, Senhor do Prazo da Igreja de S. Pedro de Arcos que comprou por 2.500 cruzados a Constantino de Sousa Antas de Magalhães e sua mulher Joana Luísa de Antas Ortega.
+    Casou 3 vezes:
+    1as núpcias c.c. Luísa Margarida de Sousa Vasconcelos
+    2as núpcias c.c. Rosa Cecília de Vilhena e Castro (sem descendência)
+    3as núpcias c.c. Francisca Manuela Sarmento Sotomaior e Figueiroa
+    Francisca Manuela Sarmento Sotomaior e Figueiroa era filha de Diogo Sarmento de Sotomaior, senhor das Casas de Paradae Val de Achas, na Galiza e de sua mulher Maria Josefa de Prado Figueiroa.</td></tr>
+<tr><td>Maria Augusta Pereira de Sá Sotomaior</td><td>Filha de José Pereira de Sá Sotomaior e de D. Emília Salgado Sotomaior.</td></tr>
+<tr><td>Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá</td><td>Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá, filha de Ventura Malheiro Reymão Marinho Lobato Teles de Meneses e de Maria Cândida do Patrocínio de Sá Pinto de Mendonça, nasceu a 15 de maio de 1859. 
+    Casou a 23 de maio de 1885 com Alberto Feio da Rocha Paris, foi a 2ª Viscondessa da Torre por falecimento do seu marido, Senhora das Casas da Torre em Soutelo (onde residiu), de São Bento de Prado e da Quinta de Luou em Santa Cruz do Lima. 
+    Não tendo geração, a quinta foi doada à Companhia de Jesus pela Viscondessa, executando a vontade que o marido tinha manifestado.
+    Faleceu a 2 de maio de 1947.</td></tr>
+<tr><td>Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá e Alberto Feio da Rocha Páris</td><td>Filha de Ventura Malheiro Reymão Lobato Teles de Meneses e de Maria Cândida do Patrocínio Sá Pinto. 
+    Irmã de Ventura Malheiro Reymão, José Malheiro Reymão, Maria Máxima Malheiro Reymão.</td></tr>
+<tr><td>Maria Cândida do Patrocínio de Sá Pinto de Mendonça</td><td>Maria Cândida do Patrocínio de Sá Pinto de Mendonça, filha de João de Sá Pinto de Abreu Sotomaior, Senhor da Torre de Lanhelas, Bacharel formado em Leis, Corregedor de Castelo Branco, Desembargador da Relação do Porto, Procurador das Cortes de 1828 e Cavaleiro da Ordem de Cristo, e de Carlota Joaquina de Mendonça de Araújo da Casa da Amiosa.
+    Casou em Carreço a 4 de julho de 1856 com Ventura Malheiro Reymão Marinho Lobato Teles de Meneses de quem teve quatro filhos: Ventura Malheiro Reymão, Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá, José Malheiro Reymão e Maria Maximiana Malheiro Reymão. 
+    Faleceu na casa dos Malheiro Reymão a 21 de abril de 1918.</td></tr>
+<tr><td>Maria Francisca Leitão e Bento Correia</td><td>Filha de Helena Francisca e Amador Fernandes e neta, do lado materno, de Francisco Álvares e Maria Dias.
+    Maria Francisca Leitão c.c. Bento Correia</td></tr>
+<tr><td>Maria Helena Maciel da Rocha Coelho</td><td>Filha de José Manuel da Rocha de Sá Coelho de Araújo e de Ana da Conceição Maciel da Costa, filha de Ventura José da Costa e de Ana Florentina Maciel.
+    Licenciada em Medicina pela Universidade do Porto, solteira.</td></tr>
+<tr><td>Maria Inácia Malheiro Pereira de Castro</td><td>Filha de Clara Carolina das Dores Malheiro Teles de Meneses e de José Maria Pereira de Castro, nasceu a 7 de dezembro de 1866 e foi batizada a 28 de junho de 1865 na Igreja Paroquial de Nossa Senhora de Monserrate, da cidade de Viana do Castelo, onde foi padrinho Ventura Malheiro Reymão Teles de Meneses, seu tio e proprietário, e madrinha Nossa Senhora das Dores, tendo tocando com a sua coroa Inácia Antónia Micaela Pereira de Castro, sua avó paterna. Foi Senhora da Casa de Pomarchão e casou em primeiras núpcias a 26 de fevereiro de 1881 com João de Vilhena de Albuquerque de Guedes de Moura Pegado de quem teve um filho.
+    Ficou viúva a 12 de junho de 1881 e veio a casar posteriormente, a 9 de maio de 1889 com o seu cunhado Alexandre de Albuquerque de Moura Pegado de quem teve três filhas.</td></tr>
+<tr><td>Maria Inácia Malheiro Pereira de Castro e Alexandre de Albuquerque de Moura Pegado</td><td>Maria Inácia Malheiro Pereira de Castro c.c. João de Vilhena de Albuquerque Guedes de Moura Pegado (1as núpcias)
+    
+    Filho: 
+    - João António de Albuquerque Vilhena
+    
+    c.c. Alexandre de Albuquerque de Moura Pegado (2as núpcias)
+    
+    Filhas:
+    - Maria Isabel Pereira de Castro de Vilhena
+    - Clara Maria Pereira de Castro de Vilhena
+    - Maria Inácia Pereira de Castro de Vilhena</td></tr>
+<tr><td>Maria Joana de Abreu Coutinho (1780-1861)</td><td>Maria Joana de Abreu Coutinho recebeu de seu pai, Gonçalo de Abreu Coutinho como dote para casar com João Malheiro Pereira de Castro e Lira, todos os prazos na freguesia de Geraz (foreiro ao Convento Beneditino de S. Romão do Neiva) e o prazo de Afife (foreiro ao Convento de S. Domingos), bem como todos os outros prazos e bens foreiros. 
+    Como não tiveram descendência direta deixaram como herdeiros os sobrinhos Francisco António de Abreu Pereira Coutinho e José de Abreu Pereira Coutinho.
+    João Malheiro Pereira de Castro e Lira era filho de António Luís Malheiro Pereira, vereador no senado da vila de Ponte de Lima e instituidor do vínculo do Sopegal, na freguesia de Cambeses em Monção, e de Ana Maria Pereira de Castro e Lira.
+    Foi Capitão-mor de Ponte de Lima e sucedeu na Casa de Crasto, na Ribeira (Ponte de Lima), por alvará de 12 de Fevereiro de 1755.</td></tr>
+<tr><td>Maria Joaquina Costa de Araújo dos Reis e António José Martins de Carvalho Júnior</td><td>Maria Joaquina Costa de Araújo dos Reis e António José Martins de Carvalho Júnior, da Casa do Baganheiro, casaram-se no ano de 1822.</td></tr>
+<tr><td>Maria Josefa Maia</td><td>Maria Josefa Maia (?-1893), da freguesia de Santa Maria Maior, em Viana do Castelo, filha de José António Maia e de Maria Josefa, da freguesia de Serdedelo, em Ponte de Lima, empregada do padre Felix Pinto da Costa.</td></tr>
+<tr><td>Maria José Pereira de Castro</td><td>Filha de Gaspar Pereira de Castro e de Inácia Antónia Coelho de Araújo Pereira Caldas, era irmã de José Maria Pereira de Castro. 
+    Faleceu solteira.</td></tr>
+<tr><td>Maria Justina de Sá Coutinho</td><td>Maria Justina de Sá Coutinho, filha de Félix Barreto de Sá Sotomaior e de Maria Joana Coutinho. 
+    Casou a 18 de dezembro de 1799 com José Custódio de Magalhães Feio de Azevedo, de quem teve três filhos: João Feio de Magalhães Coutinho, António Feio de Magalhães Coutinho e Maria Guilhermina Feio de Magalhães Coutinho.</td></tr>
+<tr><td>Maria Luísa Antunes Pereira</td><td>Filha legítima de António Antunes e de Luísa Maria Pereira.
+    Casou-se a 28 de janeiro de 1770 com José Alves de Matos Prego de quem teve três filhos: Rosa Teresa de Jesus, Francisco Alves de Matos Prego e Maria do Carmo.
+    Faleceu a 2 de maio de 1816.</td></tr>
+<tr><td>Maria Luísa dos Reis</td><td>Maria Luísa dos Reis, filha de Úrsula Maria dos Reis e de Pedro Rodrigues Lima. Casou com António Martins de Carvalho no ano de 1750 de quem teve onze filhos.
+    Faleceu a 19 de outubro de 1810.</td></tr>
+<tr><td>Maria Madalena Gonçalves</td><td>Casada em primeiras núpcias com João Gonçalves e em segundas com António de Matos Prego, casamento realizado a 6 de setembro de 1812. Teve deste último matrimónio dois filhos: Francisco José de Matos Prego e António José de Matos Prego.</td></tr>
+<tr><td>Maria Madalena Malheiro Pereira de Castro e José de Magalhães Queirós de Abreu Pereira Coutinho</td><td>Maria Madalena Malheiro Pereira de Castro: Filha de Gaspar Pereira de Castro e de Clara Carolina Malheiro Reymão Pereira de Castro, nasceu a 19 de janeiro de 1899. Casou com José de Magalhães Queirós de Abreu Coutinho de quem teve quatro filhos.
+    
+    José de Magalhães Queirós de Abreu Coutinho: Filho de Maria José de Abreu de Lima Pereira Coutinho e de António de Magalhães Barros de Araújo Queirós, nasceu a 18 de abril de 1885 e foi Capitão de Infantaria que prestou bons serviços em África e na guerra contra os alemães, pelo que foi agraciado com a Cruz de Guerra e com a Comenda de Avis. Casou a 19 de janeiro de 1925 com Maria Madalena Malheiro Pereira de Castro.</td></tr>
+<tr><td>Maria Madriz Seixas e António Pinto da Costa</td><td>Maria Madriz Seixas, filha de João Ribeiro e de Inês Martins Seixas, da vila de Viana, e irmã de José Ribeiro de Seixas, bacharel, e de Manuel Ribeiro Seixas, doutorado em Coimbra e cónego da Sé de Lamego. 
+    Foi casada com António Pinto da Costa.
+    
+    Filhos:
+    - Manuel Ribeiro Seixas c.c. Maria Teresa Vilaça Pinto
+    - Pascoal Pinto de Alexandria</td></tr>
+<tr><td>Maria Rosa de Sousa e Silva</td><td>Francisco José de Matos Prego e Maria Rosa de Sousa e Silva foram os primeiros proprietários da família Matos Prego a viverem na Casa do Bárrio.
+    Filha de João de Sousa Pereira Pinto e de Antónia Maria da Silva, Maria Rosa de Sousa e Silva era natural da freguesia de Santa Marinha de Arcozelo.
+    Foi casada com Francisco José de Matos Prego, de quem teve cinco filhos.</td></tr>
+<tr><td>Maria da Agonia de Matos Prego</td><td>Filha de Francisco José de Matos Prego e de Maria Rosa de Sousa e Silva, nasceu no ano de 1806 em Viana do Castelo na Casa de Monserrate, que pertencia aos seus pais. 
+    Faleceu solteira na Casa do Bárrio, em Moreira do Lima, a 16 de março de 1896.</td></tr>
+<tr><td>Maria da Conceição Ferreira</td><td>Maria da Conceição Ferreira nasceu a 18 de novembro de 1864 na freguesia de Sant'Ana da Cidade do Rio de Janeiro. É filha natural de João José Ferreira, da Casa do Alferes, e de Josefa Cândida da Silva, natural da freguesia da Piedade do concelho das Lages da Ilha do Pico.
+    Casou-se a 12 de maio de 1884 com Manuel Joaquim Peixoto do Rego.
+    Faleceu na sua Casa da Bela Vista a 28 de abril de 1950.</td></tr>
+<tr><td>Maria da Graça Maciel da Rocha Coelho Azevedo e José Adolfo da Costa Azevedo</td><td>Filha de José Manuel da Rocha de Sá Coelho de Araújo e de Ana da Conceição Maciel da Costa.
+    Maria da Graça Maciel da Rocha Coelho Azevedo casou com José Adolfo da Costa Azevedo, senhor da Casa da Lage, filho de Adolfo Ribeiro Lima da Costa Azevedo (da Casa da Barrosa) e de Isilda da Conceição Ferreira Peixoto do Rego.</td></tr>
+<tr><td>Maria de Jesus Coelho</td><td>Filha de Manuel da Rocha Coelho e de Maria Josefa Maia.
+    Casou com José Manuel Gonçalves (1838-?), em Gondufe, filho de Manuel José Gonçalves Fernandes e de Custódia Luísa Vieira.</td></tr>
+<tr><td>Maria de Jesus Coelho Franco</td><td>Filha de Maria de Jesus Coelho e de José Manuel Gonçalves.
+    Casou com António Guilherme Alves Franco, natural da freguesia de Serreleis, em Viana do Castelo, filho de Joana Alves Franco e universal herdeiro de seu tio Manuel António Alves Franco.
+    Tiveram apenas uma filha Rosa Cândida Alves Franco, solteira, que deixou como universal herdeiro o seu meio irmão, o Dr. José Manuel da Rocha Coelho.</td></tr>
+<tr><td>Maria de Neiva Barriga Lobato</td><td>Maria de Neiva Barriga Lobato, filha de Susana de Neiva Lobato e de Gaspar Malheiro Barriga, casou no ano de 1620 com Gaspar Ledo Pereira, Senhor do Morgado de Barreiros, filho de Lourenço Ledo de Brito e de sua mulher Maria Soares Pereira, de quem teve três filhos: Lourenço Ledo Pereira (passou para Castela), Gaspar Marinho Pereira e Maria Pereira Soares.</td></tr>
+<tr><td>Maria do Carmo</td><td>Filha de José Alves de Matos Prego e de Maria Luísa Antunes, nasceu a 12 de julho de 1776 e foi batizada na Igreja da vila de Ponte de Lima. 
+    Casou-se com André José Vieira e foi moradora na rua da Fonte da Vila, da vila de Ponte de Lima.
+    Faleceu no dia 22 de maio de 1856.</td></tr>
+<tr><td>Maria do Carmo Pinto de Almeida e Meneses</td><td>Maria do Carmo Pinto de Almeida e Meneses (1777-1877) sucedeu na Casa da Lage a seus irmãos. Solteira, sem herdeiros forçados, e extinta a lei dos vínculos, pensava deixar como única herdeira dos seus bens, sua afilhada D. Antónia Ribeiro Lima, que viria a casar com José Ribeiro Lima da Costa Azevedo, 1º Visconde da Barrosa.
+    No entanto, o pai desta, António Ribeiro da Silva, feitor da Casa, convenceu Maria do Carmo Pinto de Almeida e Meneses a institui-lo herdeiro a ele, com a condição de deixar a cota disponível à dita filha, não deixando assim os restantes filhos em situação desigual relativamente à irmã.
+    Com a morte de Maria do Carmo Pinto de Almeida e Meneses ficou extinto o ramo primogénito da família Sousa Machado em que andava a Casa da Lage.</td></tr>
+<tr><td>Mariana/Margarida Marinho Malheiro e Manuel de Amorim de Araújo</td><td>Mariana / Margarida Marinho Malheiro, filha de Susana de Neiva Lobato e de Gaspar Malheiro Barriga.
+    Casou com Manuel de Amorim de Araújo, filho de Gaspar de Amorim de Araújo e de Isabel Maciel Viana, de quem teve cinco filhos: Gaspar de Amorim, Diogo Malheiro Barriga, Susana de Neiva, Lopo Malheiro e Joana Lobato.</td></tr>
+<tr><td>Marquesa Clara de Araújo e Azevedo Sá Coutinho</td><td>Marquesa Clara de Araújo e Azevedo Sá Coutinho, filha de Luís Manuel de Azevedo Sá Coutinho, Senhor da Casa da Tapada, e de Maria Lina de Araújo e Azevedo, nasceu em Viana do Castelo a 6 de julho de 1818. 
+    Casou a 4 de setembro de 1854 com João Feio de Magalhães Coutinho (S.G.). Foi Viscondessa da Torre.
+    Faleceu em Soutelo, Vila Verde, a 8 de fevereiro de 1877.</td></tr>
+<tr><td>Mecia Pereira Ferraz</td><td>Filha de Ventura Malheiro Reymão e de Páscoa Pereira Ferraz, nasceu em 13 de novembro de 1695.
+    Professou em S. Bento de Viana em 1713, falecendo em 1743.</td></tr>
+<tr><td>O jornal Cardeal Saraiva</td><td>O jornal Cardeal Saraiva é um jornal semanário que se edita em Ponte de Lima ininterruptamente desde 15 de Fevereiro de 1910, tendo como fundadores António Ferreira, Juiz Desembargador, natural de Ponte de Lima, Plágio dos Reys Lemos e Avelino Guimarães.
+    Até 2 de Novembro de 1911 foi impresso na extinta Tipografia Confiança, então sita na Rua do Arrabalde nº 97. A redacção e a administração do jornal situavam-se no fundo do bairro do Pinheiro, defronte do Cruzeiro de Merim, ou do Sr. da Paz, no prédio onde residia o seu director, António José de Oliveira, professor oficial primário em Ponte de Lima. 
+    Em 1912 era impresso na Typographia Modelo, em Viana do Castelo e em 25 de Setembro de 1913 voltou a ser composto e impresso em Ponte de Lima, mais concretamente na tipografia do seu administrador, editor e director Avelino Guimarães - Tipografia Guimarães. Desde então, o Jornal Cardeal Saraiva, que se mantêm na mesma família, continua a publicar-se semanalmente. É o jornal mais antigo que se publica no concelho de Ponte de Lima.</td></tr>
+<tr><td>O primeiro título de Visconde concedido em Portugal</td><td>O primeiro título de Visconde concedido em Portugal foi o de Visconde de Vila Nova de Cerveira. 
+    1.º Visconde de Vila Nova de Cerveira, D. Leonel de Lima, filho do alcaide-mor de Ponte de Lima, senhor de Arcos de Valdevez, Fernão Eanes de Lima e de D. Teresa da Silva. O título foi concedido por D. Afonso V, por carta assinada em Toro a 4 de Março de 1476. Foi casado com Filipa da Cunha. 
+    2.º Visconde de Vila Nova de Cerveira, D. João de Lima, do conselho de D. Afonso V e D. João II. Foi alcaide-mor de Ponte de Lima. Casou, primeiro, com D. Catarina de Ataíde e depois com D. Isabel de Brito. D. Manuel I confirmou-lhe o título em 7 de Abril de 1496. 
+    3.º Visconde de Vila Nova de Cerveira, D. Francisco de Lima, filho do primeiro casamento do 2.º Visconde. Foi do conselho de D. João III. Casou com D. Isabel de Noronha, filha dos 2.º Condes de Abrantes.
+    4.º Visconde de Vila Nova de Cerveira, D. João de Lima. Casou com D. Inês de Noronha, filha de João Rodrigues de Sá. 
+    5.º Visconde de Vila Nova de Cerveira, D. Francisco de Lima. Casou com D. Brites de Alcáçova. O título foi renovado por D. Sebastião e 11 de Agosto de 1573. Sua filha D. Inês de Lima casou com Luís de Brito Nogueira, entrando assim na casa o Morgado de São Lourenço de Lisboa ou de Santa Ana, instituído por Mestre Pedro Nogueira, e o Morgado de Santo Estêvão de Beja. 
+    6.º Visconde de Vila Nova de Cerveira. 
+    7.º Visconde de Vila Nova de Cerveira, casado com D. Joana de Vasconcelos. Com D. Joana entrou o Morgado de Soalhães também chamado de Mafra na família dos Viscondes. D. Joana de Vasconcelos era filha de D. João Luis de Vasconcelos e Meneses, senhor de Mafra, e de Maria Cabral de Noronha. D. João Luis de Vasconcelos e Meneses era filho de D. Afonso de Vasconcelos e Menezes e de Sebastiana de Macedo. D. Afonso de Vasconcelos e Meneses era filho de D. João de Vasconcelos, senhor de Mafra, e de Catarina de Noronha (ou e Eça). D. João de Vasconcelos era filho de D. Afonso de Menezes e Vasconcelos, senhor de Mafra, e de Maria de Magalhães. D. Afonso de Meneses e Vasconcelos era filho de D. João de Vasconcelos e Menezes, 2º Conde de Penela, e de Maria de Ataíde. D. João de Vasconcelos e Menezes era filho de D. Afonso de Vasconcelos e Menezes, 1º Conde de Penela, e de D. Isabel da Silva. D. Afonso de Vasconcelos e Menezes era filho de D. Fernando de Vasconcelos, senhor do morgado de Soalhães, e de D. Isabel Coutinho, senhora de Mafra e Enxara de Cavaleiros. 
+    8.º Visconde de Vila Nova de Cerveira, D. Manuel de Lima e Brito Vasconcelos, filho dos anteriores, morreu solteiro. 
+    9.º Visconde de Vila Nova de Cerveira, D. Lourenço de Lima Vasconcelos e Meneses, irmão do anterior, morreu solteiro. 
+    10.º Visconde de Vila Nova de Cerveira, D. João Fernandes de Lima Vasconcelos e Meneses de Brito Nogueira, irmão dos anteriores. Casou com a sobrinha D. Vitória de Bourbon, filha dos 3º Condes dos Arcos e viúva do 7.º Conde de Atouguia. 
+    11.º Visconde de Vila Nova de Cerveira, D. Tomás de Lima Vasconcelos e Meneses de Brito Nogueira. Foi alcaide-mor de Vila Nova de Cerveira. Casou com D. Maria de Hohenloe. 
+    12.º Viscondessa de Vila Nova de Cerveira, D. Maria Xavier de Lima e Hohenloe. Casou com o tio D. Tomás da Silva Teles, filho do 2º Marquês de Alegrete, Visconde de Vila Nova de Cerveira pelo casamento. 
+    13.º Visconde de Vila Nova de Cerveira, D. Tomás Xavier de Lima Nogueira Vasconcelos Teles da Silva, 1.º Marquês de Ponte de Lima. 
+    14.º Visconde de Vila Nova de Cerveira, D. Tomás Xavier de Lima Vasconcelos Brito Nogueira Teles da Silva, filho do anterior. Morreu ainda o pai estava vivo. 
+    15.º Visconde de Vila Nova de Cerveira, D. Tomás José Xavier de Lima Vasconcelos Brito Nogueira Teles da Silva, 2.º Marquês de Ponte de Lima. 
+    16.º Visconde de Vila Nova de Cerveira, D. José Maria Xavier de Lima Vasconcelos Brito Nogueira Teles da Silva, 3. Marquês de Ponte de Lima. 
+    O património da família é constituído por bens no Minho, na sua maioria doações feitas pelos reis, por bens localizados em Lisboa, Mafra, Sintra, Colares, Ericeira, Torres Vedras, pertencentes aos morgados de Santa Ana e de Soalhães ou de Mafra, bens esses que entraram na família por via do casamento.
+    
+    (Fonte: Arquivo Nacional Torre do Tombo - PT/TT/VNC)</td></tr>
+<tr><td>Padre José Maria da Cunha</td><td>Padre José Maria da Cunha foi assistente na casa de Rosa Teresa de Jesus, na Quinta da Caravana.</td></tr>
+<tr><td>Passos Figueiroa</td><td>Os filhos de Rafael Álvares de Passos foram instituidores do vínculo de Nossa Senhora do Rosário da Barrosa, juntamente com o Belchior Barbosa de Almeida, sua mulher Maria Luísa da Rocha e o padre Simão Barbosa de Almeida (filho legitimado do senhor da casa).</td></tr>
+<tr><td>Património arquitetónico e arqueológico: perímetro de emparcelamento das freguesias da Correlhã e Vitorino das Donas</td><td>Documentos que estiveram na posse da da DEC (Divisão de Educação e Cultura) com a Arqueóloga Sandra Rodrigues, que iniciou a sua actividade neste município através do GTL, tendo depois transitado para a DEC na qualidade de assessora. Estes documentos estiveram na sua posse numa paste denominada “Propostas de Classificação - classificações 2» com a cota antiga DEC/ASS J-3/3-9. Contudo por questões de conteúdo e assunto foi aberta uma execpção ao arranjo orgânico destes documentos que passam agora a fazer parte da DEP.</td></tr>
+<tr><td>Pedro Luís de Sousa</td><td>Filho de António de Sousa Pinto e de Benta Pereira Lima, foi abade e morador na freguesia de Estorãos.</td></tr>
+<tr><td>Pedro Pinto Ribeiro de Alexandria ou Pedro Pinto Ribeiro Seixas</td><td>Pedro Pinto Ribeiro de Alexandria ou Pedro Pinto Ribeiro Seixas é filho de Manuel Ribeiro Seixas e de Maria Teresa Vilaça Pinto. Nasceu a 15 de abril de 1716 e foi batizado a 29 de abril pelo seu tio abade José Ribeiro Seixas, na sua igreja de Orbacém. Foi padrinho o seu tio Bernardo Pinto da Costa e madrinha Inês Pinto da Costa.
+    Foi administrador das capelas instituídas por João da Rocha Leitão e por Francisco Álvares.
+    
+    Faleceu a 18 de setembro de 1780 e foi enterrado a 19 na capela da Quinta da Barrosa.</td></tr>
+<tr><td>Páscoa Pereira Ferraz</td><td>Ventura Malheiro Reymão, filho de Gaspar Malheiro Reymão e de Susana Neiva Lobato, foi Fidalgo da Casa Real, Cavaleiro da Ordem de Cristo e familiar do Santo Ofício em 1692.
+    Casou em Viana no ano de 1689 com Páscoa Pereira Ferraz, sua parente, de quem teve quinze filhos: Susana Maria de Neiva, Isabel e Luísa – freiras em Viana – Gaspar Malheiro Reymão, Lourenço frade Crúzio, Frei António frade Bento, Gaspar Pereira, Manuel Pereira, Maria, Margarida, Teresa, Gonçalo Malheiro abade de Fonte Boa, Baltazar Malheiro Reymão D. Prior da vila de Barcelos, Fr. Paulo e João Malheiro. 
+    Faleceu na Praça das Couves com todos os sacramentos aos 11 dias de dezembro de 1719 e foi sepultado na Misericórdia junto ao Altar de Nossa Senhora. Fez testamento.</td></tr>
+<tr><td>Quitéria Teresa de Sousa Machado e Meneses</td><td>Quitéria Teresa de Sousa Machado e Meneses foi a último pessoa da família Sousa Machado que habitou a Casa da Lage.</td></tr>
+<tr><td>Rafael Pinto de Almeida e Meneses</td><td>Rafael Pinto de Almeida e Meneses consolidou os domínios dos senhorios direto e útil dos vários prazos que andavam ligados à Casa da Lage e da Barrosa por carta de remissão de foros paga à Fazenda Nacional.
+    Comprou a Quitéria Luísa de Sá e Meneses, sua prima, todos os bens que ela tinha herdado da Casa da Lage.</td></tr>
+<tr><td>Rita Mendes Norton de Matos</td><td>Pais:
+    - Emília da Conceição de Matos Prego e Sousa e de Tomás Mendes Norton
+    
+    Irmãos:
+    - Arnaldo Mendes Norton de Matos
+    - Zulmira Mendes Norton de Matos
+    - Eusébio Mendes Norton de Matos
+    - José Mendes Ribeiro Norton de Matos
+    - Zulmira Mendes Norton de Matos
+    - Joaquina Mendes Norton de Matos
+    - Tomás Mendes Norton de Matos
+    - Rita Mendes Norton de Matos
+    - Alfredo Mendes Norton de Matos</td></tr>
+<tr><td>Rosa Cândida Alves Franco</td><td>Filha de Maria de Jesus Coelho e António Guilherme Alves Franco.</td></tr>
+<tr><td>Rosa Teresa Alves de Jesus</td><td>Filha de José Alves de Matos Prego e de Maria Luísa Antunes Pereira, nasceu a 12 de julho de 1776 e foi batizada na Igreja da vila de Ponte de Lima.
+    Faleceu solteira e, não tendo herdeiros forçados, constituiu seu testamenteiro e único universal herdeiro Francisco de Matos Prego e Sousa, filho legítimo de Francisco José de Matos Prego e de Maria Rosa de Sousa, do lugar do Bárrio da freguesia de Moreira do Lima. Deixa usufruto de todos os seus bens móveis e de raiz à sua irmã Maria do Carmo de Ponte de Lima e, por sua morte, passariam os bens ao dito seu testamenteiro. Deixa ao mesmo dito herdeiro o domínio de um prazo que se compunha de uma morada de casas sitas ao pé da Fonte da Vila na vila de Ponte de Lima.
+    Foi aberto o seu testamento a 12 de junho de 1850.</td></tr>
+<tr><td>Salvato Feijó</td><td>Em 14 de julho de 1878, nascia em Ponte de Lima, Salvato de Meneses de Castro Feijó, poeta e dramaturgo, oriundo de uma família fidalga que tinha as suas raízes na Galiza e o túmulo de um ascendente, "grão caçador e monteiro", no Convento de Celanova, ao rés do rio Minho. Era sobrinho, pelo lado paterno, do grande poeta parnasiano António Feijó, também este natural da histórica vila limiana.
+    Graças às diligências do tio, junto à influência do seu amigo, poeta e romancista, Luís de Magalhães, então Ministro do Reino, Salvato ocupou o cargo de aspirante de Alfândega em Viana do Castelo, chegando ao posto de sub-inspector, quando foi demitido por participar na revolução de 3 de fevereiro de 1927, contra a ditadura militar implantada no ano anterior.
+    Segundo uma nota biográfica confidencial, em meu poder, do seu conterrâneo, o contista e historiador Júlio de Lemos, dirigida ao poeta Carlos de Lemos, Salvato Feijó esteve "na cadeia por três ou quatro vezes - mas longos meses - por adversário da ditadura".
+    Após a sua demissão foi, até à morte, em 18 de abril de 1959, gerente da Empresa Cinematográfica Vianense, Lda, exploradora do Teatro Sá de Miranda. Tinha, aí, o gabinete privado, onde escreveu as suas obras dramatúrgicas e a sua poesia, quer lírica, quer satírica, ou destinada às coplas das revistas-do-ano, compostas ao violino, tocado com alguma mestria. Usou o pseudónimo "Salvareno", para assinar as suas peças.
+    O primeiro texto teatral, de que se conhecem algumas cenas, data de 1902 e intitula-se "D. Baganha e Areosa", escrito em verso, para uma récita particular, em que o autor foi intérprete, possivelmente inspirado no "D. Beltrão de Figueiroa", de Júlio Dantas, ou, até, em "O Fidalgo Aprendiz", de D. Francisco Manuel de Melo. Todavia, parece que Salvato se estreou, no género, com "A Cigarreira", dois atos em verso, escita no Café Gelo lisboeta, numa única noite, por aposta entre estudantes, precisamente na mesa em que Buíça e Costa combinaram o regicídio. Desconhece-se-lhe o original, como o de "Círculos Errados", "que se lhe seguiu" (Júlio de Lemos), espécie de opereta, a iniciar a carreira de teatro musical de Salvareno.
+    Todavia, a sua primeira peça editada é o monólogo satírico "O Pires de Aguardente" (1903), de colaboração com José de Matos, a evocar o "Auto da Rainha Cláudia", de Júlio Dantas, bem como "A Ceia dos Cardeais", do mesmo autor. É, ainda, sob a égide de Dantas, que Salvato Feijó leva à cena e publica, em 1908, o ato em verso "Um Velho Conto", 'lever-de-rideau' baseado num pequeno conto do escritor francês Catuto Mendés.
+    Só em 1923, o dramaturgo se liberta do estilo afetado do criador de "A Severa" e descobre a simplicidade lírica, a clareza e a moralidade de Mestre Gil, escrevendo a sua obra-prima, "A Feiticeira da Fraga", auto pastoril editado postumamente. Em 1925, prossegue idêntico percurso estético, com "Auto da Mentira", ainda mais arreigado aos 'aitos' vicentinos.
+    Entretanto, ia divulgando, em palco, as suas revistas de costumes locais, que ele próprio encenava - "Ai, que me Trilhas?..." (1905); "Quem vai Nisto?" (1914), de colaboração com o seu concunhado José Couto Viana (Sandy) e com o jornalista Fernando Brandão; "Vai...na Fita" (1915); "Meninas, da nossa Barra!..." (1934) e "Aí vai disto..." (1939). Deixou, inédito, o auto pastoril em verso "O Canistrel".
+    A sua poesia andou esparsa por revistas e jornais, ou oculta nas gavetas da sua banca de trabalho, Só por 1990, o filho mais velho do escritor, José Lopo Freijó, decidiu reuni-la, deixando ao autor destas linhas a grata tarefa de a selecionar e prefaciar, encarregando-se a Câmara Municipal de Viana do Castelo de a dar à estampa, em 1992.
+    Trata-se de uma poesia elegantena forma e nos termos de galanteio amoroso e gentileza palaciana, repassada de aguda ironia e doce malícia, bem como de uma sensualidade discreta, sugerindo a inspiração do cantor das "Bailatas", ainda que lhe falte a densidade de alma de António Feijó.
+    Mas, quanto nos deixou do seu talento poético, é suficiente para o julgarmos um dos mais lídimos poetas da Ribeira-Lima.</td></tr>
+<tr><td>Simão Barbosa de Almeida</td><td>Filho de legitimado de Belchior Barbosa de Almeida e Ângela Ribeiro, quando ambos eram solteiros.
+    Cónego da Sé de Braga.</td></tr>
+<tr><td>Susana de Neiva Lobato</td><td>Susana de Neiva, filha de Mariana/ Margarida Marinho Malheiro e de Manuel de Amorim de Araújo, casou com Gaspar Malheiro Reymão de quem teve quatro filhos: Ventura Malheiro Reymão, Baltazar Malheiro Reymão (Fidalgo da Casa Real, Cavaleiro da Ordem de Cristo e Mestre de Campo de Auxiliares), Isabel e Margarida.</td></tr>
+<tr><td>Susana de Neiva e Gaspar Malheiro Reymão</td><td>Susana de Neiva, filha de Mariana/ Margarida Marinho Malheiro e de Manuel de Amorim de Araújo, casada com Gaspar Malheiro Reymão Gaspar Malheiro Reymão, filho de Isabel Rodrigues Malheiro e de António Gonçalves Reymão. 
+    Gaspar Malheiro Reymão militou em Catalunha e no tempo da Aclamação passou a este reino onde tomou por sua conta o provimento do exército desta província, dando dinheiro sem interesse por cujo respeito a Rainha lhe escreveu uma carta de agradecimento a 16 de maio de 1655 e se lhe deu o hábito de Cristo com 40$ de tença, e crescendo os seus serviços de largar 50 mil cruzados além dos 200 que lhe devia a Fazenda Real, teve despacho no ano de 1664 de dois hábitos de Cristo para os seus filhos e o Foro de Fidalgo. 
+    O casal teve quatro filhos: Ventura Malheiro Reymão, Baltazar Malheiro Reymão (Fidalgo da Casa Real, Cavaleiro da Ordem de Cristo e Mestre de Campo de Auxiliares), Isabel (casada com António da Costa Novais, de Lisboa) e Margarida – freira em S. Bento de Viana.</td></tr>
+<tr><td>Teresa Malheiro Teles de Meneses</td><td>Filha de José Lopes de Calheiros e Meneses e de Clara Carolina Malheiro Lobato Teles de Meneses, nasceu a 21 de agosto de 1830 e foi batizada a 1 de setembro do dito ano na Igreja Paroquial de Santa Maria Maior onde foi padrinho o Desembargador António Lopes de Calheiros e Meneses e madrinha Nossa Senhora do Desterro, tocando com a sua coroa a sua avó Teresa Vitória de Calheiros e Meneses. Casou com Manuel Joaquim dos Santos, Oficial de Infantaria, que depois de viúvo casou em 2ª núpcias com Maria do Carmo de Sá Pinto Sotomaior.
+    Faleceu a 26 de novembro de 1863.</td></tr>
+<tr><td>Teresa Vitória Calheiros de Meneses</td><td>Filha de Francisco Lopes Calheiros de Meneses, Senhor da Casa de Calheiros, e de Maria Malheiro, nasceu a 15 de fevereiro de 1775. Casou em 1798 com Ventura Malheiro Reymão de quem teve duas filhas: Clara Carolina Malheiro Lobato Teles de Meneses e Maria Maximiana (faleceu criança).
+    Faleceu a 18 de dezembro de 1851.</td></tr>
+<tr><td>Tomás Mateus da Rocha Coelho</td><td>Filho de Manuel da Rocha Coelho e de Maria Josefa Maia.
+    Ausente no Brasil.</td></tr>
+<tr><td>Tomás Mendes Norton</td><td>Filho de José Mendes Ribeiro e de Rita Norton Tavares de Resende, Tomás Mendes Norton nasceu a 31 de janeiro de 1839 em Viana do Castelo, tinha o foro de Fidalgo Cavaleiro da Casa Real por alvará de 7 de abril de 1866 e era Comendador da Ordem Militar de Nossa Senhora da Conceição de Vila Viçosa, por carta de 3 de fevereiro do mesmo ano. 
+    Casou a 12 de janeiro de 1862 na capela do Convento de Refoios do Lima com Emília da Conceição de Matos Prego e Sousa, de quem teve onze filhos: Arnaldo Mendes Norton de Matos, Zulmira Mendes Norton de Matos, Eusébio Mendes Norton de Matos, José Mendes Ribeiro Norton de Matos, Zulmira Mendes Norton de Matos, Joaquina Mendes Norton de Matos, Tomás Mendes Norton de Matos Prego, Rita Mendes Norton de Matos, Alfredo Mendes Norton de Matos, Maria Emília Mendes Norton de Matos e Mariana Mendes Norton de Matos .
+    Faleceu na Casa do Baganheiro em Queijada, concelho de Ponte de Lima, a 1 de maio de 1920.</td></tr>
+<tr><td>Vasco Anes de Brito e Guiomar Machado</td><td>Vasco Anes de Brito, Fidalgo da Casa Real, foi Senhor da Casa da Lage na primeira metade do século XVI.
+    Casou com Guiomar Machado, filha (ou neta) de Pedro Machado, 1º Senhor de Entre Homem-e-Cávado e Senhor da vila de Lousã pelo casamento com D. Inês de Gois.</td></tr>
+<tr><td>Vasconcelos Feio</td><td>António de Araújo de Azevedo e Melo e Ana Zeferina da Costa, pais de José de Araújo de Azevedo Melo e Vasconcelos, Senhor da Casa do Fundão, na freguesia da Loureira, concelho de Vila Verde, Capitão-mor de Vila-Chã e Larim que casou com Maria Guilhermina Feio de Magalhães Coutinho, pais de Maria José de Araújo e Vasconcelos Feio.</td></tr>
+<tr><td>Ventura José da Costa</td><td>Filho António da Costa Branco e de Rosa Maria Maciel.</td></tr>
+<tr><td>Ventura José da Costa e Ana Florentina Maciel da Costa</td><td>Ana Florentina Maciel da Costa, filha de Rosa da Costa Maciel (1813- ) e de Manuel António Martins. 
+    Irmã de Manuel (1847- ), António Joaquim (1848- ), Maria Josefa (1852- ), Maria Joaquina (1853-1916), Delfina Rosa (1855) e de Boaventura José (1858).
+    Casou com o seu tio, Ventura José da Costa (1818-1897). 
+    Compram uma propriedade em Santa Marta de Portuzelo, à qual designaram por Quinta da Bela Vista.</td></tr>
+<tr><td>Ventura Malheiro Reymão</td><td>Ventura Malheiro Reymão, filho de Gaspar Malheiro Reymão e de Susana Neiva Lobato, foi Fidalgo da Casa Real, Cavaleiro da Ordem de Cristo e familiar do Santo Ofício em 1692.
+    Casou em Viana no ano de 1689 com Páscoa Pereira Ferraz, sua parente, de quem teve quinze filhos: Susana Maria de Neiva, Isabel e Luísa – freiras em Viana – Gaspar Malheiro Reymão, Lourenço frade Crúzio, Frei António frade Bento, Gaspar Pereira, Manuel Pereira, Maria, Margarida, Teresa, Gonçalo Malheiro abade de Fonte Boa, Baltazar Malheiro Reymão D. Prior da vila de Barcelos, Fr. Paulo e João Malheiro. 
+    Faleceu na Praça das Couves com todos os sacramentos aos 11 dias de dezembro de 1719 e foi sepultado na Misericórdia junto ao Altar de Nossa Senhora. Fez testamento.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho</td><td>Filho de Gaspar Malheiro Reymão e de Maria Teles de Meneses, foi Fidalgo da Casa Real e Mestre de Campo de Auxiliares em Barcelos a 6 de Dezembro de 1758, por demissão do seu pai. 
+    Casou em Ponte de Lima com Margarida Luísa Pereira Ferreira Sarmento / Margarida Constância Pereira Ferraz de quem teve três filhos.
+    Faleceu a 23 de abril de 1813 e foi sepultado no dia seguinte no Claustro do Colégio de Santo António.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho Lobato</td><td>Ventura Malheiro Reymão Marinho Lobato, filho de Gaspar Malheiro Reymão e de Maria Teles de Meneses, foi Fidalgo da Casa Real e Mestre de Campo de Auxiliares em Barcelos a 6 de Dezembro de 1758, por demissão do seu pai. 
+    Casou em Ponte de Lima com Margarida Luísa Pereira Ferreira Sarmento / Margarida Constância Pereira Ferraz de quem teve três filhos: Gaspar Malheiro Reymão, Luísa Antónia Pereira Ferraz e Maria Teotónia Pereira Ferraz (as filhas faleceram crianças).
+    Faleceu a 23 de abril de 1813 e foi sepultado no dia seguinte no Claustro do Colégio de Santo António.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho Lobato Teles de Meneses</td><td>Filho de José Lopes de Calheiros e Meneses e de Clara Carolina Malheiro Lobato Teles de Meneses, nasceu a 24 de agosto de 1822 e foi batizado a 8 de setembro do mesmo ano na sua própria capela de São Francisco de Paula (atualmente conhecida como a Capela das Malheiras), onde foi padrinho António Taveira Pimentel de Carvalho, Comendador da Ordem de Malta, e madrinha Nossa Senhora do Desterro, tocando com a sua coroa a avó materna Teresa Vitória de Calheiros e Meneses. 
+    Foi Moço Fidalgo por mercê de D. João VI, alvará de 27 de Março de 1823, com exercício no Paço.
+    Viajou desde muito cedo para lá das fronteiras de Portugal, tendo adquirido passaporte a 2 de agosto de 1850 para ir para Vigo e "daí para onde lhe convier". Foi, juntamente com o seu padrinho António Taveira Pimentel de Carvalho para Espanha e Reino Unido. 
+    Casou na freguesia de Carreço, a 4 de Julho de 1856, com D. Maria Cândida do Patrocínio e Sá Pinto, da ilustre casa da Torre de Lanhelas, atrás referida, que nasceu em 8 de Novembro de 1834, faleceu na casa dos Malheiro Reymão a 21 de Abril de 1918, e era irmã de Camilo de Sá Pinto Abreu Sottomayor, senhor da mencionada Torre (vide Sãs Sottomayor de Lanhelas).
+    Foi convidado para ocupar um lugar na Junta do Governo em 1846 e posteriormente para fazer parte do Conselho Fiscal da Santa Casa da Misericórdia de Viana do Castelo em 1874. 
+    Em 1877 iniciou novamente uma viagem pela Europa, onde atravessou Espanha, França, Alemanha e Áustria com a finalidade de chegar a Roma e de lá obter a excomunhão. Permaneceu até finais de 1878 de onde viajou para Paris e em 1879 efetuou o regresso definitivo a sua casa: Não chegou a administrar a casa por falecer, antes de sua Mãe, na casa da Portela de Cima, na freguesia de Monserrate, desta cidade de Viana, no dia 30 de Abril de 1882.
+    Faleceu a 30 de abril de 1882.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho Lobato Teles de Meneses  e Maria Cândida do Patrocínio de Sá Pinto de Mendonça</td><td>Ventura Malheiro Reymão Marinho Lobato Teles de Meneses, filho de José Lopes de Calheiros e Meneses e de Clara Carolina Malheiro Lobato Teles de Meneses, nasceu a 24 de agosto de 1822 e foi batizado a 8 de setembro do mesmo ano na sua própria capela de São Francisco de Paula (atualmente conhecida como a Capela das Malheiras).
+    Casou em 1856 com Maria Cândida do Patrocínio de Sá Pinto de Mendonça, filha de João de Sá Pinto de Abreu Sotomaior, de quem teve quatro filhos: Ventura Malheiro Reymão, Maria Cândida do Patrocínio Malheiro Reymão Teles Calheiros de Meneses e Sá, José Malheiro Reymão e Maria Maximiana Malheiro Reymão.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho Lobato e Margarida Luísa Pereira Ferraz</td><td>Ventura Malheiro Reymão Marinho Lobato, filho de Gaspar Malheiro Reymão e de Maria Teles de Meneses, foi Fidalgo da Casa Real e Mestre de Campo de Auxiliares em Barcelos a 6 de Dezembro de 1758, por demissão do seu pai. 
+    Casou em Ponte de Lima com Margarida Luísa Pereira Ferreira Sarmento / Margarida Constância Pereira Ferraz de quem teve três filhos: Gaspar Malheiro Reymão, Luísa Antónia Pereira Ferraz e Maria Teotónia Pereira Ferraz (as filhas faleceram crianças).
+    Faleceu a 23 de abril de 1813 e foi sepultado no dia seguinte no Claustro do Colégio de Santo António.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho Lobato e Teresa Vitória Calheiros de Meneses</td><td>Fidalgo da Casa Real, administrador de casa de sua Mãe.
+    Casou em 1798 com D. Tereza Victoria de Calheiros e Menezes, nascida a 15 de Fevereiro de 1775 e falecida a 18 de Dezembro de 1851, jazendo na Capela-mor da Igreja da Ordem 3ª. de S. Francisco desta cidade de Viana, e filha de Francisco Lopes de Calheiros e Meneses, senhor da Casa do Paço, na freguesia de Santa Eufémia de Calheiros, no concelho de Ponte de Lima, Fidalgo da Casa Real, e de sua mulher, D. Maria Teresa de Barbosa Falcão Marinho Sotomaior.
+    Faleceu em Viana em 26 de Janeiro de 1801.</td></tr>
+<tr><td>Ventura Malheiro Reymão Marinho e Margarida Luísa Pereira Ferraz Sarmento</td><td>Natural de Viana, como seu Pai, como consta no livro de 1734 do Registo da Câmara, Senhor dos Morgados, Cavaleiro na Ordem de Cristo, Mestre de Campo de Auxiliares de Viana e Fidalgo da Casa Real, por mercê de 20 de Maio de 1734.
+    Casou em Ponte de Lima com sua prima D. Margarida Luísa Pereira Ferraz Sarmento, filha de Agostinho Pereira Ferraz, senhor do Morgado dos Barreiros, e de sua mulher D. Maria Luísa Sarmento Sottomayor, da Galiza.
+    Faleceu de avançada idade em 24 de Abril de 1813.</td></tr>
+<tr><td>Ventura Malheiro Reymão Sá</td><td>Filho de Ventura Malheiro Reymão Marinho Lobato Teles de Meneses e de Maria Cândida do Patrocínio de Sá Pinto de Mendonça, nasceu a 29 de agosto de 1857 tendo casado a 16 de julho de 1882 com Antónia Margarida de Melo e Sampaio. Sem geração, faleceu a 22 de abril de 1889. 
+    Irmão de José Malheiro Reymão, Maria Máxima Malheiro Reymão e Maria Cândida Malheiro Reymão Teles de Calheiros de Meneses.</td></tr>
+<tr><td>Ventura Malheiro Reymão e Maria Cordeiro Machado</td><td>Ventura Malheiro Reymão, filho de José Malheiro Reymão e de Adelaide Amélia Lima de Espregueira, nasceu a 24 de outubro de 1886.
+    Foi Major de Engenharia e Ministro das Finanças da República. 
+    Casou a 19 de fevereiro de 1916 com Maria Cordeiro Machado de quem teve dois filhos: Gaspar Malheiro Reymão e Maria Cândida Manuela Malheiro Reymão.</td></tr>
+<tr><td>Ventura Malheiro Reymão e Páscoa Pereira Ferraz</td><td>Ventura Malheiro Reymão, filho de Gaspar Malheiro Reymão e de Susana Neiva Lobato, foi batizado a 28 de agosto de 1655 pelo Padre Manuel Gonçalves Reymão.
+    Foi Fidalgo da Casa Real, Cavaleiro da Ordem de Cristo e familiar do Santo Ofício em 1692.
+    Casou em Viana no ano de 1689 com Páscoa Pereira Ferraz, sua parente filha de Lourenço Pereira Távora e de Mecia Pereira Ferraz, de quem teve quinze filhos: Susana Maria de Neiva, Isabel e Luísa – freiras em Viana – Gaspar Malheiro Reymão, Lourenço frade Crúzio, Frei António frade Bento, Gaspar Pereira, Manuel Pereira, Maria, Margarida, Teresa, Gonçalo Malheiro abade de Fonte Boa, Baltazar Malheiro Reymão D. Prior da vila de Barcelos, Fr. Paulo e João Malheiro.</td></tr>
+<tr><td>Viscondes da Torre</td><td>Título criado por D. Luís I, com decreto a 3 de agosto de 1870.
+    Foi 1.º Visconde da Torre João Feio de Magalhães Coutinho, tendo este deixado a casa a Alberto Feio da Rocha Páris, 2.º Visconde da Torre, neto de sua irmã.
+    
+    A Casa da Torre, situada junto ao rio Cávado, na freguesia de Soutelo, foi edificada no século XVIII, tendo uma inscrição datada de 9 de novembro de 1743 no interior da capela a invocar o sacramento do crisma de D. Maria Josefa de Magalhães Feio de Azevedo, cuja família, pelo lado dos Feio de Azevedo, possuía uma Quinta no lugar de Burgueiros, da mesma freguesia.
+    Ao longo da sua história a Casa da Torre teve vários proprietários, designadamente João Feio de Magalhães Coutinho que em 1847 foi feito Barão da Torre pela rainha D. Maria II. Posteriormente, em 1870, foi-lhe concedido o título de 1º Visconde da Torre pelo rei D. Luís I.
+    Em 1885 torna-se Senhor da Casa da Torre e 2º Visconde da Torre, Alberto Feio da Rocha Paris, casado com D. Maria Cândida Malheiro Reymão Teles Calheiros de Menezes e Sá, sem descendência.
+    Após a morte de Alfredo Feio da Rocha Paris, em 1912, a posse da casa fica nas mãos da viúva D. Maria Cândida Malheiro Reymão Teles Calheiros de Meneses e Sá. Esta, em Março de 1947, por testamento, doa a Casa da Torre à Província Portuguesa da Companhia de Jesus, passando, após a sua morte, para a posse dos Jesuítas; sendo que a família fica com o recheio da casa.</td></tr>
+<tr><td>Álvaro de Abreu Soares e Francisca de Lima</td><td>Francisca de Lima, filha de António Ramos e de Ana Lima, terá nascido em Santo Domingo, onde casaram seus pais.
+    Álvaro de Abreu Soares, fidalgo da Casa Real, sargento-mor das Companhias da vila de Viana, era filho de Manuel de Abreu Peixoto, escudeiro fidalgo da Casa Real, e de Maria da Rocha Pita, da vila de Caminha.
+    Sendo este descendente dos Abreus Soares da Casa do Picouto, em Monção, vendeu, em 1604, a Quinta dos Picoutos e mais bens de raiz que tinha na vila e Monção, a Gonçalo Rodrigues do Vale, morador na vila de Caminha.
+    Tiveram filhos: Manuel de Abreu, que segue, António Ramos de Abreu que casou com Leonor de Araújo, Catarina de Abreu que casou com Miguel da Rocha Peixoto, Ângela de S. Miguel e Vitória de Santa Úrsula, ambas freiras no Mosteiro de Sant’Ana, na vila de Viana.
+    Álvaro de Abreu Soares fez testamento, em 1619 e em 1627, onde refere que pretende ser sepultado na Santa Casa da Misericórdia, com o hábito de S. Francisco, na sepultura onde está enterrado seu sogro, António Ramos. 
+    Foram testamenteiros os seus filhos Manuel de Abreu e António Ramos de Abreu, que se encontrava ausente na Capitania de Pernambuco (Brasil). Deixou a seu filho Manuel de Abreu dinheiro para mandar os seus filhos para Coimbra para «aprenderem letras que esse nosso reino nem fora dele não valem senão quem tem letras».
+    António Ramos de Abreu foi nomeado em 1571, por D. Sebastião, Capitão-mor da Gente da Guerra da vila de Viana. Em 1575 é eleito para capitão de uma companhia da vila de Viana, por morte de Bartolomeu Barbosa e, em 1596, é eleito Sargento-mor da Gente da Guerra.
+    Em 1599, há notícia de ter sido condenado ao degredo pela Casa do Provedor, «pela tirada da igreja velha de João do Rego», tendo recebido de seu cunhado, Miguel da Rocha Peixoto, em 1605, a quantia de 40.000 réis para «comprar o que me importa para a viagem que hei de fazer embora para o Brasil» e em 1607 escreve a sua mãe informando que se encontra em Olinda. 
+    Em 1648, António Ramos de Abreu a sua mulher D. Leonor de Araújo, então moradores na freguesia de Muribeca, termo da vila de Olinda, capitania de Pernambuco, venderam a Guilherme de Campanaer e sua mulher, a sua meia Quinta do Barco com todas as suas pertenças, por preço de 300 mil réis.</td></tr>
+</table>
+                </main>
+                <footer>
+                    <p>© 2025 Árvore de Fundos e Documentos</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+    </html>
+    
